@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class Computer extends Model
 {
@@ -20,7 +21,7 @@ class Computer extends Model
      * $this->attributes['created_at'] - timestamp - contains the computer created date
      * $this->attributes['updated_at'] - timestamp - contains the computer update date
      */
-    public static function validate($request)
+    public static function validate(Request $request): Void
     {
         $request->validate([
             'reference' => 'required',
