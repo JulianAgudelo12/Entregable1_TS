@@ -4,6 +4,6 @@
 @section('content')
     <h2>Welcome to your Admin Dashboard</h2>
     <p>Total Users: {{ $viewData["totalUsers"] }}</p>
-    <a href="{{ route('admin.users.index') }}" class="btn btn-primary">Manage Users</a>
+    <a href="{{ route('admin.user.index') }}" class="btn btn-primary">Manage Users</a>
 @endsection
 
