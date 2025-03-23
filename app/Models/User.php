@@ -78,7 +78,7 @@ class User extends Authenticatable
         return $this->attributes['updated_at'];
     }
 
-    public function getIsadmin(): bool
+    public function getIsAdmin(): bool
     {
         return $this->attributes['is_admin'];
     }
