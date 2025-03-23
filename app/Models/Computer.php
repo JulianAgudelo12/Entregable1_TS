@@ -21,19 +21,6 @@ class Computer extends Model
      * $this->attributes['created_at'] - timestamp - contains the computer created date
      * $this->attributes['updated_at'] - timestamp - contains the computer update date
      */
-    public static function validate(Request $request): Void
-    {
-        $request->validate([
-            'reference' => 'required',
-            'name' => 'required',
-            'brand' => 'required',
-            'quantity' => 'required|numeric|gte:0',
-            'type' => 'required|in:desktop,laptop',
-            'description' => 'required',
-            'price' => 'required|numeric|gt:0',
-        ]);
-    }
-
     public function getId(): int
     {
         return $this->attributes['id'];

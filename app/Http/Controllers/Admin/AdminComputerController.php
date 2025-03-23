@@ -1,8 +1,10 @@
 <?php
+/* Developed by Valeria Corrales Hoyos*/
 
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Computer;
+use App\Utilities\ComputerValidator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -43,12 +45,12 @@ class AdminComputerController extends Controller
         $viewData = [];
         $viewData['title'] = 'Create Computer';
 
-        return view('admin.computer.index')->with('viewData', $viewData);
+        return view('admin.computer.create')->with('viewData', $viewData);
     }
 
     public function save(Request $request): RedirectResponse
     {
-        Computer::validate($request);
+        ComputerValidator::validate($request);
 
         $newComputer = new Computer;
         $newComputer->setReference($request->input('reference'));
