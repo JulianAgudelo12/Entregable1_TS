@@ -7,6 +7,7 @@
  {{ session('success') }}
 </div>
 @endif
+<a href="{{ route('admin.computer.create') }}" class="btn btn-primary">Create computer</a>
 <div class="row">
   @foreach ($viewData["computers"] as $computer)
   <div class="col-md-4 col-lg-3 mb-2">
