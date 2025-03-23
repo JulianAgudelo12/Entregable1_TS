@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\View\View;
-use App\Http\Controllers\Controller;
 
 class AdminDashboardController extends Controller
 {
@@ -13,7 +13,7 @@ class AdminDashboardController extends Controller
         $viewData = [];
         $viewData['title'] = 'Admin Dashboard';
         $viewData['subtitle'] = 'Dashboard';
-        
+
         $viewData['totalUsers'] = User::count();
 
         return view('admin.dashboard.index')->with('viewData', $viewData);
