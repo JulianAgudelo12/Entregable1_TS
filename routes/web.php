@@ -14,11 +14,11 @@ Route::get('/computers/{id}', "$ComputerControllerPath@show")->name('computer.sh
 
 Route::middleware('admin')->group(function () {
     $AdminDashboardControllerPath = 'App\Http\Controllers\Admin\AdminDashboardController';
-    $AdminUserCOntrollerPath = 'App\Http\Controllers\Admin\AdminUserController';
+    $AdminUserControllerPath = 'App\Http\Controllers\Admin\AdminUserController';
     $AdminComputerControllerPath = 'App\Http\Controllers\Admin\AdminComputerController';
 
     Route::get('/admin', "$AdminDashboardControllerPath@index")->name('admin.dashboard.index');
-    Route::get('/admin/users', "$AdminUserCOntrollerPath@index")->name('admin.user.index');
+    Route::get('/admin/users', "$AdminUserControllerPath@index")->name('admin.user.index');
     Route::get('/admin/computers', "$AdminComputerControllerPath@index")->name('admin.computer.index');
     Route::get('/admin/computers/create', "$AdminComputerControllerPath@create")->name('admin.computer.create');
     Route::post('/admin/computers/create', "$AdminComputerControllerPath@store")->name('admin.computer.store');
