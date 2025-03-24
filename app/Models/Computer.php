@@ -1,5 +1,7 @@
 <?php
 
+/* Developed by Valeria Corrales Hoyos */
+
 namespace App\Models;
 
 use Carbon\Carbon;

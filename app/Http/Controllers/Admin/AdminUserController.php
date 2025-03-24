@@ -1,5 +1,7 @@
 <?php
 
+/* Developed by Valeria Corrales Hoyos */
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;

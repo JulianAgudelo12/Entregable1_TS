@@ -63,7 +63,7 @@ class AdminComputerController extends Controller
 
     public function edit(string $id): View
     {
-        $computer = Computer::findOrFail($id); 
+        $computer = Computer::findOrFail($id);
 
         $viewData = [];
         $viewData['title'] = 'Edit Computer';
