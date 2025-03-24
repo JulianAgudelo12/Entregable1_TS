@@ -20,7 +20,7 @@ class ItemController extends Controller
         $viewData['title'] = __('Item List');
         $viewData['items'] = Item::all();
 
-        return view('item.index', compact('viewData'));
+        return view('item.index')->with('viewData', $viewData);
     }
 
     public function create(): View
@@ -28,7 +28,7 @@ class ItemController extends Controller
         $viewData = [];
         $viewData['title'] = __('Create Item');
 
-        return view('item.create', compact('viewData'));
+        return view('item.create')->with('viewData', $viewData);
     }
 
     public function store(Request $request): RedirectResponse
@@ -65,7 +65,7 @@ class ItemController extends Controller
         $viewData['title'] = __('Item Details');
         $viewData['item'] = Item::findOrFail($id);
 
-        return view('item.show', compact('viewData'));
+        return view('item.show')->with('viewData', $viewData);
     }
 
     public function edit(int $id): View
@@ -74,7 +74,7 @@ class ItemController extends Controller
         $viewData['title'] = __('Edit Item');
         $viewData['item'] = Item::findOrFail($id);
 
-        return view('item.edit', compact('viewData'));
+        return view('item.edit')->with('viewData', $viewData);
     }
 
     public function update(Request $request, int $id): RedirectResponse

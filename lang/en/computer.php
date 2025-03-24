@@ -1,5 +1,7 @@
 <?php
 
+/* Developed by Santiago Rodriguez Mojica */
+
 return [
     'reference' => 'Reference',
     'brand' => 'Brand',

@@ -92,7 +92,7 @@ class Computer extends Model
         return $this->attributes['price'];
     }
 
-    public function setPrice(int $price): void
+    public function setPrice(float $price): void
     {
         $this->attributes['price'] = $price;
     }

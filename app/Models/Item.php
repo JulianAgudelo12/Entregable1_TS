@@ -28,7 +28,7 @@ class Item extends Model
 
     public function getSubTotal(): float
     {
-        return (float) $this->attributes['sub_total'];
+        return $this->attributes['sub_total'];
     }
 
     public function setSubTotal(float $subTotal): void
@@ -38,7 +38,7 @@ class Item extends Model
 
     public function getQuantity(): int
     {
-        return (int) $this->attributes['quantity'];
+        return $this->attributes['quantity'];
     }
 
     public function setQuantity(int $quantity): void
@@ -88,11 +88,11 @@ class Item extends Model
 
     public function getCreatedAt(): Carbon
     {
-        return Carbon::parse($this->attributes['created_at']);
+        return $this->attributes['created_at'];
     }
 
     public function getUpdatedAt(): Carbon
     {
-        return Carbon::parse($this->attributes['updated_at']);
+        return $this->attributes['updated_at'];
     }
 }
