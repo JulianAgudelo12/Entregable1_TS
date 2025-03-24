@@ -15,7 +15,7 @@ class AdminAuthMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response | View
+    public function handle(Request $request, Closure $next): Response|View
     {
         if (Auth::user() && Auth::user()->is_admin == true) {
             return $next($request);
