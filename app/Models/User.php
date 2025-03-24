@@ -85,7 +85,7 @@ class User extends Authenticatable
         return $this->attributes['is_admin'];
     }
 
-    public function setIsadmin(bool $isAdmin): void
+    public function setIsAdmin(bool $isAdmin): void
     {
         $this->attributes['is_admin'] = $isAdmin;
     }

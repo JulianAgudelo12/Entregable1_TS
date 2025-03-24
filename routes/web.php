@@ -18,7 +18,12 @@ Route::middleware('admin')->group(function () {
     $AdminComputerControllerPath = 'App\Http\Controllers\Admin\AdminComputerController';
 
     Route::get('/admin', "$AdminDashboardControllerPath@index")->name('admin.dashboard.index');
+
     Route::get('/admin/users', "$AdminUserControllerPath@index")->name('admin.user.index');
+    Route::delete('/admin/users/{id}', "$AdminUserControllerPath@destroy")->name('admin.user.destroy');
+    Route::get('/admin/users/{id}/edit', "$AdminUserControllerPath@edit")->name('admin.user.edit');
+    Route::put('/admin/users/{id}', "$AdminUserControllerPath@update")->name('admin.user.update');
+
     Route::get('/admin/computers', "$AdminComputerControllerPath@index")->name('admin.computer.index');
     Route::get('/admin/computers/create', "$AdminComputerControllerPath@create")->name('admin.computer.create');
     Route::post('/admin/computers/create', "$AdminComputerControllerPath@store")->name('admin.computer.store');
