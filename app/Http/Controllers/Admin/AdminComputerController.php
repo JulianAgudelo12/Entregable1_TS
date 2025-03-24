@@ -24,7 +24,7 @@ class AdminComputerController extends Controller
         return view('admin.computer.index')->with('viewData', $viewData);
     }
 
-    public function show(string $id): View|RedirectResponse
+    public function show(string $id): View
     {
         $viewData = [];
         $computer = Computer::findOrFail($id);

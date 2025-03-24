@@ -5,7 +5,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Computer;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
 class ComputerController extends Controller
@@ -20,7 +19,7 @@ class ComputerController extends Controller
         return view('computer.index')->with('viewData', $viewData);
     }
 
-    public function show(string $id): View|RedirectResponse
+    public function show(string $id): View
     {
         $viewData = [];
         $computer = Computer::findOrFail($id);
