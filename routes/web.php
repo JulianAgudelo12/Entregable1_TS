@@ -17,8 +17,10 @@ Route::get('/computers/{id}', "$ComputerControllerPath@show")->name('computer.sh
 
 Route::post('/items', "$ItemControllerPath@store")->name('items.store');
 
-Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index'); // temp
-Route::get('/orders', [OrderController::class, 'index'])->name('orders.index'); // temp
+Route::get('/wishlist', "$WishlistControllerPath@index")->name('wishlist.index');
+Route::delete('/wishlist/{id}', "$WishlistControllerPath@remove")->name('wishlist.remove');
+
+Route::get('/orders', ["$OrderControllerPath@index"])->name('orders.index'); // temp
 
 Route::middleware('admin')->group(function () {
     $AdminDashboardControllerPath = 'App\Http\Controllers\Admin\AdminDashboardController';
