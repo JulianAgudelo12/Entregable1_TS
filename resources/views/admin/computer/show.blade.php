@@ -18,7 +18,7 @@
         <p class="card-text">Type: {{ $viewData["computer"]->getType() }}</p>
         <p class="card-text">Description: {{ $viewData["computer"]->getDescription() }}</p>
         <p class="card-text">Stock: {{ $viewData["computer"]->getQuantity() }}</p> 
-        <form action="{{ route('admin.computer.delete', $viewData["computer"]->getId()) }}" method="POST" style="display:inline;">
+        <form action="{{ route('admin.computer.destroy', $viewData["computer"]->getId()) }}" method="POST" style="display:inline;">
           @csrf
           @method('DELETE')
           <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this reference?')">Delete</button>

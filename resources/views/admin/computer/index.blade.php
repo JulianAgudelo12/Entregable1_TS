@@ -2,6 +2,13 @@
 @section('title', $viewData["title"])
 @section('subtitle', $viewData["subtitle"])
 @section('content')
+@if($errors->any())
+  <ul id="errors" class="alert alert-danger list-unstyled">
+    @foreach($errors->all() as $error)
+    <li>{{ $error }}</li>
+    @endforeach
+  </ul>
+@endif
 @if(session('success'))
 <div class="alert alert-success">
   {{ session('success') }}
@@ -32,7 +39,7 @@
       <td>
         <a href="{{ route('admin.computer.show', ['id'=> $computer->getId()]) }}" class="btn btn-info btn-sm">View</a>
         <a class="btn btn-warning btn-sm">Edit</a>
-        <form action="{{ route('admin.computer.delete', ['id' => $computer->getId()]) }}" method="POST" style="display:inline;">
+        <form action="{{ route('admin.computer.destroy', ['id' => $computer->getId()]) }}" method="POST" style="display:inline;">
           @csrf
           @method('DELETE')
           <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this reference?')">Delete</button>

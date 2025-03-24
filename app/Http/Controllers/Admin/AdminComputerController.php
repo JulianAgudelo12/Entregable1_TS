@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Computer;
+use App\Utilities\ComputerHelper;
 use App\Utilities\ComputerValidator;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -34,7 +35,7 @@ class AdminComputerController extends Controller
         return view('admin.computer.show')->with('viewData', $viewData);
     }
 
-    public function delete(string $id): RedirectResponse
+    public function destroy(string $id): RedirectResponse
     {
         Computer::destroy($id);
 
@@ -57,15 +58,23 @@ class AdminComputerController extends Controller
         ComputerValidator::validate($request);
 
         $newComputer = new Computer;
-        $newComputer->setReference($request->input('reference'));
-        $newComputer->setName($request->input('name'));
-        $newComputer->setBrand($request->input('brand'));
-        $newComputer->setQuantity($request->input('quantity'));
-        $newComputer->setType($request->input('type'));
-        $newComputer->setDescription($request->input('description'));
-        $newComputer->setPrice($request->input('price'));
+        ComputerHelper::fillComputerData($newComputer, $request);
         $newComputer->save();
 
-        return redirect()->route('admin.computer.create')->with('success', 'Computer created successfully!');
+        return redirect()->route('admin.computer.index')->with('success', 'Computer created successfully!');
+    }
+
+    public function update(Request $request, string $id): RedirectResponse
+    {
+        $viewData = [];
+        $viewData['title'] = 'Update Computer';
+
+        ComputerValidator::validate($request);
+
+        $computer = Computer::findOrFail($id);
+        ComputerHelper::fillComputerData($computer, $request);
+        $computer->save();
+
+        return redirect()->route('admin.computer.update')->with('success', 'Computer Updated successfully!');
     }
 }
