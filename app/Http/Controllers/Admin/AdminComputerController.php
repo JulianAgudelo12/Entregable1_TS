@@ -34,11 +34,11 @@ class AdminComputerController extends Controller
         return view('admin.computer.show')->with('viewData', $viewData);
     }
 
-    public function delete(string $id): View
+    public function delete(string $id): RedirectResponse
     {
         Computer::destroy($id);
 
-        return view('admin.computer.index')->with('success', 'Computer deleted successfully!');
+        return redirect()->route('admin.computer.index')->with('success', 'Computer deleted successfully!');
     }
 
     public function create(): View

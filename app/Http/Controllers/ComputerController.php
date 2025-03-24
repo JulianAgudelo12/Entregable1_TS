@@ -28,6 +28,6 @@ class ComputerController extends Controller
         $viewData['subtitle'] = $computer->getName().' - General information';
         $viewData['computer'] = $computer;
 
-        return view('computer.index')->with('viewData', $viewData);
+        return view('computer.show')->with('viewData', $viewData);
     }
 }

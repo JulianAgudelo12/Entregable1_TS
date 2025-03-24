@@ -13,8 +13,8 @@
     <div class="card">
       <img src="https://laravel.com/img/logotype.min.svg" class="card-img-top img-card">
       <div class="card-body text-center">
-      <p class="card-text fw-bold">{{ $computer->getReference() }}</p>
-        <a class="btn bg-primary text-white">{{ $computer->getName() }}</a>
+      <p class="card-text">${{ number_format($computer->getPrice(), 2) }}</p>
+        <a href="{{ route('computer.show', ['id'=> $computer->getId()]) }}" class="btn bg-primary text-white">{{ $computer->getName() }}</a>
       </div>
     </div>
   </div>

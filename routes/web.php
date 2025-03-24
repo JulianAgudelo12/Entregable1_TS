@@ -10,6 +10,7 @@ Auth::routes();
 
 Route::get('/', "$HomeControllerPath@index")->name('home.index');
 Route::get('/computers', "$ComputerControllerPath@index")->name('computer.index');
+Route::get('/computers/{id}', "$ComputerControllerPath@show")->name('computer.show');
 
 Route::middleware('admin')->group(function () {
     $AdminDashboardControllerPath = 'App\Http\Controllers\Admin\AdminDashboardController';
@@ -21,5 +22,5 @@ Route::middleware('admin')->group(function () {
     Route::get('/admin/computers', "$AdminComputerControllerPath@index")->name('admin.computer.index');
     Route::get('/admin/computers/create', "$AdminComputerControllerPath@create")->name('admin.computer.create');
     Route::post('/admin/computers/create', "$AdminComputerControllerPath@store")->name('admin.computer.store');
-    Route::get('/admin/computers/{$id}', "$AdminComputerControllerPath@show")->name('admin.computer.show');
+    Route::get('/admin/computers/{id}', "$AdminComputerControllerPath@show")->name('admin.computer.show');
 });

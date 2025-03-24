@@ -32,7 +32,7 @@
             <td>{{ ucfirst($computer->getType()) }}</td>
             <td>${{ number_format($computer->getPrice(), 2) }}</td>
             <td>
-                <a class="btn btn-info btn-sm">View</a>
+                <a href="{{ route('admin.computer.show', ['id'=> $computer->getId()]) }}" class="btn btn-info btn-sm">View</a>
                 <a class="btn btn-warning btn-sm">Edit</a>
             </td>
         </tr>
