@@ -9,40 +9,82 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
+     * USER ATTRIBUTES
+     * $this->attributes['id'] - int - contains the user primary key (id)
+     * $this->attributes['name'] - string - contains the user name
+     * $this->attributes['email'] - string - contains the user email
+     * $this->attributes['email_verified_at'] - timestamp - contains the user email verification date
+     * $this->attributes['password'] - string - contains the user password
+     * $this->attributes['remember_token'] - string - contains the user authentication token
+     * $this->attributes['created_at'] - timestamp - contains the user creation date
+     * $this->attributes['updated_at'] - timestamp - contains the user update date
+     * $this->attributes['is_admin'] - boolean - represents the user role as admin (true) or client (false).
      */
     protected $fillable = [
         'name',
         'email',
         'password',
+        'is_admin',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
     protected function casts(): array
     {
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function getId(): string
+    {
+        return $this->attributes['id'];
+    }
+
+    public function getName(): string
+    {
+        return $this->attributes['name'];
+    }
+
+    public function setName(string $name): void
+    {
+        $this->attributes['name'] = $name;
+    }
+
+    public function getEmail(): string
+    {
+        return $this->attributes['email'];
+    }
+
+    public function setEmail(string $email): void
+    {
+        $this->attributes['email'] = $email;
+    }
+
+    public function getCreatedAt()
+    {
+        return $this->attributes['created_at'];
+    }
+
+    public function getUpdatedAt()
+    {
+        return $this->attributes['updated_at'];
+    }
+
+    public function getIsAdmin(): bool
+    {
+        return $this->attributes['is_admin'];
+    }
+
+    public function setIsadmin(bool $isAdmin): void
+    {
+        $this->attributes['is_admin'] = $isAdmin;
     }
 }
