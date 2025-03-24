@@ -1,5 +1,7 @@
 <?php
 
+/* Developed by Valeria Corrales Hoyos */
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -17,6 +19,6 @@ class AdminUserController extends Controller
         $viewData['users'] = User::all();
         $viewData['totalUsers'] = User::all()->count();
 
-        return view('admin.users.index')->with('viewData', $viewData);
+        return view('admin.user.index')->with('viewData', $viewData);
     }
 }

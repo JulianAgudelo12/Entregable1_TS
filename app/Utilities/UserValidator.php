@@ -1,5 +1,7 @@
 <?php
 
+/* Developed by Valeria Corrales Hoyos */
+
 namespace App\Utilities;
 
 use Illuminate\Contracts\Validation\Validator as ValidationValidator;
