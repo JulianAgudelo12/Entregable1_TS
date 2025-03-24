@@ -1,11 +1,12 @@
 <?php
-/* Developed by Valeria Corrales Hoyos*/
+
+/* Developed by Valeria Corrales Hoyos */
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Computer;
 use App\Utilities\ComputerValidator;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -30,14 +31,14 @@ class AdminComputerController extends Controller
         $viewData['subtitle'] = $computer->getName().' - General information';
         $viewData['computer'] = $computer;
 
-        return view('admin.computer.index')->with('viewData', $viewData);
+        return view('admin.computer.show')->with('viewData', $viewData);
     }
 
-    public function delete(string $id): RedirectResponse
+    public function delete(string $id): View
     {
         Computer::destroy($id);
 
-        return redirect()->route('admin.computer.index')->with('success', 'Computer deleted successfully!');
+        return view('admin.computer.index')->with('success', 'Computer deleted successfully!');
     }
 
     public function create(): View
@@ -48,8 +49,11 @@ class AdminComputerController extends Controller
         return view('admin.computer.create')->with('viewData', $viewData);
     }
 
-    public function save(Request $request): RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
+        $viewData = [];
+        $viewData['title'] = 'Create Computer';
+
         ComputerValidator::validate($request);
 
         $newComputer = new Computer;
@@ -62,7 +66,6 @@ class AdminComputerController extends Controller
         $newComputer->setPrice($request->input('price'));
         $newComputer->save();
 
-        return redirect()->route('admin.computer.index')->with('success', 'Computer created successfully!');
-
+        return redirect()->route('admin.computer.create')->with('success', 'Computer created successfully!');
     }
 }

@@ -20,7 +20,7 @@
               {{ session('success') }}
             </div>
             @endif
-            <form method="POST" action="{{ route('admin.computer.index') }}">
+            <form method="POST" action="{{ route('admin.computer.store') }}">
               @csrf
               <input type="text" class="form-control mb-2" placeholder="Enter reference" name="reference" value="{{ old('reference') }}" required />
               <input type="text" class="form-control mb-2" placeholder="Enter name" name="name" value="{{ old('name') }}" required/>
