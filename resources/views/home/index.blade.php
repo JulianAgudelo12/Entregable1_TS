@@ -3,6 +3,6 @@
 @section('subtitle', $viewData["subtitle"])
 @section('content')
 <div class="text-center">
-  Welcome to the application
+  {{ __('message.welcome_message') }}
 </div>
 @endsection
