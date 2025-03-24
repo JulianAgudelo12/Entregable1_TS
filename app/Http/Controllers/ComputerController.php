@@ -1,11 +1,11 @@
 <?php
-/* Developed by Valeria Corrales Hoyos*/
+
+/* Developed by Valeria Corrales Hoyos */
 
 namespace App\Http\Controllers;
 
 use App\Models\Computer;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class ComputerController extends Controller

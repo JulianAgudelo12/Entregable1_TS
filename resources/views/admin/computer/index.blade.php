@@ -3,23 +3,40 @@
 @section('subtitle', $viewData["subtitle"])
 @section('content')
 @if(session('success'))
-<div class="alert alert-danger">
- {{ session('success') }}
+<div class="alert alert-success">
+    {{ session('success') }}
 </div>
 @endif
-<a href="{{ route('admin.computer.create') }}" class="btn btn-primary">Create computer</a>
-<div class="row">
-  @foreach ($viewData["computers"] as $computer)
-  <div class="col-md-4 col-lg-3 mb-2">
-    <div class="card">
-      <img src="https://laravel.com/img/logotype.min.svg" class="card-img-top img-card">
-      <div class="card-body text-center">
-      <p class="card-text fw-bold">{{ $computer->getReference() }}</p>
-        <a href="{{ route('computer.show', ['id'=> $computer->getId()]) }}"
-          class="btn bg-primary text-white">{{ $computer->getName() }}</a>
-      </div>
-    </div>
-  </div>
-  @endforeach
-</div>
+
+<a href="{{ route('admin.computer.create') }}" class="btn btn-primary mb-3">Create Computer</a>
+
+<table class="table table-striped table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>Reference</th>
+            <th>Name</th>
+            <th>Brand</th>
+            <th>Quantity</th>
+            <th>Type</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($viewData["computers"] as $computer)
+        <tr>
+            <td>{{ $computer->getReference() }}</td>
+            <td>{{ $computer->getName() }}</td>
+            <td>{{ $computer->getBrand() }}</td>
+            <td>{{ $computer->getQuantity() }}</td>
+            <td>{{ ucfirst($computer->getType()) }}</td>
+            <td>${{ number_format($computer->getPrice(), 2) }}</td>
+            <td>
+                <a class="btn btn-info btn-sm">View</a>
+                <a class="btn btn-warning btn-sm">Edit</a>
+            </td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
 @endsection
