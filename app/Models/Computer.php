@@ -18,7 +18,7 @@ class Computer extends Model
      * $this->attributes['quantity'] - int - contains the amount of computers of this refeence in storage
      * $this->attributes['type'] - string - contains the type of computer (desktop/laptop)
      * $this->attributes['description'] - string - contains general information about the computer
-     * $this->attributes['price'] - string - contains the computer's price
+     * $this->attributes['price'] - float - contains the computer's price
      * $this->attributes['created_at'] - timestamp - contains the computer created date
      * $this->attributes['updated_at'] - timestamp - contains the computer update date
      */
@@ -87,7 +87,7 @@ class Computer extends Model
         $this->attributes['description'] = $description;
     }
 
-    public function getPrice(): int
+    public function getPrice(): float
     {
         return $this->attributes['price'];
     }

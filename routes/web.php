@@ -5,12 +5,20 @@ use Illuminate\Support\Facades\Route;
 
 $HomeControllerPath = 'App\Http\Controllers\HomeController';
 $ComputerControllerPath = 'App\Http\Controllers\ComputerController';
+$ItemControllerPath = 'App\Http\Controllers\ItemController';
+$WishlistControllerPath = 'App\Http\Controllers\WishlistController';
+$OrderControllerPath = 'App\Http\Controllers\OrderController';
 
 Auth::routes();
 
 Route::get('/', "$HomeControllerPath@index")->name('home.index');
 Route::get('/computers', "$ComputerControllerPath@index")->name('computer.index');
 Route::get('/computers/{id}', "$ComputerControllerPath@show")->name('computer.show');
+
+Route::post('/items', "$ItemControllerPath@store")->name('items.store');
+
+Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index'); // temp
+Route::get('/orders', [OrderController::class, 'index'])->name('orders.index'); // temp
 
 Route::middleware('admin')->group(function () {
     $AdminDashboardControllerPath = 'App\Http\Controllers\Admin\AdminDashboardController';
