@@ -32,7 +32,7 @@ class AdminUserController extends Controller
 
         return redirect()->route('admin.user.index')->with('success', 'User deleted successfully!');
     }
-    
+
     public function edit(string $id): View
     {
         $user = User::findOrFail($id);
