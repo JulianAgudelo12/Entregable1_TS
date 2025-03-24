@@ -52,9 +52,6 @@ class AdminComputerController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-        $viewData = [];
-        $viewData['title'] = 'Create Computer';
-
         ComputerValidator::validate($request);
 
         $newComputer = new Computer;
@@ -64,17 +61,25 @@ class AdminComputerController extends Controller
         return redirect()->route('admin.computer.index')->with('success', 'Computer created successfully!');
     }
 
+    public function edit(string $id): View
+    {
+        $computer = Computer::findOrFail($id); 
+
+        $viewData = [];
+        $viewData['title'] = 'Edit Computer';
+        $viewData['computer'] = $computer;
+
+        return view('admin.computer.edit')->with('viewData', $viewData);
+    }
+
     public function update(Request $request, string $id): RedirectResponse
     {
-        $viewData = [];
-        $viewData['title'] = 'Update Computer';
-
         ComputerValidator::validate($request);
 
         $computer = Computer::findOrFail($id);
         ComputerHelper::fillComputerData($computer, $request);
         $computer->save();
 
-        return redirect()->route('admin.computer.update')->with('success', 'Computer Updated successfully!');
+        return redirect()->route('admin.computer.index')->with('success', 'Computer Updated successfully!');
     }
 }

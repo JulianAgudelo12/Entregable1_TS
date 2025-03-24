@@ -18,6 +18,7 @@
         <p class="card-text">Type: {{ $viewData["computer"]->getType() }}</p>
         <p class="card-text">Description: {{ $viewData["computer"]->getDescription() }}</p>
         <p class="card-text">Stock: {{ $viewData["computer"]->getQuantity() }}</p> 
+        <a href="{{ route('admin.computer.edit', $viewData["computer"]->getId()) }}" class="btn btn-warning btn-sm">Edit</a>
         <form action="{{ route('admin.computer.destroy', $viewData["computer"]->getId()) }}" method="POST" style="display:inline;">
           @csrf
           @method('DELETE')

@@ -38,7 +38,7 @@
       <td>${{ number_format($computer->getPrice(), 2) }}</td>
       <td>
         <a href="{{ route('admin.computer.show', ['id'=> $computer->getId()]) }}" class="btn btn-info btn-sm">View</a>
-        <a class="btn btn-warning btn-sm">Edit</a>
+        <a href="{{ route('admin.computer.edit', ['id'=> $computer->getId()]) }}" class="btn btn-warning btn-sm">Edit</a>
         <form action="{{ route('admin.computer.destroy', ['id' => $computer->getId()]) }}" method="POST" style="display:inline;">
           @csrf
           @method('DELETE')

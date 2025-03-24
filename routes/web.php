@@ -24,4 +24,7 @@ Route::middleware('admin')->group(function () {
     Route::post('/admin/computers/create', "$AdminComputerControllerPath@store")->name('admin.computer.store');
     Route::get('/admin/computers/{id}', "$AdminComputerControllerPath@show")->name('admin.computer.show');
     Route::delete('/admin/computers/{id}', "$AdminComputerControllerPath@destroy")->name('admin.computer.destroy');
+    Route::get('/admin/computers/{id}/edit', "$AdminComputerControllerPath@edit")->name('admin.computer.edit');
+    Route::put('/admin/computers/{id}', "$AdminComputerControllerPath@update")->name('admin.computer.update');
+
 });
