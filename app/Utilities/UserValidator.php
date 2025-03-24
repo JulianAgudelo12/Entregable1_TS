@@ -2,11 +2,12 @@
 
 namespace App\Utilities;
 
+use Illuminate\Contracts\Validation\Validator as ValidationValidator;
 use Illuminate\Support\Facades\Validator;
 
 class UserValidator
 {
-    public static function validate(array $data)
+    public static function validate(array $data): ValidationValidator
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
