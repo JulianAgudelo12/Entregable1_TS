@@ -35,13 +35,6 @@ class AdminComputerController extends Controller
         return view('admin.computer.show')->with('viewData', $viewData);
     }
 
-    public function destroy(string $id): RedirectResponse
-    {
-        Computer::destroy($id);
-
-        return redirect()->route('admin.computer.index')->with('success', 'Computer deleted successfully!');
-    }
-
     public function create(): View
     {
         $viewData = [];
@@ -81,5 +74,12 @@ class AdminComputerController extends Controller
         $computer->save();
 
         return redirect()->route('admin.computer.index')->with('success', 'Computer Updated successfully!');
+    }
+
+    public function destroy(string $id): RedirectResponse
+    {
+        Computer::destroy($id);
+
+        return redirect()->route('admin.computer.index')->with('success', 'Computer deleted successfully!');
     }
 }
