@@ -87,6 +87,33 @@
     background-color: #155d37;
     border-color: #155d37;
   }
+
+  .filter-form {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.filter-form input,
+.filter-form select,
+.filter-form button {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.filter-form button {
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+}
+
+.filter-form button:hover {
+    background-color: #218838;
+}
+
   
   /* -----------------------------------
      Footer

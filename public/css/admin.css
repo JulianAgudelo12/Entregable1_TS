@@ -10,6 +10,33 @@ body {
     font-weight: bold;
 }
 
+.filter-form {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.filter-form input,
+.filter-form select,
+.filter-form button {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.filter-form button {
+    background-color: #688d70;
+    color: white;
+    cursor: pointer;
+}
+
+.filter-form button:hover {
+    background-color: #1a271d;
+}
+
+
 footer {
     position: fixed;
     bottom: 0;

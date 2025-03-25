@@ -1,6 +1,8 @@
 @extends('layouts.app')
+
 @section('title', $viewData["title"])
 @section('subtitle', $viewData["subtitle"])
+
 
 @section('content')
   <div class="component-detail bg-white p-4 rounded shadow-sm">
@@ -24,10 +26,6 @@
         <p><strong>{{ __('component.cores') }}:</strong> {{ $viewData['component']->getCores() }}</p>
         <p><strong>{{ __('component.price') }}:</strong> ${{ $viewData['component']->getPrice() }}</p>
       </div>
-    </div>
-
-    <div class="mt-4 text-center">
-      <a href="{{ route('component.index') }}" class="btn btn-secondary me-2">{{ __('component.back_to_list') }}</a>
     </div>
   </div>
 @endsection

@@ -1,3 +1,4 @@
+<!-- Developed by Julian Agudelo -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -32,19 +33,40 @@
             <a class="nav-link" href="{{ route('component.index') }}">{{ __('layout.components') }}</a>
           </li>
 
-          @guest
+          @auth
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('wishlist.index') }}">
+                <i class="bi bi-heart"></i> {{ __('wishlist.title') }}
+              </a>
+            </li>
+            @if (Auth::user()->order)
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('order.show', Auth::user()->order->getId()) }}">
+                  {{ __('layout.my_order') }}
+                </a>
+              </li>
+            @endif
+            @if (Auth::user()->isAdmin())
+              <li class="nav-item">
+                <a class="nav-link btn btn-outline-light" href="{{ route('admin.dashboard.index') }}">
+                  <i class="bi bi-shield-lock"></i> {{ __('layout.admin_mode') }}
+                </a>
+              </li>
+            @endif
+            <li class="nav-item">
+              <form id="logout" action="{{ route('logout') }}" method="POST" class="d-inline">
+                @csrf
+                <a role="button" class="nav-link text-danger" onclick="document.getElementById('logout').submit();">
+                  {{ __('layout.logout') }}
+                </a>
+              </form>
+            </li>
+          @else
             <li class="nav-item">
               <a class="nav-link" href="{{ route('login') }}">{{ __('layout.login') }}</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ route('register') }}">{{ __('layout.register') }}</a>
-            </li>
-          @else
-            <li class="nav-item">
-              <form id="logout" action="{{ route('logout') }}" method="POST" class="d-inline">
-                @csrf
-                <a role="button" class="nav-link" onclick="document.getElementById('logout').submit();">{{ __('layout.logout') }}</a>
-              </form>
             </li>
           @endguest
         </ul>

@@ -1,6 +1,13 @@
 @extends('layouts.admin')
 @section("title", $viewData["title"])
 @section('content')
+@if($errors->any())
+  <ul id="errors" class="alert alert-danger list-unstyled">
+    @foreach($errors->all() as $error)
+    <li>{{ $error }}</li>
+    @endforeach
+  </ul>
+@endif
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-8">

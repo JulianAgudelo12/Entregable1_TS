@@ -1,8 +1,6 @@
 @extends('layouts.app')
-
 @section('title', $viewData["title"])
 @section('subtitle', $viewData["subtitle"])
-
 @section('content')
 <div class="card mb-3">
   <div class="row g-0">
@@ -18,10 +16,13 @@
         <h5 class="card-title">
           <b>{{ $viewData["computer"]->getName() }}</b>
         </h5>
-        <p class="card-text" style="color: green">$ {{ number_format($viewData["computer"]->getPrice(), 2) }}</p>
+        <p class="card-text text-success">
+          $ {{ number_format($viewData["computer"]->getPrice(), 2) }}
+        </p>
         <p class="card-text">{{ __('computer.reference') }}: {{ $viewData["computer"]->getReference() }}</p>
         <p class="card-text">{{ __('computer.brand') }}: {{ $viewData["computer"]->getBrand() }}</p>
         <p class="card-text">{{ __('computer.type') }}: {{ $viewData["computer"]->getType() }}</p>
+        <p class="card-text">{{ __('computer.description') }}: {{ $viewData["computer"]->getDescription() }}</p>
         <p class="card-text">{{ __('computer.description') }}: {{ $viewData["computer"]->getDescription() }}</p>
 
         @auth
@@ -55,4 +56,9 @@
     </div>
   </div>
 </div>
+<h3>AI Assistant - What is the intended use of the computer?</h3>
+<input type="text" id="usageInput" placeholder="Ej: Gaming, Edición de video, Programación...">
+<button id="analyzeBtn">Ask AI</button>
+
+<p> This computer is perfect for this use</p>
 @endsection

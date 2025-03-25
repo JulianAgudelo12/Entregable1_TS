@@ -15,6 +15,13 @@
   {{ session('success') }}
 </div>
 @endif
+<form method="GET" action="{{ route('admin.computer.index') }}" class="filter-form">
+    <input type="text" name="name" placeholder="Search by name" value="{{ request('name') }}">
+    <input type="text" name="brand" placeholder="brand" step="0.01" value="{{ request('brand') }}">
+    <input type="number" name="min_price" placeholder="Min price" step="0.01" value="{{ request('min_price') }}">
+    <input type="number" name="max_price" placeholder="Max price" step="0.01" value="{{ request('max_price') }}">
+    <button type="submit">Filter</button>
+</form>
 <a href="{{ route('admin.computer.create') }}" class="btn btn-primary mb-3">Create Computer</a>
 <table class="table table-striped table-bordered">
   <thead class="table-dark">

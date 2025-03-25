@@ -18,15 +18,27 @@ Route::get('/', "$HomeControllerPath@index")->name('home.index');
 // Computer Routes
 Route::get('/computers', "$ComputerControllerPath@index")->name('computer.index');
 Route::get('/computers/{id}', "$ComputerControllerPath@show")->name('computer.show');
+Route::get('/compare', "$ComputerControllerPath@compare")->name('computer.compare');
 
 // Component Routes
 Route::get('/components', "$ComponentControllerPath@index")->name('component.index');
 Route::get('/components/{id}', "$ComponentControllerPath@show")->name('component.show');
 
-// Admin Routes
-Route::post('/items', "$ItemControllerPath@store")->name('items.store');
+// Order Routes
+Route::get('/orders/create', "$OrderControllerPath@create")->name('order.create');
+Route::get('/orders/{id}', "$OrderControllerPath@show")->name('order.show');
 
+// Item Routes
+Route::get('/items', "$ItemControllerPath@index")->name('items.index');
+Route::get('/items/{id}', "$ItemControllerPath@show")->name('items.show');
+Route::post('/items', "$ItemControllerPath@store")->name('items.store');
+Route::delete('/order/item/{id}', "$ItemControllerPath@removeFromOrder")->name('order.item.remove');
+Route::put('/order/item/{id}/quantity', "$ItemControllerPath@updateQuantity")->name('order.item.updateQuantity');
+Route::put('/items/{id}/quantity', "$ItemControllerPath@updateQuantity")->name('items.updateQuantity');
+
+// Wishlist Routes
 Route::get('/wishlist', "$WishlistControllerPath@index")->name('wishlist.index');
+Route::post('/wishlist', "$WishlistControllerPath@store")->name('wishlist.store');
 Route::delete('/wishlist/{id}', "$WishlistControllerPath@remove")->name('wishlist.remove');
 
 Route::get('/orders', ["$OrderControllerPath@index"])->name('orders.index');
@@ -62,5 +74,4 @@ Route::middleware('admin')->group(function () {
     Route::delete('/admin/components/{id}', "$AdminComponentControllerPath@destroy")->name('admin.component.destroy');
     Route::get('/admin/components/{id}/edit', "$AdminComponentControllerPath@edit")->name('admin.component.edit');
     Route::put('/admin/components/{id}', "$AdminComponentControllerPath@update")->name('admin.component.update');
-
 });
