@@ -4,10 +4,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Component;
 use App\Models\Computer;
 use App\Models\Item;
 use App\Models\Wishlist;
-use App\Models\Component;
 use App\Utilities\ItemHelper;
 use App\Utilities\ItemValidator;
 use Illuminate\Http\RedirectResponse;
@@ -42,7 +42,7 @@ class ItemController extends Controller
 
         $user = Auth::user();
         $quantity = $request->input('quantity', 1);
-        
+
         // Handle wishlist item
         if ($request->has('wishlist')) {
             $wishlist = Wishlist::firstOrCreate(
@@ -50,10 +50,10 @@ class ItemController extends Controller
                 ['name' => __('wishlist.default_name')]
             );
 
-            $item = new Item();
+            $item = new Item;
             $item->setQuantity($quantity);
             $item->setWishlistId($wishlist->getId());
-            
+
             if ($request->has('computer_id')) {
                 $computer = Computer::findOrFail($request->input('computer_id'));
                 $item->setComputerId($computer->getId());
@@ -65,6 +65,7 @@ class ItemController extends Controller
             }
 
             $item->save();
+
             return redirect()->route('wishlist.index')->with('success', __('wishlist.item_added'));
         }
 
