@@ -33,7 +33,7 @@ class ItemController extends Controller
     }
 
     public function store(Request $request): RedirectResponse
-    { 
+    {
         if (! auth()->check()) {
             return redirect()->back()->with('error', __('auth.login_required'));
         }
@@ -52,16 +52,16 @@ class ItemController extends Controller
             $wishlist = Wishlist::where('user_id', auth()->id())->first();
 
             if (! $wishlist) {
-                $wishlist = new Wishlist();
+                $wishlist = new Wishlist;
                 $wishlist->setUserId(auth()->id());
-                $wishlist->setName('Default Wishlist'); 
+                $wishlist->setName('Default Wishlist');
                 $wishlist->save();
             }
 
             $wishlistId = $wishlist->getId();
         }
 
-        $item = new Item();
+        $item = new Item;
         $item->setQuantity($quantity);
         $item->setComputerId($computer->getId());
         $item->setSubTotal($subTotal);
@@ -74,11 +74,10 @@ class ItemController extends Controller
 
         $item->save();
 
-        return $wishlistId 
-            ? redirect()->route('wishlist.index')->with('success', __('wishlist.item_added')) 
+        return $wishlistId
+            ? redirect()->route('wishlist.index')->with('success', __('wishlist.item_added'))
             : redirect()->route('orders.index')->with('success', __('order.item_added'));
     }
-
 
     public function show(int $id): View
     {

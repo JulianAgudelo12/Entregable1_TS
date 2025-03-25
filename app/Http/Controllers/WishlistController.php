@@ -7,8 +7,8 @@ namespace App\Http\Controllers;
 use App\Models\Computer;
 use App\Models\Item;
 use App\Models\Wishlist;
-use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class WishlistController extends Controller
 {
@@ -42,5 +42,4 @@ class WishlistController extends Controller
 
         return redirect()->route('wishlist.index')->with('success', __('wishlist.item_removed'));
     }
-
 }

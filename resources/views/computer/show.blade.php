@@ -1,9 +1,7 @@
 <!-- Developed by Valeria Corrales Hoyos -->
 @extends('layouts.app')
-
 @section('title', $viewData["title"])
 @section('subtitle', $viewData["subtitle"])
-
 @section('content')
 <div class="card mb-3">
   <div class="row g-0">
@@ -53,4 +51,9 @@
     </div>
   </div>
 </div>
+<h3>AI Assistant - What is the intended use of the computer?</h3>
+<input type="text" id="usageInput" placeholder="Ej: Gaming, Edición de video, Programación...">
+<button id="analyzeBtn">Ask AI</button>
+
+<p> This computer is perfect for this use</p>
 @endsection

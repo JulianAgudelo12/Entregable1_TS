@@ -15,5 +15,5 @@ return [
   'subtitle' => 'Your trusted tech store',
   'toggle_nav' => 'Toggle navigation',
   'rights' => 'All rights reserved',
-
+  
 ];

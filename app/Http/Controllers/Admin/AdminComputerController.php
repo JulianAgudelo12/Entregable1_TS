@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Computer;
+use App\Utilities\ComputerFilter;
 use App\Utilities\ComputerHelper;
 use App\Utilities\ComputerValidator;
 use Illuminate\Http\RedirectResponse;
@@ -14,12 +15,14 @@ use Illuminate\View\View;
 
 class AdminComputerController extends Controller
 {
-    public function index(): View
+    public function index(Request $request): View
     {
         $viewData = [];
         $viewData['title'] = 'Admin - Manage Computer';
         $viewData['subtitle'] = 'Manage Computers';
         $viewData['computers'] = Computer::all();
+
+        $viewData['filtercomputers'] = ComputerFilter::apply($request)->paginate(9);
 
         return view('admin.computer.index')->with('viewData', $viewData);
     }
