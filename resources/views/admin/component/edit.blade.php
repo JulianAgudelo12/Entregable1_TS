@@ -1,4 +1,3 @@
-<!-- Developed by Julian Agudelo -->
 @extends('layouts.admin')
 
 @section("title", $viewData["title"])
@@ -9,7 +8,7 @@
       <div class="col-md-8">
         <div class="card">
           <div class="card-header">{{ __('component.update_title') }}</div>
-          <div class="card-body">
+          <div class="card-body" style="max-height: 80vh; overflow-y: auto; padding-right: 20px;">
             <form method="POST" action="{{ route('admin.component.update', ['id' => $viewData['component']->getId()]) }}" enctype="multipart/form-data">
               @csrf
               @method('PUT')
@@ -35,8 +34,11 @@
               </div>
 
               <div class="mb-3">
-                <label for="image" class="form-label">{{ __('component.image') }}</label>
-                <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
+                  <label for="image" class="form-label">{{ __('component.image') }}</label>
+                  <input type="file" class="form-control" id="image" name="image" accept="image/*">
+                  @if($viewData['component']->getImagePath())
+                    <img src="{{ asset('storage/' . $viewData['component']->getImagePath()) }}" alt="{{ $viewData['component']->getName() }}" style="max-width: 100px; margin-top: 5px;">
+                  @endif
               </div>
 
               <div class="mb-3">

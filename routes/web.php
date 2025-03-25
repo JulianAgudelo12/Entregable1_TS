@@ -29,7 +29,7 @@ Route::post('/items', "$ItemControllerPath@store")->name('items.store');
 Route::get('/wishlist', "$WishlistControllerPath@index")->name('wishlist.index');
 Route::delete('/wishlist/{id}', "$WishlistControllerPath@remove")->name('wishlist.remove');
 
-Route::get('/orders', ["$OrderControllerPath@index"])->name('orders.index'); // temp
+Route::get('/orders', ["$OrderControllerPath@index"])->name('orders.index');
 
 Route::middleware('admin')->group(function () {
     $AdminDashboardControllerPath = 'App\Http\Controllers\Admin\AdminDashboardController';

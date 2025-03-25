@@ -1,10 +1,11 @@
 <?php
 
-/* Developed by Julian Agudelo */
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\UploadedFile; // Add this line
+use Illuminate\Support\Facades\Storage; // Add this line
+use Carbon\Carbon; // Add this line
 
 /**
  * COMPONENT ATTRIBUTES
@@ -13,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * $this->attributes['name'] - string - contains the component name
  * $this->attributes['brand'] - string - contains the brand
  * $this->attributes['quantity'] - int - contains the quantity
- * $this->attributes['image'] - longBlob - contains the image data
+ * $this->attributes['image_path'] - string - contains the image path  <-- Changed from 'image' to 'image_path'
  * $this->attributes['speed'] - string - contains the speed
  * $this->attributes['capacity'] - string|null - contains the capacity
  * $this->attributes['generation'] - string - contains the generation
@@ -30,7 +31,7 @@ class Component extends Model
         'name',
         'brand',
         'quantity',
-        'image',
+        'image_path',  // <-- Changed from 'image' to 'image_path'
         'speed',
         'capacity',
         'generation',
@@ -84,18 +85,16 @@ class Component extends Model
         $this->attributes['quantity'] = $quantity;
     }
 
-    public function setImageAttribute($value): void
+    //  Removed setImageAttribute method
+
+    public function getImagePath(): ?string // Changed from getImage to getImagePath
     {
-        if ($value instanceof \Illuminate\Http\UploadedFile) {
-            $this->attributes['image'] = file_get_contents($value->getRealPath());
-        } else {
-            $this->attributes['image'] = $value;
-        }
+        return $this->attributes['image_path'] ?? null; // Changed from 'image' to 'image_path'
     }
 
-    public function getImage(): ?string
+    public function setImagePath(string $imagePath): void  //  Added setImagePath
     {
-        return $this->attributes['image'] ?? null;
+        $this->attributes['image_path'] = $imagePath;
     }
 
     public function getSpeed(): string

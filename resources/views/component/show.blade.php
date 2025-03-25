@@ -1,13 +1,13 @@
-<!-- Developed by Julian Agudelo -->
 @extends('layouts.app')
 @section('title', $viewData["title"])
 @section('subtitle', $viewData["subtitle"])
+
 @section('content')
   <div class="component-detail bg-white p-4 rounded shadow-sm">
     <div class="row align-items-center">
       <div class="col-md-4">
-        @if($viewData["component"]->getImage())
-          <img src="data:image/jpeg;base64,{{ base64_encode($viewData['component']->getImage()) }}" class="img-fluid" alt="{{ $viewData['component']->getName() }}">
+        @if($viewData["component"]->getImagePath())
+          <img src="{{ asset('storage/' . $viewData['component']->getImagePath()) }}" class="img-fluid" alt="{{ $viewData['component']->getName() }}">
         @else
           <img src="https://via.placeholder.com/300x200" class="img-fluid" alt="{{ __('component.no_image') }}">
         @endif

@@ -1,7 +1,5 @@
 <?php
 
-/* Developed by Julian Agudelo */
-
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -11,6 +9,7 @@ use App\Utilities\ComponentValidator;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Storage; //  Add this line
 
 class AdminComponentController extends Controller
 {
@@ -29,7 +28,7 @@ class AdminComponentController extends Controller
         $viewData = [];
         $component = Component::findOrFail($id);
         $viewData['title'] = $component->getName();
-        $viewData['subtitle'] = $component->getName().' - '.__('component.show_subtitle');
+        $viewData['subtitle'] = $component->getName() . ' - ' . __('component.show_subtitle');
         $viewData['component'] = $component;
 
         return view('admin.component.show')->with('viewData', $viewData);
@@ -50,6 +49,13 @@ class AdminComponentController extends Controller
 
         $newComponent = new Component;
         ComponentHelper::fillComponentData($newComponent, $request);
+
+        //  Handle image upload
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('components', 'public');
+            $newComponent->image_path = $imagePath;
+        }
+
         $newComponent->save();
 
         return redirect()->route('admin.component.index')->with('success', __('component.success'));
@@ -73,6 +79,17 @@ class AdminComponentController extends Controller
 
         $component = Component::findOrFail($id);
         ComponentHelper::fillComponentData($component, $request);
+
+        //  Handle image update
+        if ($request->hasFile('image')) {
+            //  Delete the old image if it exists
+            if ($component->image_path) {
+                Storage::delete('public/' . $component->image_path);
+            }
+            $imagePath = $request->file('image')->store('components', 'public');
+            $component->image_path = $imagePath;
+        }
+
         $component->save();
 
         return redirect()->route('admin.component.index')->with('success', __('component.success'));
@@ -81,6 +98,12 @@ class AdminComponentController extends Controller
     public function destroy(string $id): RedirectResponse
     {
         $component = Component::findOrFail($id);
+
+        //  Delete the image if it exists
+        if ($component->image_path) {
+            Storage::delete('public/' . $component->image_path);
+        }
+
         $component->delete();
 
         return redirect()->route('admin.component.index')->with('success', __('component.deleted'));

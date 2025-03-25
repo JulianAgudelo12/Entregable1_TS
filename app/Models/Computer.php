@@ -5,12 +5,12 @@
 namespace App\Models;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Factories\HasFactory; // Agrega esta línea
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Computer extends Model
 {
-    use HasFactory; // Agrega esta línea
+    use HasFactory;
 
     /**
      * COMPUTER ATTRIBUTES
@@ -35,7 +35,7 @@ class Computer extends Model
         'type',
         'description',
         'price',
-        'imagen_path', //  Asegúrate de que este campo esté aquí
+        'imagen_path',
     ];
 
     public function getId(): int
