@@ -5,6 +5,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Computer;
+use App\Models\Wishlist;
 use Illuminate\View\View;
 
 class ComputerController extends Controller

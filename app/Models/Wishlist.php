@@ -18,6 +18,7 @@ class Wishlist extends Model
      * $this->attributes['created_at'] - timestamp - contains the wishlist created date
      * $this->attributes['updated_at'] - timestamp - contains the wishlist update date
      */
+    protected $fillable = ['name', 'user_id'];
 
     public function getId(): int
     {

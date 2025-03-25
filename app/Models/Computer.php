@@ -22,6 +22,8 @@ class Computer extends Model
      * $this->attributes['created_at'] - timestamp - contains the computer created date
      * $this->attributes['updated_at'] - timestamp - contains the computer update date
      */
+    protected $fillable = ['name', 'reference', 'brand', 'type', 'description', 'price', 'quantity'];
+
     public function getId(): int
     {
         return $this->attributes['id'];
