@@ -22,7 +22,7 @@ class AdminComputerController extends Controller
         $viewData['subtitle'] = 'Manage Computers';
         $viewData['computers'] = Computer::all();
 
-        $viewData['filtercomputers'] = ComputerFilter::apply($request)->paginate(9);
+        $viewData['filtercomputers'] = ComputerFilter::apply($request)->get();
 
         return view('admin.computer.index')->with('viewData', $viewData);
     }
