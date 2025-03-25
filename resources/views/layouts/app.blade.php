@@ -13,37 +13,37 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm py-3">
     <div class="container">
       <a class="navbar-brand fw-bold" href="{{ route('home.index') }}">
-        {{ __('langLayout.brand') }}
+        {{ __('layout.brand') }}
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="{{ __('langLayout.toggle_nav') }}">
+        aria-controls="navbarNav" aria-expanded="false" aria-label="{{ __('layout.toggle_nav') }}">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto align-items-center gap-2">
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('home.index') }}">{{ __('langLayout.home') }}</a>
+            <a class="nav-link" href="{{ route('home.index') }}">{{ __('layout.home') }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('computer.index') }}">{{ __('langLayout.computers') }}</a>
+            <a class="nav-link" href="{{ route('computer.index') }}">{{ __('layout.computers') }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('component.index') }}">{{ __('langLayout.components') }}</a>
+            <a class="nav-link" href="{{ route('component.index') }}">{{ __('layout.components') }}</a>
           </li>
 
           @guest
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('login') }}">{{ __('langLayout.login') }}</a>
+              <a class="nav-link" href="{{ route('login') }}">{{ __('layout.login') }}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('register') }}">{{ __('langLayout.register') }}</a>
+              <a class="nav-link" href="{{ route('register') }}">{{ __('layout.register') }}</a>
             </li>
           @else
             <li class="nav-item">
               <form id="logout" action="{{ route('logout') }}" method="POST" class="d-inline">
                 @csrf
-                <a role="button" class="nav-link" onclick="document.getElementById('logout').submit();">{{ __('langLayout.logout') }}</a>
+                <a role="button" class="nav-link" onclick="document.getElementById('logout').submit();">{{ __('layout.logout') }}</a>
               </form>
             </li>
           @endguest
@@ -56,7 +56,7 @@
   <!-- Header -->
   <header class="page-header py-4 bg-primary text-white text-center shadow-sm">
     <div class="container">
-      <h2 class="mb-0">@yield('subtitle', __('langLayout.subtitle'))</h2>
+      <h2 class="mb-0">@yield('subtitle', __('layout.subtitle'))</h2>
     </div>
   </header>
 
@@ -68,7 +68,7 @@
   <!-- Footer -->
   <footer class="bg-dark text-white text-center py-3 mt-auto">
     <div class="container">
-      <small>&copy; {{ date('Y') }} AssemblAI - {{ __('langLayout.rights') }}</small>
+      <small>&copy; {{ date('Y') }} AssemblAI - {{ __('layout.rights') }}</small>
     </div>
   </footer>
 
