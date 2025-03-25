@@ -5,9 +5,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Component;
 use App\Models\Computer;
 use App\Models\User;
-use App\Models\Component;
 use Illuminate\View\View;
 
 class AdminDashboardController extends Controller

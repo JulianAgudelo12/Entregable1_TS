@@ -7,18 +7,22 @@
   <title>@yield('title', 'Admin Panel')</title>
   <link href="{{ asset('/css/admin.css') }}" rel="stylesheet" />
 </head>
-<body>
+<body class="bg-light">
   <!-- Navbar -->
-  <nav class="navbar navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm py-3">
     <div class="container-fluid">
-      <a class="navbar-brand" href="{{ route('admin.dashboard.index') }}">Admin Panel</a>
+      <a class="navbar-brand fw-bold" href="{{ route('admin.dashboard.index') }}">Admin Panel</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNav"
         aria-controls="adminNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="adminNav">
-        <ul class="navbar-nav ms-auto">
-          
+        <ul class="navbar-nav ms-auto align-items-center gap-2">
+          <li class="nav-item">
+            <a class="nav-link btn btn-outline-light me-2" href="{{ route('home.index') }}">
+              <i class="bi bi-person"></i> @lang('layout.user_mode')
+            </a>
+          </li>
           <li class="nav-item"><a class="nav-link" href="{{ route('admin.computer.index') }}">Computers</a></li>
           <li class="nav-item"><a class="nav-link" href="{{ route('admin.user.index') }}">Users</a></li>
           <li class="nav-item"><a class="nav-link" href="{{ route('admin.component.index') }}">Components</a></li>
@@ -34,7 +38,7 @@
   </nav>
   
   <!-- Main Content -->
-  <div class="container mt-4">
+  <div class="container mt-5">
     @yield('content')
   </div>
 
