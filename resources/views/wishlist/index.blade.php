@@ -33,6 +33,12 @@
                             <td>{{ $type }}</td>
                             <td>${{ number_format($price, 2) }}</td>
                             <td>
+                                <a href="{{ route('computer.show', ['id' => $computer ? $computer->getId() : '']) }}" 
+                                   class="btn btn-info btn-sm" 
+                                   {{ $computer ? '' : 'disabled' }}>
+                                    {{ __('wishlist.view') }}
+                                </a>
+
                                 <form action="{{ route('wishlist.remove', $item->getId()) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')

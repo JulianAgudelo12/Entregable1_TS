@@ -18,6 +18,7 @@ Route::get('/', "$HomeControllerPath@index")->name('home.index');
 // Computer Routes
 Route::get('/computers', "$ComputerControllerPath@index")->name('computer.index');
 Route::get('/computers/{id}', "$ComputerControllerPath@show")->name('computer.show');
+Route::get('/compare', "$ComputerControllerPath@compare")->name('computer.compare');
 
 // Component Routes
 Route::get('/components', "$ComponentControllerPath@index")->name('component.index');

@@ -33,7 +33,21 @@
             <a class="nav-link" href="{{ route('component.index') }}">{{ __('layout.components') }}</a>
           </li>
 
-          @guest
+          @auth
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('wishlist.index') }}">
+                {{ __('layout.wishlist') }}
+              </a>
+            </li>
+            <li class="nav-item">
+              <form id="logout" action="{{ route('logout') }}" method="POST" class="d-inline">
+                @csrf
+                <a role="button" class="nav-link text-danger" onclick="document.getElementById('logout').submit();">
+                  {{ __('layout.logout') }}
+                </a>
+              </form>
+            </li>
+          @else
             <li class="nav-item">
               <a class="nav-link" href="{{ route('login') }}">{{ __('layout.login') }}</a>
             </li>
