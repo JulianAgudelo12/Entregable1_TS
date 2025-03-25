@@ -1,6 +1,9 @@
+<!-- Developed by Julian Agudelo -->
 @extends('layouts.admin')
+
 @section('title', $viewData["title"])
 @section('subtitle', $viewData["subtitle"])
+
 @section('content')
 @if($errors->any())
   <ul id="errors" class="alert alert-danger list-unstyled">
@@ -9,28 +12,32 @@
     @endforeach
   </ul>
 @endif
+
 @if(session('success'))
 <div class="alert alert-success">
   {{ session('success') }}
 </div>
 @endif
+
 <a href="{{ route('admin.component.create') }}" class="btn btn-primary mb-3">{{ __('component.create') }}</a>
-<div style="max-height: 80vh; overflow-y: auto; padding-right: 20px;">
+
+
+<div class="table-responsive" style="max-height: 800px; overflow-y: auto;">
   <table class="table table-striped table-bordered">
     <thead class="table-dark">
       <tr>
-        <th>{{ __('component.reference') }}</th>
-        <th>{{ __('component.name') }}</th>
-        <th>{{ __('component.brand') }}</th>
-        <th>{{ __('component.quantity') }}</th>
-        <th>{{ __('component.speed') }}</th>
-        <th>{{ __('component.capacity') }}</th>
-        <th>{{ __('component.generation') }}</th>
-        <th>{{ __('component.type') }}</th>
-        <th>{{ __('component.cores') }}</th>
-        <th>{{ __('component.price') }}</th>
-        <th>{{ __('component.image') }}</th>
-        <th>{{ __('component.actions') }}</th>
+        <th style="width: 80px;">{{ __('component.reference') }}</th>
+        <th style="width: 120px;">{{ __('component.name') }}</th>
+        <th style="width: 100px;">{{ __('component.brand') }}</th>
+        <th style="width: 80px;">{{ __('component.quantity') }}</th>
+        <th style="width: 80px;">{{ __('component.speed') }}</th>
+        <th style="width: 80px;">{{ __('component.capacity') }}</th>
+        <th style="width: 80px;">{{ __('component.generation') }}</th>
+        <th style="width: 80px;">{{ __('component.type') }}</th>
+        <th style="width: 80px;">{{ __('component.cores') }}</th>
+        <th style="width: 80px;">{{ __('component.price') }}</th>
+        <th style="width: 80px;">{{ __('component.image') }}</th>
+        <th style="width: 150px;">{{ __('component.actions') }}</th>
       </tr>
     </thead>
     <tbody>
@@ -67,4 +74,5 @@
     </tbody>
   </table>
 </div>
+
 @endsection
