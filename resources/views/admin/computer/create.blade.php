@@ -15,8 +15,7 @@
       <div class="card">
         <div class="card-header">Create Computer</div>
           <div class="card-body">
-            <form method="POST" action="{{ route('admin.computer.store') }}">
-              @csrf
+            <form method="POST" action="{{ route('admin.computer.store') }}" enctype="multipart/form-data"> @csrf
               <input type="text" class="form-control mb-2" placeholder="Enter reference" name="reference" value="{{ old('reference') }}" required />
               <input type="text" class="form-control mb-2" placeholder="Enter name" name="name" value="{{ old('name') }}" required/>
               <input type="text" class="form-control mb-2" placeholder="Enter brand" name="brand" value="{{ old('brand') }}" required/>
@@ -28,6 +27,10 @@
               </select>
               <input type="text" class="form-control mb-2" placeholder="Enter description" name="description" value="{{ old('description') }}" required/>
               <input type="text" class="form-control mb-2" placeholder="Enter price" name="price" value="{{ old('price') }}" required/>
+              <div class="form-group">
+                  <label for="image">Computer Image</label>
+                  <input type="file" class="form-control-file" id="image" name="image">
+              </div>
               <input type="submit" class="btn btn-primary" value="Send" />
             </form>
           </div>

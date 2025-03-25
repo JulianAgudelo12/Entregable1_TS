@@ -41,7 +41,8 @@ Route::get('/wishlist', "$WishlistControllerPath@index")->name('wishlist.index')
 Route::post('/wishlist', "$WishlistControllerPath@store")->name('wishlist.store');
 Route::delete('/wishlist/{id}', "$WishlistControllerPath@remove")->name('wishlist.remove');
 
-// Admin Routes
+Route::get('/orders', ["$OrderControllerPath@index"])->name('orders.index');
+
 Route::middleware('admin')->group(function () {
     $AdminDashboardControllerPath = 'App\Http\Controllers\Admin\AdminDashboardController';
     $AdminUserControllerPath = 'App\Http\Controllers\Admin\AdminUserController';

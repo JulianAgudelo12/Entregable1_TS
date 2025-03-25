@@ -12,7 +12,7 @@ use App\Utilities\ComputerValidator;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-
+use Illuminate\Support\Facades\Storage; 
 class AdminComputerController extends Controller
 {
     public function index(Request $request): View
@@ -52,6 +52,13 @@ class AdminComputerController extends Controller
 
         $newComputer = new Computer;
         ComputerHelper::fillComputerData($newComputer, $request);
+
+        // Handle image upload
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('computers', 'public');
+            $newComputer->imagen_path = $imagePath;
+        }
+
         $newComputer->save();
 
         return redirect()->route('admin.computer.index')->with('success', 'Computer created successfully!');
@@ -74,6 +81,17 @@ class AdminComputerController extends Controller
 
         $computer = Computer::findOrFail($id);
         ComputerHelper::fillComputerData($computer, $request);
+
+        // Handle image update
+        if ($request->hasFile('image')) {
+            // Delete the old image if it exists
+            if ($computer->imagen_path) {
+                Storage::delete('public/' . $computer->imagen_path);
+            }
+            $imagePath = $request->file('image')->store('computers', 'public');
+            $computer->imagen_path = $imagePath;
+        }
+
         $computer->save();
 
         return redirect()->route('admin.computer.index')->with('success', 'Computer Updated successfully!');
@@ -81,6 +99,12 @@ class AdminComputerController extends Controller
 
     public function destroy(string $id): RedirectResponse
     {
+        $computer = Computer::findOrFail($id);
+
+        if ($computer->imagen_path) {
+            Storage::delete('public/' . $computer->imagen_path);
+        }
+
         Computer::destroy($id);
 
         return redirect()->route('admin.computer.index')->with('success', 'Computer deleted successfully!');

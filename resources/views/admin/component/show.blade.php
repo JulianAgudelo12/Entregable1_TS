@@ -1,12 +1,15 @@
-<!-- Developed by Julian Agudelo -->
 @extends('layouts.admin')
 @section('title', $viewData["title"])
 @section('subtitle', $viewData["subtitle"])
 @section('content')
-<div class="card mb-3">
+<div class="card mb-3" style="max-height: 80vh; overflow-y: auto; padding-right: 20px;">
   <div class="row g-0">
     <div class="col-md-4">
-      <img src="https://laravel.com/img/logotype.min.svg" class="img-fluid rounded-start">
+      @if($viewData["component"]->getImagePath())
+        <img src="{{ asset('storage/' . $viewData["component"]->getImagePath()) }}" class="img-fluid rounded-start" alt="{{ $viewData["component"]->getName() }}">
+      @else
+        <img src="https://via.placeholder.com/300x200" class="img-fluid rounded-start" alt="{{ __('component.no_image') }}">
+      @endif
     </div>
     <div class="col-md-8">
       <div class="card-body">
@@ -18,7 +21,7 @@
         <p class="card-text">{{ __('component.brand') }}: {{ $viewData["component"]->getBrand() }}</p>
         <p class="card-text">{{ __('component.quantity') }}: {{ $viewData["component"]->getQuantity() }}</p>
         <p class="card-text">{{ __('component.speed') }}: {{ $viewData["component"]->getSpeed() }}</p>
-        <p class="card-text">{{ __('component.capacity') }}: {{ $viewData["component"]->getCapacity() }}</p> 
+        <p class="card-text">{{ __('component.capacity') }}: {{ $viewData["component"]->getCapacity() }}</p>
         <p class="card-text">{{ __('component.generation') }}: {{ $viewData["component"]->getGeneration() }}</p>
         <p class="card-text">{{ __('component.type') }}: {{ $viewData["component"]->getType() }}</p>
         <p class="card-text">{{ __('component.cores') }}: {{ $viewData["component"]->getCores() }}</p>
@@ -26,8 +29,8 @@
         <form action="{{ route('admin.component.destroy', $viewData["component"]->getId()) }}" method="POST" style="display:inline;">
           @csrf
           @method('DELETE')
-          <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this reference?')">Delete</button>
-        </form>        
+          <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('{{ __('component.delete_confirmation') }}')">Delete</button>
+        </form>
       </div>
     </div>
   </div>

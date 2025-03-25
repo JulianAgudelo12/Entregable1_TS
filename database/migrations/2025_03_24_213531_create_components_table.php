@@ -22,7 +22,6 @@ class CreateComponentsTable extends Migration
             $table->string('name');
             $table->string('brand');
             $table->integer('quantity');
-            $table->binary('image');
             $table->string('speed');
             $table->string('capacity')->nullable();
             $table->string('generation');

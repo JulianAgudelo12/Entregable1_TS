@@ -5,10 +5,13 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Computer extends Model
 {
+    use HasFactory;
+
     /**
      * COMPUTER ATTRIBUTES
      * $this->attributes['id'] - int - contains the computer primary key (id)
@@ -19,10 +22,21 @@ class Computer extends Model
      * $this->attributes['type'] - string - contains the type of computer (desktop/laptop)
      * $this->attributes['description'] - string - contains general information about the computer
      * $this->attributes['price'] - float - contains the computer's price
+     * $this->attributes['imagen_path'] - string - contains the computer's image path
      * $this->attributes['created_at'] - timestamp - contains the computer created date
      * $this->attributes['updated_at'] - timestamp - contains the computer update date
      */
-    protected $fillable = ['name', 'reference', 'brand', 'type', 'description', 'price', 'quantity'];
+
+    protected $fillable = [
+        'reference',
+        'name',
+        'brand',
+        'quantity',
+        'type',
+        'description',
+        'price',
+        'imagen_path',
+    ];
 
     public function getId(): int
     {
