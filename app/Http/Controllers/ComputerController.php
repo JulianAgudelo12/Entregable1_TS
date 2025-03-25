@@ -5,6 +5,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Computer;
+use App\Models\Wishlist;
 use App\Utilities\ComputerFilter;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
