@@ -15,4 +15,5 @@ return [
     'remove' => 'Remove',
     'add_more' => 'Add More Computers',
     'unknown_computer' => 'Unknown Computer',
+    'view' => 'View',
 ];
