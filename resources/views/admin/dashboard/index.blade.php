@@ -40,7 +40,7 @@
                     <div class="card-body text-center">
                         <h5 class="card-title"> Components</h5>
                         <p class="display-4 fw-bold">{{ $viewData["totalComponents"] ?? 0 }}</p>
-                        <a  class="btn btn-success mt-3">
+                        <a href="{{ route('admin.component.index') }}" class="btn btn-success mt-3">
                             <i class="bi bi-motherboard"></i> Manage Components
                         </a>
                     </div>
