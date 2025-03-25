@@ -1,3 +1,4 @@
+<!-- Developed by Julian Agudelo -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -35,9 +36,23 @@
           @auth
             <li class="nav-item">
               <a class="nav-link" href="{{ route('wishlist.index') }}">
-                {{ __('layout.wishlist') }}
+                <i class="bi bi-heart"></i> {{ __('wishlist.title') }}
               </a>
             </li>
+            @if (Auth::user()->order)
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('order.show', Auth::user()->order->getId()) }}">
+                  {{ __('layout.my_order') }}
+                </a>
+              </li>
+            @endif
+            @if (Auth::user()->isAdmin())
+              <li class="nav-item">
+                <a class="nav-link btn btn-outline-light" href="{{ route('admin.dashboard.index') }}">
+                  <i class="bi bi-shield-lock"></i> {{ __('layout.admin_mode') }}
+                </a>
+              </li>
+            @endif
             <li class="nav-item">
               <form id="logout" action="{{ route('logout') }}" method="POST" class="d-inline">
                 @csrf
@@ -53,7 +68,7 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ route('register') }}">{{ __('layout.register') }}</a>
             </li>
-          @endauth
+          @endguest
         </ul>
       </div>
     </div>

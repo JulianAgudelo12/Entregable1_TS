@@ -6,6 +6,7 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Item extends Model
 {
@@ -21,9 +22,12 @@ class Item extends Model
      * $this->attributes['created_at'] - timestamp - contains the item created date
      * $this->attributes['updated_at'] - timestamp - contains the item update date
      */
-    public function getId(): int
+
+    // Setters & Getters
+
+    public function setSubTotal(float $subTotal): void
     {
-        return $this->attributes['id'];
+        $this->attributes['sub_total'] = $subTotal;
     }
 
     public function getSubTotal(): float
@@ -31,9 +35,9 @@ class Item extends Model
         return $this->attributes['sub_total'];
     }
 
-    public function setSubTotal(float $subTotal): void
+    public function setQuantity(int $quantity): void
     {
-        $this->attributes['sub_total'] = $subTotal;
+        $this->attributes['quantity'] = $quantity;
     }
 
     public function getQuantity(): int
@@ -41,9 +45,9 @@ class Item extends Model
         return $this->attributes['quantity'];
     }
 
-    public function setQuantity(int $quantity): void
+    public function setOrderId(?int $orderId): void
     {
-        $this->attributes['quantity'] = $quantity;
+        $this->attributes['order_id'] = $orderId;
     }
 
     public function getOrderId(): ?int
@@ -51,9 +55,9 @@ class Item extends Model
         return $this->attributes['order_id'];
     }
 
-    public function setOrderId(?int $orderId): void
+    public function setWishlistId(?int $wishlistId): void
     {
-        $this->attributes['order_id'] = $orderId;
+        $this->attributes['wishlist_id'] = $wishlistId;
     }
 
     public function getWishlistId(): ?int
@@ -61,9 +65,9 @@ class Item extends Model
         return $this->attributes['wishlist_id'];
     }
 
-    public function setWishlistId(?int $wishlistId): void
+    public function setComputerId(?int $computerId): void
     {
-        $this->attributes['wishlist_id'] = $wishlistId;
+        $this->attributes['computer_id'] = $computerId;
     }
 
     public function getComputerId(): ?int
@@ -71,9 +75,9 @@ class Item extends Model
         return $this->attributes['computer_id'];
     }
 
-    public function setComputerId(?int $computerId): void
+    public function setComponentId(?int $componentId): void
     {
-        $this->attributes['computer_id'] = $computerId;
+        $this->attributes['component_id'] = $componentId;
     }
 
     public function getComponentId(): ?int
@@ -81,9 +85,9 @@ class Item extends Model
         return $this->attributes['component_id'];
     }
 
-    public function setComponentId(?int $componentId): void
+    public function getId(): int
     {
-        $this->attributes['component_id'] = $componentId;
+        return $this->attributes['id'];
     }
 
     public function getCreatedAt(): Carbon
@@ -94,5 +98,22 @@ class Item extends Model
     public function getUpdatedAt(): Carbon
     {
         return $this->attributes['updated_at'];
+    }
+
+    // Relationships
+
+    public function order(): BelongsTo
+    {
+        return $this->belongsTo(Order::class);
+    }
+
+    public function component(): BelongsTo
+    {
+        return $this->belongsTo(Component::class);
+    }
+
+    public function computer(): BelongsTo
+    {
+        return $this->belongsTo(Computer::class);
     }
 }

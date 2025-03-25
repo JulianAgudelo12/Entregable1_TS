@@ -13,7 +13,8 @@
             <table class="table table-bordered table-hover">
                 <thead class="table-dark">
                     <tr>
-                        <th>{{ __('wishlist.computer_name') }}</th>
+                        <th>{{ __('wishlist.item_name') }}</th>
+                        <th>{{ __('wishlist.type') }}</th>
                         <th>{{ __('wishlist.unit_price') }}</th>
                         <th>{{ __('wishlist.actions') }}</th>
                     </tr>
@@ -21,18 +22,17 @@
                 <tbody>
                     @foreach ($viewData['items'] as $item)
                         @php
-                            $computer = $item->computerData ?? null;
+                            $computer = $item->computer;
+                            $component = $item->component;
+                            $name = $computer ? $computer->getName() : ($component ? $component->getName() : __('wishlist.unknown_item'));
+                            $type = $computer ? __('wishlist.computer') : ($component ? __('wishlist.component') : '');
+                            $price = $computer ? $computer->getPrice() : ($component ? $component->getPrice() : 0);
                         @endphp
                         <tr>
-                            <td>{{ $computer ? $computer->getName() : __('wishlist.unknown_computer') }}</td>
-                            <td>${{ $computer ? number_format($computer->getPrice(), 2) : 'N/A' }}</td>
+                            <td>{{ $name }}</td>
+                            <td>{{ $type }}</td>
+                            <td>${{ number_format($price, 2) }}</td>
                             <td>
-                                <a href="{{ route('computer.show', ['id' => $computer ? $computer->getId() : '']) }}" 
-                                   class="btn btn-info btn-sm" 
-                                   {{ $computer ? '' : 'disabled' }}>
-                                    {{ __('wishlist.view') }}
-                                </a>
-
                                 <form action="{{ route('wishlist.remove', $item->getId()) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
@@ -49,7 +49,8 @@
     @endif
 
     <div class="text-center mt-3">
-        <a href="{{ route('computer.index') }}" class="btn btn-primary">{{ __('wishlist.add_more') }}</a>
+        <a href="{{ route('computer.index') }}" class="btn btn-primary me-2">{{ __('wishlist.add_computers') }}</a>
+        <a href="{{ route('component.index') }}" class="btn btn-primary">{{ __('wishlist.add_components') }}</a>
     </div>
 </div>
 @endsection

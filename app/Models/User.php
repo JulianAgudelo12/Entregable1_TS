@@ -89,4 +89,14 @@ class User extends Authenticatable
     {
         $this->attributes['is_admin'] = $isAdmin;
     }
+
+    public function order(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Order::class);
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->attributes['is_admin'];
+    }
 }

@@ -4,7 +4,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Computer;
 use App\Models\Item;
 use App\Models\Wishlist;
 use Illuminate\Http\RedirectResponse;
@@ -14,7 +13,6 @@ class WishlistController extends Controller
 {
     public function index(): View
     {
-        $viewData = [];
         $user = auth()->user();
 
         $wishlist = Wishlist::firstOrCreate(
@@ -22,13 +20,14 @@ class WishlistController extends Controller
             ['name' => __('wishlist.default_name')]
         );
 
+        $items = Item::where('wishlist_id', $wishlist->getId())
+            ->with(['computer', 'component'])
+            ->get();
+
+        $viewData = [];
         $viewData['title'] = __('wishlist.title');
         $viewData['subtitle'] = __('wishlist.subtitle');
-        $viewData['items'] = Item::where('wishlist_id', $wishlist->getId())->get();
-
-        foreach ($viewData['items'] as $item) {
-            $item->computerData = Computer::find($item->getComputerId());
-        }
+        $viewData['items'] = $items;
 
         return view('wishlist.index')->with('viewData', $viewData);
     }
