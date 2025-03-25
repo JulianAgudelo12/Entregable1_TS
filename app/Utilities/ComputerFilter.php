@@ -3,11 +3,12 @@
 namespace App\Utilities;
 
 use App\Models\Computer;
+use Illuminate\Contracts\Database\Query\Builder;
 use Illuminate\Http\Request;
 
 class ComputerFilter
 {
-    public static function apply(Request $request)
+    public static function apply(Request $request): Builder
     {
         $query = Computer::query();
 

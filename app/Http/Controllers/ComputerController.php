@@ -5,7 +5,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Computer;
-use App\Models\Wishlist;
 use App\Utilities\ComputerFilter;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -20,7 +19,7 @@ class ComputerController extends Controller
         $viewData['subtitle'] = 'List of computers';
         $viewData['computers'] = Computer::all();
 
-        $viewData['computers'] = ComputerFilter::apply($request)->paginate(9);
+        $viewData['computers'] = ComputerFilter::apply($request)->get();
 
         return view('computer.index')->with('viewData', $viewData);
     }
