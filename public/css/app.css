@@ -1,35 +1,98 @@
-.bg-secondary {
+/* Developed by Julian Agudelo */
 
-    background-color: #1D7745 !important;
-    
-    }
-    
-    
-    .copyright {
-    
-    background-color: #1a252f;
-    
-    }
-    
-    
-    .bg-primary {
-    
+/* -----------------------------------
+   Color & Background Customization
+----------------------------------- */
+
+.bg-primary {
     background-color: #6CBB7E !important;
-    
-    }
-    
-    
-    nav{
-    
+  }
+  
+  .bg-secondary {
+    background-color: #1D7745 !important;
+  }
+  
+  .copyright {
+    background-color: #1a252f;
+  }
+  
+  /* -----------------------------------
+     Navbar Styling
+  ----------------------------------- */
+  
+  nav.navbar {
     font-weight: 700;
-    
-    }
-    
-    
-    .img-card{
-    
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-brand {
+    font-size: 1.3rem;
+    letter-spacing: 0.5px;
+  }
+  
+  .nav-link {
+    font-size: 0.95rem;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .nav-link:hover {
+    text-decoration: underline;
+  }
+  
+  /* -----------------------------------
+     Card Images
+  ----------------------------------- */
+  
+  .img-card {
     height: 18vw;
-    
     object-fit: cover;
-    
-    }
+  }
+  
+  /* -----------------------------------
+     Typography & Layout
+  ----------------------------------- */
+  
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #212529;
+  }
+  
+  .page-header h2 {
+    font-size: 1.7rem;
+    font-weight: 600;
+  }
+  
+  /* -----------------------------------
+     Forms & Buttons
+  ----------------------------------- */
+  
+  .form-label {
+    font-weight: 600;
+    color: #343a40;
+  }
+  
+  input,
+  select,
+  textarea {
+    border-radius: 6px;
+  }
+  
+  .btn-primary {
+    background-color: #1D7745;
+    border-color: #1D7745;
+  }
+  
+  .btn-primary:hover {
+    background-color: #155d37;
+    border-color: #155d37;
+  }
+  
+  /* -----------------------------------
+     Footer
+  ----------------------------------- */
+  
+  footer {
+    font-size: 0.85rem;
+  }
+  

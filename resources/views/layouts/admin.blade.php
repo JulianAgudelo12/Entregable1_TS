@@ -18,8 +18,10 @@
       </button>
       <div class="collapse navbar-collapse" id="adminNav">
         <ul class="navbar-nav ms-auto">
+          
           <li class="nav-item"><a class="nav-link" href="{{ route('admin.computer.index') }}">Computers</a></li>
           <li class="nav-item"><a class="nav-link" href="{{ route('admin.user.index') }}">Users</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ route('admin.component.index') }}">Components</a></li>
           <li class="nav-item">
             <form id="logout" action="{{ route('logout') }}" method="POST">
               @csrf
