@@ -3,6 +3,10 @@
 /* Developed by Julian Agudelo */
 
 return [
+
+    'title' => 'Components',
+    'subtitle' => 'Components',
+
     // Labels
     'reference' => 'Reference',
     'name' => 'Component Name',

@@ -13,8 +13,8 @@ class ComponentController extends Controller
     {
         $components = Component::all();
         $viewData = [];
-        $viewData['title'] = __('component.title_index');
-        $viewData['subtitle'] = __('component.subtitle_index');
+        $viewData['title'] = __('component.title');
+        $viewData['subtitle'] = __('component.subtitle');
         $viewData['components'] = $components;
 
         return view('component.index')->with('viewData', $viewData);
