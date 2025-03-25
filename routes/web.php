@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Route;
 $HomeControllerPath = 'App\Http\Controllers\HomeController';
 $ComputerControllerPath = 'App\Http\Controllers\ComputerController';
 $ComponentControllerPath = 'App\Http\Controllers\ComponentController';
+$ItemControllerPath = 'App\Http\Controllers\ItemController';
+$WishlistControllerPath = 'App\Http\Controllers\WishlistController';
+$OrderControllerPath = 'App\Http\Controllers\OrderController';
 
 Auth::routes();
 
@@ -21,6 +24,11 @@ Route::get('/components', "$ComponentControllerPath@index")->name('component.ind
 Route::get('/components/{id}', "$ComponentControllerPath@show")->name('component.show');
 
 // Admin Routes
+Route::post('/items', "$ItemControllerPath@store")->name('items.store');
+
+Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index'); // temp
+Route::get('/orders', [OrderController::class, 'index'])->name('orders.index'); // temp
+
 Route::middleware('admin')->group(function () {
     $AdminDashboardControllerPath = 'App\Http\Controllers\Admin\AdminDashboardController';
     $AdminUserControllerPath = 'App\Http\Controllers\Admin\AdminUserController';
