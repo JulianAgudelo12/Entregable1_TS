@@ -27,7 +27,13 @@
                             <td>{{ $computer ? $computer->getName() : __('wishlist.unknown_computer') }}</td>
                             <td>${{ $computer ? number_format($computer->getPrice(), 2) : 'N/A' }}</td>
                             <td>
-                                <form action="{{ route('wishlist.remove', $item->getId()) }}" method="POST">
+                                <a href="{{ route('computer.show', ['id' => $computer ? $computer->getId() : '']) }}" 
+                                   class="btn btn-info btn-sm" 
+                                   {{ $computer ? '' : 'disabled' }}>
+                                    {{ __('wishlist.view') }}
+                                </a>
+
+                                <form action="{{ route('wishlist.remove', $item->getId()) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm">
