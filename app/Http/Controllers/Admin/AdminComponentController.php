@@ -8,8 +8,8 @@ use App\Utilities\ComponentHelper;
 use App\Utilities\ComponentValidator;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
-use Illuminate\Support\Facades\Storage; //  Add this line
+use Illuminate\Support\Facades\Storage;
+use Illuminate\View\View; //  Add this line
 
 class AdminComponentController extends Controller
 {
@@ -28,7 +28,7 @@ class AdminComponentController extends Controller
         $viewData = [];
         $component = Component::findOrFail($id);
         $viewData['title'] = $component->getName();
-        $viewData['subtitle'] = $component->getName() . ' - ' . __('component.show_subtitle');
+        $viewData['subtitle'] = $component->getName().' - '.__('component.show_subtitle');
         $viewData['component'] = $component;
 
         return view('admin.component.show')->with('viewData', $viewData);
@@ -84,7 +84,7 @@ class AdminComponentController extends Controller
         if ($request->hasFile('image')) {
             //  Delete the old image if it exists
             if ($component->image_path) {
-                Storage::delete('public/' . $component->image_path);
+                Storage::delete('public/'.$component->image_path);
             }
             $imagePath = $request->file('image')->store('components', 'public');
             $component->image_path = $imagePath;
@@ -101,7 +101,7 @@ class AdminComponentController extends Controller
 
         //  Delete the image if it exists
         if ($component->image_path) {
-            Storage::delete('public/' . $component->image_path);
+            Storage::delete('public/'.$component->image_path);
         }
 
         $component->delete();

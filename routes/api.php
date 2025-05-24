@@ -21,4 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResource('computers', ComputerController::class);
 
-Route::post('/computers/{id}/image', [ComputerController::class, 'uploadImage'])->name('computers.image.upload'); 
+Route::post('/computers/{id}/image', [ComputerController::class, 'uploadImage'])->name('computers.image.upload');

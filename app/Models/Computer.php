@@ -4,28 +4,27 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+
+
+/**
+ * COMPUTER ATTRIBUTES
+ *
+ * $this->ATTRIBUTES['id']           - int        - Primary key of the computer
+ * $this->ATTRIBUTES['reference']    - string     - Reference code of the computer
+ * $this->ATTRIBUTES['name']         - string     - Name of the computer
+ * $this->ATTRIBUTES['brand']        - string     - Brand of the computer
+ * $this->ATTRIBUTES['quantity']     - int        - Stock quantity of the computer
+ * $this->ATTRIBUTES['type']         - string     - Type of computer [PC, LAPTOP]
+ * $this->ATTRIBUTES['description']  - string     - Description of the computer
+ * $this->ATTRIBUTES['price']        - float      - Price of the computer
+ * $this->ATTRIBUTES['image']        - string     - URL or path to the computer image
+ * $this->ATTRIBUTES['created_at']   - timestamp  - Creation date and time
+ * $this->ATTRIBUTES['updated_at']   - timestamp  - Last update date and time
+ */
 
 class Computer extends Model
 {
-    use HasFactory;
-
-    /**
-     * COMPUTER ATTRIBUTES
-     * $this->attributes['id'] - int - contains the computer primary key (id)
-     * $this->attributes['reference'] - string - contains the computer's reference number
-     * $this->attributes['name'] - string - contains the computer's name
-     * $this->attributes['brand'] - string - contains the computer's brand
-     * $this->attributes['quantity'] - int - contains the amount of computers of this refeence in storage
-     * $this->attributes['type'] - string - contains the type of computer (desktop/laptop)
-     * $this->attributes['description'] - string - contains general information about the computer
-     * $this->attributes['price'] - float - contains the computer's price
-     * $this->attributes['imagen_path'] - string - contains the computer's image path
-     * $this->attributes['created_at'] - timestamp - contains the computer created date
-     * $this->attributes['updated_at'] - timestamp - contains the computer update date
-     */
 
     protected $fillable = [
         'reference',
@@ -35,91 +34,103 @@ class Computer extends Model
         'type',
         'description',
         'price',
-        'imagen_path',
+        'image',
     ];
+    
+// Getters and Setters
 
-    public function getId(): int
-    {
-        return $this->attributes['id'];
-    }
+public function getId(): int
+{
+  return $this->attributes['id'];
+}
 
-    public function getReference(): string
-    {
-        return $this->attributes['reference'];
-    }
+public function getReference(): string
+{
+  return $this->attributes['reference'];
+}
 
-    public function setReference(string $reference): void
-    {
-        $this->attributes['reference'] = $reference;
-    }
+public function setReference(string $reference): void
+{
+  $this->attributes['reference'] = $reference;
+}
 
-    public function getName(): string
-    {
-        return strtoupper($this->attributes['name']);
-    }
+public function getName(): string
+{
+  return $this->attributes['name'];
+}
 
-    public function setName(string $name): void
-    {
-        $this->attributes['name'] = $name;
-    }
+public function setName(string $name): void
+{
+  $this->attributes['name'] = $name;
+}
 
-    public function getBrand(): string
-    {
-        return $this->attributes['brand'];
-    }
+public function getBrand(): string
+{
+  return $this->attributes['brand'];
+}
 
-    public function setBrand(string $brand): void
-    {
-        $this->attributes['brand'] = $brand;
-    }
+public function setBrand(string $brand): void
+{
+  $this->attributes['brand'] = $brand;
+}
 
-    public function getQuantity(): int
-    {
-        return $this->attributes['quantity'];
-    }
+public function getQuantity(): int
+{
+  return $this->attributes['quantity'];
+}
 
-    public function setQuantity(int $quantity): void
-    {
-        $this->attributes['quantity'] = $quantity;
-    }
+public function setQuantity(int $quantity): void
+{
+  $this->attributes['quantity'] = $quantity;
+}
 
-    public function getType(): string
-    {
-        return $this->attributes['type'];
-    }
+public function getType(): string
+{
+  return $this->attributes['type'];
+}
 
-    public function setType(string $type): void
-    {
-        $this->attributes['type'] = $type;
-    }
+public function setType(string $type): void
+{
+  $this->attributes['type'] = $type;
+}
 
-    public function getDescription(): string
-    {
-        return $this->attributes['description'];
-    }
+public function getDescription(): string
+{
+  return $this->attributes['description'];
+}
 
-    public function setDescription(string $description): void
-    {
-        $this->attributes['description'] = $description;
-    }
+public function setDescription(string $description): void
+{
+  $this->attributes['description'] = $description;
+}
 
-    public function getPrice(): float
-    {
-        return $this->attributes['price'];
-    }
+public function getPrice(): float
+{
+  return $this->attributes['price'];
+}
 
-    public function setPrice(float $price): void
-    {
-        $this->attributes['price'] = $price;
-    }
+public function setPrice(float $price): void
+{
+  $this->attributes['price'] = $price;
+}
 
-    public function getCreatedAt(): Carbon
-    {
-        return $this->attributes['created_at'];
-    }
+public function getImage(): string
+{
+  return $this->attributes['image'];
+}
 
-    public function getUpdatedAt(): Carbon
-    {
-        return $this->attributes['updated_at'];
-    }
+public function setImage(string $image): void
+{
+  $this->attributes['image'] = $image;
+}
+
+public function getCreatedAt(): timestamp
+{
+  return $this->attributes['created_at'];
+}
+
+public function getUpdatedAt(): timestamp
+{
+  return $this->attributes['updated_at'];
+}
 }

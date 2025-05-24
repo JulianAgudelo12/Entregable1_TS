@@ -16,6 +16,7 @@ class ComputerController extends Controller
     public function index(): JsonResponse
     {
         $computers = Computer::all();
+
         return response()->json($computers, 200);
     }
 
@@ -136,5 +137,4 @@ class ComputerController extends Controller
 
         return response()->json(['message' => 'Imagen cargada con éxito'], 200);
     }
-
 }

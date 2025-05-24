@@ -30,7 +30,7 @@
             <a class="nav-link" href="{{ route('computer.index') }}">{{ __('layout.computers') }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('component.index') }}">{{ __('layout.components') }}</a>
+            <a class="nav-link" href="{{ route('pc_component.index') }}">{{ __('layout.components') }}</a>
           </li>
 
           @auth

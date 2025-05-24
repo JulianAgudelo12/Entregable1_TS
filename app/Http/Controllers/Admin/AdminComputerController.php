@@ -11,8 +11,9 @@ use App\Utilities\ComputerHelper;
 use App\Utilities\ComputerValidator;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
-use Illuminate\Support\Facades\Storage; 
+
 class AdminComputerController extends Controller
 {
     public function index(Request $request): View
@@ -86,7 +87,7 @@ class AdminComputerController extends Controller
         if ($request->hasFile('image')) {
             // Delete the old image if it exists
             if ($computer->imagen_path) {
-                Storage::delete('public/' . $computer->imagen_path);
+                Storage::delete('public/'.$computer->imagen_path);
             }
             $imagePath = $request->file('image')->store('computers', 'public');
             $computer->imagen_path = $imagePath;
@@ -102,7 +103,7 @@ class AdminComputerController extends Controller
         $computer = Computer::findOrFail($id);
 
         if ($computer->imagen_path) {
-            Storage::delete('public/' . $computer->imagen_path);
+            Storage::delete('public/'.$computer->imagen_path);
         }
 
         Computer::destroy($id);

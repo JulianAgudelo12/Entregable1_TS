@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Component; //  Import the Component model
-use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class ComponentController extends Controller
 {
@@ -15,6 +15,7 @@ class ComponentController extends Controller
     public function index(): JsonResponse
     {
         $components = Component::all();
+
         return response()->json($components, 200);
     }
 
@@ -30,6 +31,7 @@ class ComponentController extends Controller
         ]);
 
         $component = Component::create($request->all());
+
         return response()->json($component, 201); //  201 Created
     }
 
@@ -65,6 +67,7 @@ class ComponentController extends Controller
         }
 
         $component->update($request->all());
+
         return response()->json($component, 200);
     }
 
@@ -80,6 +83,7 @@ class ComponentController extends Controller
         }
 
         $component->delete();
+
         return response()->json(['message' => 'Component deleted successfully'], 200);
     }
 }

@@ -11,6 +11,7 @@
     <p class="lead">{{ __('message.welcome_message') }}</p>
 </div>
 
+<!-- Carousel de computadoras 
 @if (!empty($viewData['featured']))
 <div id="featuredCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
     <div class="carousel-inner">
@@ -33,19 +34,19 @@
     </button>
 </div>
 @endif
-
+-->
 
 <div class="container text-center">
-    <h2 class="fw-bold mb-4">Explore by Category</h2>
+    <h2 class="fw-bold mb-4">{{ __('message.explore') }}</h2>
     <div class="row g-4">
         <div class="col-md-6">
             <a href="{{ route('computer.index') }}" class="btn btn-outline-primary w-100 py-3">
-                Computers
+                {{ __('message.computers') }}
             </a>
         </div>
         <div class="col-md-6">
-            <a href="{{ route('component.index') }}" class="btn btn-outline-success w-100 py-3">
-                Components
+            <a href="{{ route('pc_component.index') }}" class="btn btn-outline-success w-100 py-3">
+                {{ __('message.components') }}
             </a>
         </div>
     </div>

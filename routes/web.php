@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 $HomeControllerPath = 'App\Http\Controllers\HomeController';
 $ComputerControllerPath = 'App\Http\Controllers\ComputerController';
-$ComponentControllerPath = 'App\Http\Controllers\ComponentController';
+$PC_ComponentControllerPath = 'App\Http\Controllers\PC_ComponentController';
 $ItemControllerPath = 'App\Http\Controllers\ItemController';
 $WishlistControllerPath = 'App\Http\Controllers\WishlistController';
 $OrderControllerPath = 'App\Http\Controllers\OrderController';
@@ -20,9 +20,9 @@ Route::get('/computers', "$ComputerControllerPath@index")->name('computer.index'
 Route::get('/computers/{id}', "$ComputerControllerPath@show")->name('computer.show');
 Route::get('/compare', "$ComputerControllerPath@compare")->name('computer.compare');
 
-// Component Routes
-Route::get('/components', "$ComponentControllerPath@index")->name('component.index');
-Route::get('/components/{id}', "$ComponentControllerPath@show")->name('component.show');
+// PC_Component Routes
+Route::get('/pc_components', "$PC_ComponentControllerPath@index")->name('pc_component.index');
+Route::get('/pc_components/{id}', "$PC_ComponentControllerPath@show")->name('pc_component.show');
 
 // Order Routes
 Route::get('/orders/create', "$OrderControllerPath@create")->name('order.create');
@@ -66,6 +66,7 @@ Route::middleware('admin')->group(function () {
     Route::get('/admin/computers/{id}/edit', "$AdminComputerControllerPath@edit")->name('admin.computer.edit');
     Route::put('/admin/computers/{id}', "$AdminComputerControllerPath@update")->name('admin.computer.update');
 
+    /*
     // Component Routes
     Route::get('/admin/components', "$AdminComponentControllerPath@index")->name('admin.component.index');
     Route::get('/admin/components/create', "$AdminComponentControllerPath@create")->name('admin.component.create');
@@ -74,4 +75,5 @@ Route::middleware('admin')->group(function () {
     Route::delete('/admin/components/{id}', "$AdminComponentControllerPath@destroy")->name('admin.component.destroy');
     Route::get('/admin/components/{id}/edit', "$AdminComponentControllerPath@edit")->name('admin.component.edit');
     Route::put('/admin/components/{id}', "$AdminComponentControllerPath@update")->name('admin.component.update');
+    */
 });
