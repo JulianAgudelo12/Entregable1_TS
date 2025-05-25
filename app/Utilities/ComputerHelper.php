@@ -19,4 +19,17 @@ class ComputerHelper
         $computer->setDescription($request->input('description'));
         $computer->setPrice($request->input('price'));
     }
+
+    public static function getAttributes($computer): array
+    {
+        return [
+            __('computer.reference') => $computer->getReference(),
+            __('computer.name') => $computer->getName(),
+            __('computer.brand') => $computer->getBrand(),
+            __('computer.quantity') => $computer->getQuantity(),
+            __('computer.type') => $computer->getType(),
+            __('computer.description') => $computer->getDescription(),
+            __('computer.price') => $computer->getPrice(),
+        ];
+    }
 }
