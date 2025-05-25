@@ -12,19 +12,21 @@ class PC_ComponentController extends Controller
 {
     public function index(): View
     {
-        $pc_component = PC_Component::all();
         $viewData = [];
+
         $viewData["title"] = __('pc_component.title');
         $viewData["subtitle"] = __('pc_component.subtitle');
-        $viewData["pc_component"] = $pc_component;
+        $viewData["pc_components"] = PC_Component::all();
 
         return view('pc_component.index', $viewData)->with('viewData', $viewData);
     }
 
     public function show(string $id): View
     {
-        $viewData = [];
         $pc_component = PC_Component::findOrFail($id);
+
+        $viewData = [];
+        
         $viewData['title'] = __('pc_component.title_show');
         $viewData['subtitle'] = __('pc_component.subtitle_show');
         $viewData['image'] = $pc_component->getImage();

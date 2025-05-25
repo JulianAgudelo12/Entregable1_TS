@@ -1,10 +1,12 @@
+<!-- Developed by Julián Agudelo Cifuentes -->
+
 @extends('layouts.app')
 @section('title', $viewData["title"])
 @section('subtitle', $viewData["subtitle"])
 
 @section('content')
   <div class="row">
-    @foreach($viewData["pc_component"] as $pc_component)
+    @foreach($viewData["pc_components"] as $pc_component)
       <div class="col-md-3">
         <x-product-card
           :route="route('pc_component.show', $pc_component->getId())"

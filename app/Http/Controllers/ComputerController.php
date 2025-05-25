@@ -5,7 +5,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Computer;
-use App\Utilities\ComputerFilter;
+use App\Utilities\ComputerHelper;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -15,22 +15,26 @@ class ComputerController extends Controller
     public function index(Request $request): View
     {
         $viewData = [];
-        $viewData['title'] = 'Computer - Online Store';
-        $viewData['subtitle'] = 'List of computers';
+        $viewData['title'] = __('computer.title');
+        $viewData['subtitle'] = __('computer.subtitle');
         $viewData['computers'] = Computer::all();
 
-        $viewData['computers'] = ComputerFilter::apply($request)->get();
+        //$viewData['computers'] = ComputerFilter::apply($request)->get();
 
         return view('computer.index')->with('viewData', $viewData);
     }
 
     public function show(string $id): View
     {
-        $viewData = [];
         $computer = Computer::findOrFail($id);
-        $viewData['title'] = $computer->getName();
-        $viewData['subtitle'] = $computer->getName().' - General information';
-        $viewData['computer'] = $computer;
+        
+        $viewData = [];
+        
+        $viewData['title'] = __('computer.title_show');
+        $viewData['subtitle'] = __('computer.subtitle_show');
+        $viewData['image'] = $computer->getImage();
+        $viewData['name'] = $computer->getName();
+        $viewData['attributes'] = ComputerHelper::getAttributes($computer);
 
         return view('computer.show')->with('viewData', $viewData);
     }
