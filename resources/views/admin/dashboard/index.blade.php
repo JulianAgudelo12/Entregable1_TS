@@ -1,64 +1,86 @@
-<!-- Developed by Valeria Corrales Hoyos -->
+{{-- resources/views/admin/dashboard.blade.php --}}
 @extends('layouts.admin')
+
 @section('content')
-<div class="container">
-    <div class="row">
-        <!-- Bienvenida -->
-        <div class="col-12 text-center my-4">
-            <h2 class="fw-bold">Welcome to your Admin Dashboard</h2>
-            <p class="text-muted">Manage your platform efficiently</p>
-        </div>
-
-        <!-- Tarjetas de estadísticas -->
-        <div class="row">
-            <div class="col-md-3">
-                <div class="card shadow-lg border-0">
-                    <div class="card-body text-center">
-                        <h5 class="card-title"> Users</h5>
-                        <p class="display-4 fw-bold">{{ $viewData["totalUsers"] }}</p>
-                        <a href="{{ route('admin.user.index') }}" class="btn btn-primary mt-3">
-                            <i class="bi bi-people"></i> Manage Users
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="card shadow-lg border-0">
-                    <div class="card-body text-center">
-                        <h5 class="card-title"> Computers</h5>
-                        <p class="display-4 fw-bold">{{ $viewData["totalComputers"]  }}</p>
-                        <a href="{{ route('admin.computer.index') }}" class="btn btn-secondary mt-3">
-                            <i class="bi bi-pc"></i> Manage Computers
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="card shadow-lg border-0">
-                    <div class="card-body text-center">
-                        <h5 class="card-title"> Components</h5>
-                        <p class="display-4 fw-bold">{{ $viewData["totalComponents"] ?? 0 }}</p>
-                        <a href="{{ route('admin.component.index') }}" class="btn btn-success mt-3">
-                            <i class="bi bi-motherboard"></i> Manage Components
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="card shadow-lg border-0">
-                    <div class="card-body text-center">
-                        <h5 class="card-title"> Orders</h5>
-                        <p class="display-4 fw-bold">{{ $viewData["totalOrders"] ?? 0 }}</p>
-                        <a  class="btn btn-warning mt-3">
-                            <i class="bi bi-cart-check"></i> Manage Orders
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="container py-2">
+  {{-- Encabezado con título y subtítulo --}}
+  <div class="row text-center mb-4">
+    <div class="col-12">
+      <h2 class="fw-bold">
+        {{ __('admin.dashboard.welcome') }}
+      </h2>
+      <p class="text-muted">
+        {{ __('admin.dashboard.manage') }}
+      </p>
     </div>
+  </div>
+
+  {{-- Tarjetas de estadísticas con gutter spacing g-2 --}}
+  <div class="row g-2">
+    {{-- Usuarios --}}
+    <div class="col-md-3">
+      <div class="card shadow-sm border-0 h-100">
+        <div class="card-body text-center p-2">
+          <h5 class="card-title">{{ __('admin.dashboard.users') }}</h5>
+          <p class="display-4 fw-bold mb-2">
+            {{ $viewData['totalUsers'] ?? 0 }}
+          </p>
+          <a href="{{ route('admin.user.index') }}" class="btn btn-primary mt-2">
+            <i class="bi bi-people"></i>
+            {{ __('admin.dashboard.manage_users') }}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    {{-- Computadoras --}}
+    <div class="col-md-3">
+      <div class="card shadow-sm border-0 h-100">
+        <div class="card-body text-center p-2">
+          <h5 class="card-title">{{ __('admin.dashboard.computers') }}</h5>
+          <p class="display-4 fw-bold mb-2">
+            {{ $viewData['totalComputers'] ?? 0 }}
+          </p>
+          <a href="{{ route('admin.computer.index') }}" class="btn btn-secondary mt-2">
+            <i class="bi bi-pc"></i>
+            {{ __('admin.dashboard.manage_computers') }}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    {{-- Componentes --}}
+    <div class="col-md-3">
+      <div class="card shadow-sm border-0 h-100">
+        <div class="card-body text-center p-2">
+          <h5 class="card-title">{{ __('admin.dashboard.components') }}</h5>
+          <p class="display-4 fw-bold mb-2">
+            {{ $viewData['totalPC_Components'] ?? 0 }}
+          </p>
+          <a href="{{ route('admin.component.index') }}" class="btn btn-success mt-2">
+            <i class="bi bi-motherboard"></i>
+            {{ __('admin.dashboard.manage_components') }}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    {{-- Órdenes --}}
+    <div class="col-md-3">
+      <div class="card shadow-sm border-0 h-100">
+        <div class="card-body text-center p-2">
+          <h5 class="card-title">{{ __('admin.dashboard.orders') }}</h5>
+          <p class="display-4 fw-bold mb-2">
+            {{ $viewData['totalOrders'] ?? 0 }}
+          </p>
+          {{-- <a href="{{ route('admin.order.index') }}" class="btn btn-warning mt-2"> --}}
+            <i class="bi bi-cart-check"></i>
+            {{ __('admin.dashboard.manage_orders') }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 @endsection
+

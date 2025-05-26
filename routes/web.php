@@ -66,14 +66,14 @@ Route::middleware('admin')->group(function () {
     Route::get('/admin/computers/{id}/edit', "$AdminComputerControllerPath@edit")->name('admin.computer.edit');
     Route::put('/admin/computers/{id}', "$AdminComputerControllerPath@update")->name('admin.computer.update');
 
-    /*
-    // Component Routes
-    Route::get('/admin/components', "$AdminComponentControllerPath@index")->name('admin.component.index');
-    Route::get('/admin/components/create', "$AdminComponentControllerPath@create")->name('admin.component.create');
-    Route::post('/admin/components', "$AdminComponentControllerPath@store")->name('admin.component.store');
-    Route::get('/admin/components/{id}', "$AdminComponentControllerPath@show")->name('admin.component.show');
-    Route::delete('/admin/components/{id}', "$AdminComponentControllerPath@destroy")->name('admin.component.destroy');
-    Route::get('/admin/components/{id}/edit', "$AdminComponentControllerPath@edit")->name('admin.component.edit');
-    Route::put('/admin/components/{id}', "$AdminComponentControllerPath@update")->name('admin.component.update');
-    */
+
+    // PC_Component Routes
+    Route::get('/admin/pc_components', "$AdminComponentControllerPath@index")->name('admin.component.index');
+    Route::get('/admin/pc_components/create', "$AdminComponentControllerPath@create")->name('admin.component.create');
+    Route::post('/admin/pc_components', "$AdminComponentControllerPath@store")->name('admin.component.store');
+    Route::get('/admin/pc_components/{id}', "$AdminComponentControllerPath@show")->name('admin.component.show');
+    Route::delete('/admin/pc_components/{id}', "$AdminComponentControllerPath@destroy")->name('admin.component.destroy');
+    Route::get('/admin/pc_components/{id}/edit', "$AdminComponentControllerPath@edit")->name('admin.component.edit');
+    Route::put('/admin/pc_components/{id}', "$AdminComponentControllerPath@update")->name('admin.component.update');
+
 });
