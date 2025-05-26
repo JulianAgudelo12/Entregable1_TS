@@ -14,37 +14,37 @@
 
             {{-- Name --}}
             <x-form-input
-              name="__('Name')"
-              label="__('Name')"
+              name="name"
+              label="{{ __('Name') }}"
               type="text"
               autofocus
             />
 
             {{-- Email --}}
             <x-form-input
-              name="__('Email Address')"
-              label="__('Email Address')"
+              name="email"
+              label="{{ __('Email Address') }}"
               type="email"
             />
 
             {{-- Cellphone --}}
             <x-form-input
-              name="__('Cellphone')"
-              label="__('Cellphone')"
+              name="cellphone"
+              label="{{ __('Cellphone') }}"
               type="tel"
             />
 
             {{-- Password --}}
             <x-form-input
-              name="__('Password')"
-              label="__('Password')"
+              name="password"
+              label="{{ __('Password') }}"
               type="password"
             />
 
             {{-- Confirm Password --}}
             <x-form-input
-              name="__('Confirm Password')"
-              label="__('Confirm Password')"
+              name="password_confirmation"
+              label="{{ __('Confirm Password') }}"
               type="password"
             />
 
