@@ -46,7 +46,7 @@
                 </a>
               </li>
             @endif
-            @if (Auth::user()->isAdmin())
+            @if (Auth::user()->getIsAdmin())
               <li class="nav-item">
                 <a class="nav-link btn btn-outline-light" href="{{ route('admin.dashboard.index') }}">
                   <i class="bi bi-shield-lock"></i> {{ __('layout.admin_mode') }}
