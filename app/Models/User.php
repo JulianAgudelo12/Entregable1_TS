@@ -4,32 +4,35 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+/**
+ * USER ATTRIBUTES
+ *
+ * $this->attributes['id']                 - int       - contains the user primary key (id)
+ * $this->attributes['name']               - string    - contains the user name
+ * $this->attributes['email']              - string    - contains the user email
+ * $this->attributes['password']           - string    - contains the user password
+ * $this->attributes['cellphone']          - string    - contains the user cellphone
+ * $this->attributes['remember_token']     - string    - contains the user authentication token
+ * $this->attributes['is_admin']           - boolean   - represents the user role as admin (true) or client (false)
+ * $this->attributes['email_verified_at']  - timestamp - contains the user email verification date
+ * $this->attributes['created_at']         - timestamp - contains the user creation date
+ * $this->attributes['updated_at']         - timestamp - contains the user update date
+ */
+
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, Notifiable;
 
-    /**
-     * USER ATTRIBUTES
-     * $this->attributes['id'] - int - contains the user primary key (id)
-     * $this->attributes['name'] - string - contains the user name
-     * $this->attributes['email'] - string - contains the user email
-     * $this->attributes['email_verified_at'] - timestamp - contains the user email verification date
-     * $this->attributes['password'] - string - contains the user password
-     * $this->attributes['remember_token'] - string - contains the user authentication token
-     * $this->attributes['created_at'] - timestamp - contains the user creation date
-     * $this->attributes['updated_at'] - timestamp - contains the user update date
-     * $this->attributes['is_admin'] - boolean - represents the user role as admin (true) or client (false).
-     */
+
     protected $fillable = [
         'name',
         'email',
         'password',
+        'cellphone',
         'is_admin',
     ];
 
@@ -71,14 +74,14 @@ class User extends Authenticatable
         $this->attributes['email'] = $email;
     }
 
-    public function getCreatedAt()
+    public function getCellphone(): string
     {
-        return $this->attributes['created_at'];
+        return $this->attributes['cellphone'];
     }
 
-    public function getUpdatedAt()
+    public function setCellphone(string $cellphone): void
     {
-        return $this->attributes['updated_at'];
+        $this->attributes['cellphone'] = $cellphone;
     }
 
     public function getIsAdmin(): bool
@@ -91,13 +94,20 @@ class User extends Authenticatable
         $this->attributes['is_admin'] = $isAdmin;
     }
 
+    public function getCreatedAt()
+    {
+        return $this->attributes['created_at'];
+    }
+
+    public function getUpdatedAt()
+    {
+        return $this->attributes['updated_at'];
+    }
+
+    /*
     public function order(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(Order::class);
     }
-
-    public function isAdmin(): bool
-    {
-        return $this->attributes['is_admin'];
-    }
+    */
 }

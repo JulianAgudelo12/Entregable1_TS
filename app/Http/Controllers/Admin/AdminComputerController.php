@@ -13,14 +13,15 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
+use Illuminate\Support\Str;
 
 class AdminComputerController extends Controller
 {
     public function index(Request $request): View
     {
         $viewData = [];
-        $viewData['title'] = 'Admin - Manage Computer';
-        $viewData['subtitle'] = 'Manage Computers';
+        $viewData['title'] = __('admin.computer.title');
+        $viewData['subtitle'] = __('admin.computer.subtitle');
         $viewData['computers'] = Computer::all();
 
         $viewData['filtercomputers'] = ComputerFilter::apply($request)->get();
@@ -42,7 +43,8 @@ class AdminComputerController extends Controller
     public function create(): View
     {
         $viewData = [];
-        $viewData['title'] = 'Create Computer';
+        $viewData['title'] = __('admin.computer.create_title');
+        $viewData['subtitle'] = __('admin.computer.create_subtitle');
 
         return view('admin.computer.create')->with('viewData', $viewData);
     }
@@ -51,19 +53,23 @@ class AdminComputerController extends Controller
     {
         ComputerValidator::validate($request);
 
-        $newComputer = new Computer;
-        ComputerHelper::fillComputerData($newComputer, $request);
+        $computer = new Computer;
+        ComputerHelper::fillComputerData($computer, $request);
 
-        // Handle image upload
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('computers', 'public');
-            $newComputer->imagen_path = $imagePath;
-        }
+        // Image
+        $image = $request->file('image');
+        $filename = Str::slug(
+                pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME)
+            ) . '-' . time() . '.' . $image->extension();
 
-        $newComputer->save();
+        $path = $image->storeAs('images', $filename, 'public');
+        $computer->setImage($path);
 
-        return redirect()->route('admin.computer.index')->with('success', 'Computer created successfully!');
+        $computer->save();
+
+        return redirect() ->route('admin.computer.index') ->with('success', __('admin.computer.created'));
     }
+
 
     public function edit(string $id): View
     {

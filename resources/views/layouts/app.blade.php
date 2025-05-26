@@ -1,6 +1,6 @@
-<!-- Developed by Julian Agudelo -->
+{{-- Developed by Julián Agudelo Cifuentes --}}
 <!doctype html>
-<html lang="en">
+<html lang="{{ str_replace('_','-',app()->getLocale()) }}">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -36,20 +36,20 @@
           @auth
             <li class="nav-item">
               <a class="nav-link" href="{{ route('wishlist.index') }}">
-                <i class="bi bi-heart"></i> {{ __('wishlist.title') }}
+                <i class="bi bi-heart-fill me-1"></i> {{ __('wishlist.title') }}
               </a>
             </li>
-            @if (Auth::user()->order)
+            @if(Auth::user()->order)
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('order.show', Auth::user()->order->getId()) }}">
                   {{ __('layout.my_order') }}
                 </a>
               </li>
             @endif
-            @if (Auth::user()->isAdmin())
+            @if(Auth::user()->getIsAdmin())
               <li class="nav-item">
-                <a class="nav-link btn btn-outline-light" href="{{ route('admin.dashboard.index') }}">
-                  <i class="bi bi-shield-lock"></i> {{ __('layout.admin_mode') }}
+                <a class="nav-link" href="{{ route('admin.dashboard.index') }}">
+                  <i class="bi bi-shield-lock-fill me-1"></i> {{ __('layout.admin_mode') }}
                 </a>
               </li>
             @endif
@@ -90,7 +90,7 @@
   <!-- Footer -->
   <footer class="bg-dark text-white text-center py-3 mt-auto">
     <div class="container">
-      <small>&copy; {{ date('Y') }} AssemblAI - {{ __('layout.rights') }}</small>
+      <small>&copy; {{ date('Y') }} {{ __('layout.brand') }} - {{ __('layout.rights') }}</small>
     </div>
   </footer>
 

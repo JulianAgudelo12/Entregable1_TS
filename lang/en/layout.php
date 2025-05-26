@@ -16,7 +16,7 @@ return [
     'rights' => 'All rights reserved',
     'my_order' => 'My Order',
     'user_mode' => 'User Mode',
-    'admin_mode' => 'Admin Mode',
+    'admin_mode' => 'Admin Panel',
     'title' => 'AssemblAI - Computer & Components Store',
     'brand' => 'AssemblAI',
     'home' => 'Home',

@@ -18,6 +18,7 @@ class ComputerValidator
             'type' => 'required|in:desktop,laptop',
             'description' => 'required',
             'price' => 'required|numeric|gt:0',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
     }
 }
