@@ -19,8 +19,8 @@ class AdminComputerController extends Controller
     public function index(Request $request): View
     {
         $viewData = [];
-        $viewData['title'] = 'Admin - Manage Computer';
-        $viewData['subtitle'] = 'Manage Computers';
+        $viewData['title'] = __('admin.computer.title');
+        $viewData['subtitle'] = __('admin.computer.subtitle');
         $viewData['computers'] = Computer::all();
 
         $viewData['filtercomputers'] = ComputerFilter::apply($request)->get();
