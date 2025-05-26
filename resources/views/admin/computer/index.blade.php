@@ -103,7 +103,7 @@
             <td>{{ $computer->getBrand() }}</td>
             <td>{{ $computer->getQuantity() }}</td>
             <td>{{ __(ucfirst($computer->getType())) }}</td>
-            <td>{{ $computer->getPrice() }}</td>
+            <td>{{ '$' . number_format($computer->getPrice(), 2) }}</td>
             <td class="d-flex gap-2">
               <a
                 href="{{ route('admin.computer.show', $computer->getId()) }}"
