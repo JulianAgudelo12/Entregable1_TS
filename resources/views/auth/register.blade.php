@@ -6,16 +6,21 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="card">
-        <div class="card-header">{{ __('Register') }}</div>
 
+        {{-- Header --}}
+        <div class="card-header">
+          {{ __('auth.register') }}
+        </div>
+
+        {{-- Body --}}
         <div class="card-body">
-          <form method="POST" action="{{ route('register') }}">
+          <form method="POST" action="{{ route('register') }}" novalidate>
             @csrf
 
             {{-- Name --}}
             <x-form-input
               name="name"
-              label="{{ __('Name') }}"
+              label="auth.name"
               type="text"
               autofocus
             />
@@ -23,41 +28,42 @@
             {{-- Email --}}
             <x-form-input
               name="email"
-              label="{{ __('Email Address') }}"
+              label="auth.email_address"
               type="email"
             />
 
             {{-- Cellphone --}}
             <x-form-input
               name="cellphone"
-              label="{{ __('Cellphone') }}"
+              label="auth.cellphone"
               type="tel"
             />
 
             {{-- Password --}}
             <x-form-input
               name="password"
-              label="{{ __('Password') }}"
+              label="auth.password"
               type="password"
             />
 
             {{-- Confirm Password --}}
             <x-form-input
               name="password_confirmation"
-              label="{{ __('Confirm Password') }}"
+              label="auth.confirm_password"
               type="password"
             />
 
             {{-- Submit --}}
-            <div class="row mb-0">
+            <div class="row mb-3">
               <div class="col-md-6 offset-md-4">
-                <button type="submit" class="btn bg-primary text-white">
-                  {{ __('Register') }}
+                <button type="submit" class="btn btn-primary btn-lg w-100">
+                  {{ __('auth.register') }}
                 </button>
               </div>
             </div>
           </form>
         </div>
+
       </div>
     </div>
   </div>
