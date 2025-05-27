@@ -16,7 +16,7 @@ class ComputerController extends Controller
     {
         $viewData = [];
         $viewData['title'] = __('computer.title');
-        $viewData['subtitle'] = __('computer.subtitle');
+        $viewData['subtitle'] = __('computer.list_title');
         $viewData['computers'] = Computer::all();
 
         //$viewData['computers'] = ComputerFilter::apply($request)->get();
@@ -30,8 +30,8 @@ class ComputerController extends Controller
         
         $viewData = [];
         
-        $viewData['title'] = __('computer.title_show');
-        $viewData['subtitle'] = __('computer.subtitle_show');
+        $viewData['title'] = __('computer.title');
+        $viewData['subtitle'] = __('computer.detail_title');
         $viewData['image'] = $computer->getImage();
         $viewData['name'] = $computer->getName();
         $viewData['attributes'] = ComputerDTO::getAttributes($computer);
@@ -42,17 +42,29 @@ class ComputerController extends Controller
     public function compare(Request $request): View|RedirectResponse
     {
         $viewData = [];
-        $viewData['title'] = 'Compare Computers';
-        $viewData['subtitle'] = 'Comparison of selected computers';
+        $viewData['title'] = __('computer.title');
+        $viewData['subtitle'] = __('computer.compare_title');;
 
         $computerIds = $request->input('computers', []);
 
         if (count($computerIds) < 2) {
-            return redirect()->route('computer.index')->with('error', 'Select at least two computers.');
+            return redirect()->route('computer.index')->with('error', __('computer.select_al_two'));
         }
 
-        $viewData['computers'] = Computer::whereIn('id', $computerIds)->get();
+        $computers = Computer::whereIn('id', $computerIds)->get();
+        $viewData['computers'] = $computers;
+
+        // Prepare comparison attributes
+        $comparisonData = [
+            ['label' => __('computer.brand'), 'values' => $computers->pluck('brand')->toArray()],
+            ['label' => __('computer.type'), 'values' => $computers->pluck('type')->map(fn($t) => ucfirst($t))->toArray()],
+            ['label' => __('computer.description'), 'values' => $computers->pluck('description')->toArray()],
+            ['label' => __('computer.price'), 'values' => $computers->pluck('price')->map(fn($p) => '$' . number_format($p, 2))->toArray()],
+        ];
+
+        $viewData['comparisonData'] = $comparisonData;
 
         return view('computer.compare')->with('viewData', $viewData);
     }
+
 }
