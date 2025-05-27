@@ -15,16 +15,16 @@ class DatabaseSeeder extends Seeder
     {
         // Create a test user if not already present
         $email = 'test@example.com';
-        if (!DB::table('users')->where('email', $email)->exists()) {
+        if (! DB::table('users')->where('email', $email)->exists()) {
             DB::table('users')->insert([
-                'name'              => 'Test User',
-                'email'             => $email,
+                'name' => 'Test User',
+                'email' => $email,
                 'email_verified_at' => now(),
-                'password'          => Hash::make('password'),
-                'is_admin'          => 0,
-                'remember_token'    => null,
-                'created_at'        => now(),
-                'updated_at'        => now(),
+                'password' => Hash::make('password'),
+                'is_admin' => 0,
+                'remember_token' => null,
+                'created_at' => now(),
+                'updated_at' => now(),
             ]);
             $this->command->info("Created user: {$email}");
         } else {

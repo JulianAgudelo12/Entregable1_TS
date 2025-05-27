@@ -8,6 +8,7 @@ return [
     'home' => 'Home',
     'computers' => 'Computers',
     'components' => 'Components',
+    'users' => 'Users',
     'login' => 'Login',
     'register' => 'Register',
     'logout' => 'Logout',

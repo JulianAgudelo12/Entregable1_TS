@@ -18,13 +18,13 @@ class JsonDataSeeder extends Seeder
         $data = [
             'password_reset_tokens' => [
                 [
-                    'email'      => 'agudelojulian4@gmail.com',
-                    'token'      => '$2y$12$Oy3anXIU9NllZCPo1W5hk.BSM91J1nzboZa/J32LX.JdLAmsixbNG',
+                    'email' => 'agudelojulian4@gmail.com',
+                    'token' => '$2y$12$Oy3anXIU9NllZCPo1W5hk.BSM91J1nzboZa/J32LX.JdLAmsixbNG',
                     'created_at' => '2025-05-26 07:44:14',
                 ],
                 [
-                    'email'      => 'jagudeloc@eafit.edu.co',
-                    'token'      => '$2y$12$IB9RPBAHAt2ibL03ZESaF.H/1ypQFE0ttjKxKYJVRoHjxT9s1wFUG',
+                    'email' => 'jagudeloc@eafit.edu.co',
+                    'token' => '$2y$12$IB9RPBAHAt2ibL03ZESaF.H/1ypQFE0ttjKxKYJVRoHjxT9s1wFUG',
                     'created_at' => '2025-05-26 07:47:31',
                 ],
             ],
@@ -64,52 +64,52 @@ class JsonDataSeeder extends Seeder
             ],
             'sessions' => [
                 [
-                    'id'            => 'GLctvNnBWZQayUtNluU4C89yWrjhxNueV20NCbnf',
-                    'user_id'       => null,
-                    'ip_address'    => '127.0.0.1',
-                    'user_agent'    => 'Mozilla/5.0 (...)',
-                    'payload'       => 'YTozOntzOjY6Il90b2tlbiI7...',
+                    'id' => 'GLctvNnBWZQayUtNluU4C89yWrjhxNueV20NCbnf',
+                    'user_id' => null,
+                    'ip_address' => '127.0.0.1',
+                    'user_agent' => 'Mozilla/5.0 (...)',
+                    'payload' => 'YTozOntzOjY6Il90b2tlbiI7...',
                     'last_activity' => 1748314519,
                 ],
                 [
-                    'id'            => 'i2cIi3HUqlPkRrxfdOH9NOXFlGjI2RDlpGEQ9Sfx',
-                    'user_id'       => 1,
-                    'ip_address'    => '127.0.0.1',
-                    'user_agent'    => 'Mozilla/5.0 (...)',
-                    'payload'       => 'YTo1OntzOjY6Il90b2tlbiI7...',
+                    'id' => 'i2cIi3HUqlPkRrxfdOH9NOXFlGjI2RDlpGEQ9Sfx',
+                    'user_id' => 1,
+                    'ip_address' => '127.0.0.1',
+                    'user_agent' => 'Mozilla/5.0 (...)',
+                    'payload' => 'YTo1OntzOjY6Il90b2tlbiI7...',
                     'last_activity' => 1748314769,
                 ],
             ],
             'users' => [
                 [
-                    'id'                => 1,
-                    'name'              => 'Julian',
-                    'email'             => 'agudelojulian4@gmail.com',
-                    'password'          => '$2y$12$HO/jFjdIDN1A44As/GvN7uv7kE5..AUgifTBU05iO7PYXPLpl.yWe',
-                    'is_admin'          => 1,
-                    'remember_token'    => null,
-                    'created_at'        => '2025-05-25 01:13:37',
-                    'updated_at'        => '2025-05-25 01:13:37',
+                    'id' => 1,
+                    'name' => 'Julian',
+                    'email' => 'agudelojulian4@gmail.com',
+                    'password' => '$2y$12$HO/jFjdIDN1A44As/GvN7uv7kE5..AUgifTBU05iO7PYXPLpl.yWe',
+                    'is_admin' => 1,
+                    'remember_token' => null,
+                    'created_at' => '2025-05-25 01:13:37',
+                    'updated_at' => '2025-05-25 01:13:37',
                 ],
                 [
-                    'id'                => 5,
-                    'name'              => 'Prueba',
-                    'email'             => 'Prueba@gmail.com',
-                    'password'          => '$2y$12$5YpRXAfaZrauSANAHfNwe728fwhzp92Wzp1dpzco7/Qa2QUv/cmG',
-                    'is_admin'          => 0,
-                    'remember_token'    => null,
-                    'created_at'        => '2025-05-26 07:39:31',
-                    'updated_at'        => '2025-05-26 07:39:31',
+                    'id' => 5,
+                    'name' => 'Prueba',
+                    'email' => 'Prueba@gmail.com',
+                    'password' => '$2y$12$5YpRXAfaZrauSANAHfNwe728fwhzp92Wzp1dpzco7/Qa2QUv/cmG',
+                    'is_admin' => 0,
+                    'remember_token' => null,
+                    'created_at' => '2025-05-26 07:39:31',
+                    'updated_at' => '2025-05-26 07:39:31',
                 ],
                 [
-                    'id'                => 6,
-                    'name'              => 'Julian',
-                    'email'             => 'jagudeloc@eafit.edu.co',
-                    'password'          => '$2y$12$OEmCV4Y4tnSSl5ONzpII..5bpl81IiEJvqWLZ4x31OLrpDQc1dRKC',
-                    'is_admin'          => 0,
-                    'remember_token'    => 'z0nNNwFRkJZ9SzwO9s9JdLRsQxxtddEvddMF9XO252y1mVnnK1H0VXRHgxyX',
-                    'created_at'        => '2025-05-26 07:45:53',
-                    'updated_at'        => '2025-05-26 07:45:53',
+                    'id' => 6,
+                    'name' => 'Julian',
+                    'email' => 'jagudeloc@eafit.edu.co',
+                    'password' => '$2y$12$OEmCV4Y4tnSSl5ONzpII..5bpl81IiEJvqWLZ4x31OLrpDQc1dRKC',
+                    'is_admin' => 0,
+                    'remember_token' => 'z0nNNwFRkJZ9SzwO9s9JdLRsQxxtddEvddMF9XO252y1mVnnK1H0VXRHgxyX',
+                    'created_at' => '2025-05-26 07:45:53',
+                    'updated_at' => '2025-05-26 07:45:53',
                 ],
             ],
         ];
@@ -124,7 +124,7 @@ class JsonDataSeeder extends Seeder
 
             DB::table($table)->truncate();
             DB::table($table)->insert($rows);
-            $this->command->info("Seeded {$table}: " . count($rows) . " records");
+            $this->command->info("Seeded {$table}: ".count($rows).' records');
         }
 
         // Re-enable foreign key checks

@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>@yield('title', __('Admin Panel'))</title>
+  <title>@yield('title', __('dashboard.dashboard'))</title>
 
   <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
@@ -18,7 +18,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm py-3">
     <div class="container">
       <a class="navbar-brand fw-bold" href="{{ route('admin.dashboard.index') }}">
-        {{ __('Admin Panel') }}
+        {{ __('dashboard.dashboard') }}
       </a>
       <button
         class="navbar-toggler"
@@ -56,7 +56,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ route('admin.pc_component.index') }}">
-              {{ __('layout.pc_components') }}
+              {{ __('layout.components') }}
             </a>
           </li>
           <li class="nav-item">

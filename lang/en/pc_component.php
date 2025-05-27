@@ -43,6 +43,8 @@ return [
     'updated' => 'Component updated successfully!',
     'deleted' => 'Component deleted successfully!',
 
+    'confirm_deletion' => 'Are ypu sure you want to delete this Computer?',
+
     'add_to_order' => 'Add to Order',
     'back' => 'Back to list',
     'no_image' => 'No image available',

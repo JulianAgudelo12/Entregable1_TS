@@ -83,7 +83,7 @@
                 action="{{ route('admin.pc_component.destroy', $component->getId()) }}"
                 method="POST"
                 class="m-0"
-                onsubmit="return confirm('{{ __('pc_component.delete_confirmation') }}')"
+                onsubmit="return confirm('{{ __('pc_component.confirm_deletion') }}')"
               >
                 @csrf
                 @method('DELETE')

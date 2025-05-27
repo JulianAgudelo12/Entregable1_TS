@@ -1,10 +1,10 @@
 {{-- resources/views/admin/user/edit.blade.php --}}
 @extends('layouts.admin')
 
-@section('title',    __('Edit User'))
+@section('title',    __('user.update_title'))
 @section('header-actions')
   <a href="{{ route('admin.user.index') }}" class="btn btn-secondary">
-    {{ __('Back to list') }}
+    {{ __('user.back') }}
   </a>
 @endsection
 
@@ -25,7 +25,7 @@
     <div class="col-md-6">
       <div class="card shadow-sm">
         <div class="card-header">
-          <h4 class="mb-0">{{ __('Edit User') }}</h4>
+          <h4 class="mb-0">{{ __('user.update_title') }}</h4>
         </div>
         <div class="card-body">
           <form
@@ -37,7 +37,7 @@
 
             {{-- Name (read-only) --}}
             <div class="mb-3">
-              <label for="name" class="form-label">{{ __('Name') }}</label>
+              <label for="name" class="form-label">{{ __('user.name') }}</label>
               <input
                 type="text"
                 id="name"
@@ -57,14 +57,14 @@
                 {{ old('is_admin', $viewData['user']->getIsAdmin()) ? 'checked' : '' }}
               >
               <label class="form-check-label" for="is_admin">
-                {{ __('Admin') }}
+                {{ __('user.admin') }}
               </label>
             </div>
 
             {{-- Submit --}}
             <div class="d-flex justify-content-end">
               <button type="submit" class="btn btn-primary">
-                {{ __('Update') }}
+                {{ __('user.update') }}
               </button>
             </div>
           </form>

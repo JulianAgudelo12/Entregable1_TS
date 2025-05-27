@@ -29,7 +29,7 @@ class ComputerController extends Controller
         $computer = Computer::findOrFail($id);
 
         $viewData = [];
-        
+
         $viewData['title'] = __('computer.title');
         $viewData['subtitle'] = __('computer.detail_title');
         $viewData['image'] = $computer->getImage();
@@ -43,7 +43,7 @@ class ComputerController extends Controller
     {
         $viewData = [];
         $viewData['title'] = __('computer.title');
-        $viewData['subtitle'] = __('computer.compare_title');;
+        $viewData['subtitle'] = __('computer.compare_title');
 
         $computerIds = $request->input('computers', []);
 
@@ -57,14 +57,13 @@ class ComputerController extends Controller
         // Prepare comparison attributes
         $comparisonData = [
             ['label' => __('computer.brand'), 'values' => $computers->pluck('brand')->toArray()],
-            ['label' => __('computer.type'), 'values' => $computers->pluck('type')->map(fn($t) => ucfirst($t))->toArray()],
+            ['label' => __('computer.type'), 'values' => $computers->pluck('type')->map(fn ($t) => ucfirst($t))->toArray()],
             ['label' => __('computer.description'), 'values' => $computers->pluck('description')->toArray()],
-            ['label' => __('computer.price'), 'values' => $computers->pluck('price')->map(fn($p) => '$' . number_format($p, 2))->toArray()],
+            ['label' => __('computer.price'), 'values' => $computers->pluck('price')->map(fn ($p) => '$'.number_format($p, 2))->toArray()],
         ];
 
         $viewData['comparisonData'] = $comparisonData;
 
         return view('computer.compare')->with('viewData', $viewData);
     }
-
 }

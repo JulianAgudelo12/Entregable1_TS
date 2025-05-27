@@ -60,7 +60,7 @@
           <form
             action="{{ route('admin.pc_component.destroy', $viewData['component']->getId()) }}"
             method="POST"
-            onsubmit="return confirm('{{ __('pc_component.delete_confirmation') }}')"
+            onsubmit="return confirm('{{ __('pc_component.confirm_deletion') }}')"
           >
             @csrf
             @method('DELETE')

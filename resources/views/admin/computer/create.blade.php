@@ -21,7 +21,7 @@
     <div class="col-md-8">
       <div class="card shadow-sm">
         <div class="card-header">
-          <h3 class="mb-0">{{ __('Create Computer') }}</h3>
+          <h3 class="mb-0">{{ __('computer.create') }}</h3>
         </div>
 
         <div class="card-body">
@@ -31,39 +31,39 @@
             @csrf
 
             <div class="mb-3">
-              <label for="reference" class="form-label">{{ __('Reference') }}</label>
+              <label for="reference" class="form-label">{{ __('computer.reference') }}</label>
               <input
                 type="text"
                 id="reference"
                 name="reference"
                 class="form-control"
-                placeholder="{{ __('Enter reference') }}"
+                placeholder="{{ __('computer.reference') }}"
                 value="{{ old('reference') }}"
                 required
               >
             </div>
 
             <div class="mb-3">
-              <label for="name" class="form-label">{{ __('Name') }}</label>
+              <label for="name" class="form-label">{{ __('computer.name') }}</label>
               <input
                 type="text"
                 id="name"
                 name="name"
                 class="form-control"
-                placeholder="{{ __('Enter name') }}"
+                placeholder="{{ __('computer.name') }}"
                 value="{{ old('name') }}"
                 required
               >
             </div>
 
             <div class="mb-3">
-              <label for="brand" class="form-label">{{ __('Brand') }}</label>
+              <label for="brand" class="form-label">{{ __('computer.brand') }}</label>
               <input
                 type="text"
                 id="brand"
                 name="brand"
                 class="form-control"
-                placeholder="{{ __('Enter brand') }}"
+                placeholder="{{ __('computer.brand') }}"
                 value="{{ old('brand') }}"
                 required
               >
@@ -71,57 +71,57 @@
 
             <div class="row g-2 mb-3">
               <div class="col">
-                <label for="quantity" class="form-label">{{ __('Quantity') }}</label>
+                <label for="quantity" class="form-label">{{ __('computer.quantity') }}</label>
                 <input
                   type="number"
                   id="quantity"
                   name="quantity"
                   class="form-control"
-                  placeholder="{{ __('Enter quantity') }}"
+                  placeholder="{{ __('computer.quantity') }}"
                   value="{{ old('quantity') }}"
                   min="0"
                   required
                 >
               </div>
               <div class="col">
-                <label for="type" class="form-label">{{ __('Type') }}</label>
+                <label for="type" class="form-label">{{ __('computer.type') }}</label>
                 <select
                   id="type"
                   name="type"
                   class="form-select"
                   required
                 >
-                  <option value="">{{ __('-- Select a type --') }}</option>
+                  <option value="">{{ __('computer.select_type') }}</option>
                   <option value="desktop" {{ old('type') == 'desktop' ? 'selected' : '' }}>
-                    {{ __('Desktop') }}
+                    {{ __('computer.desktop') }}
                   </option>
                   <option value="laptop" {{ old('type') == 'laptop' ? 'selected' : '' }}>
-                    {{ __('Laptop') }}
+                    {{ __('computer.laptop') }}
                   </option>
                 </select>
               </div>
             </div>
 
             <div class="mb-3">
-              <label for="description" class="form-label">{{ __('Description') }}</label>
+              <label for="description" class="form-label">{{ __('computer.description') }}</label>
               <textarea
                 id="description"
                 name="description"
                 class="form-control"
-                placeholder="{{ __('Enter description') }}"
+                placeholder="{{ __('computer.description') }}"
                 rows="3"
                 required
               >{{ old('description') }}</textarea>
             </div>
 
             <div class="mb-3">
-              <label for="price" class="form-label">{{ __('Price') }}</label>
+              <label for="price" class="form-label">{{ __('computer.price') }}</label>
               <input
                 type="number"
                 id="price"
                 name="price"
                 class="form-control"
-                placeholder="{{ __('Enter price') }}"
+                placeholder="{{ __('computer.price') }}"
                 value="{{ old('price') }}"
                 step="0.01"
                 min="0"
@@ -130,7 +130,7 @@
             </div>
 
             <div class="mb-3">
-              <label for="image" class="form-label">{{ __('Computer Image') }}</label>
+              <label for="image" class="form-label">{{ __('computer.image') }}</label>
               <input
                 type="file"
                 id="image"
@@ -142,7 +142,7 @@
 
             <div class="d-flex justify-content-end">
               <button type="submit" class="btn btn-primary">
-                {{ __('Save') }}
+                {{ __('computer.save') }}
               </button>
             </div>
           </form>

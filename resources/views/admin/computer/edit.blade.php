@@ -1,10 +1,10 @@
 {{-- resources/views/admin/computer/edit.blade.php --}}
 @extends('layouts.admin')
 
-@section('title', __('Edit Computer'))
+@section('title', __('computer.edit_title'))
 @section('header-actions')
   <a href="{{ route('admin.computer.index') }}" class="btn btn-secondary">
-    {{ __('Back to list') }}
+    {{ __('computer.back') }}
   </a>
 @endsection
 
@@ -25,7 +25,7 @@
     <div class="col-md-8">
       <div class="card shadow-sm">
         <div class="card-header">
-          <h4 class="mb-0">{{ __('Edit Computer') }}</h4>
+          <h4 class="mb-0">{{ __('computer.edit') }}</h4>
         </div>
         <div class="card-body">
           <form
@@ -37,7 +37,7 @@
 
             {{-- Reference --}}
             <div class="mb-3">
-              <label for="reference" class="form-label">{{ __('Reference') }}</label>
+              <label for="reference" class="form-label">{{ __('computer.reference') }}</label>
               <input
                 type="text"
                 id="reference"
@@ -50,7 +50,7 @@
 
             {{-- Name --}}
             <div class="mb-3">
-              <label for="name" class="form-label">{{ __('Name') }}</label>
+              <label for="name" class="form-label">{{ __('computer.name') }}</label>
               <input
                 type="text"
                 id="name"
@@ -63,7 +63,7 @@
 
             {{-- Brand --}}
             <div class="mb-3">
-              <label for="brand" class="form-label">{{ __('Brand') }}</label>
+              <label for="brand" class="form-label">{{ __('computer.brand') }}</label>
               <input
                 type="text"
                 id="brand"
@@ -77,7 +77,7 @@
             {{-- Quantity & Type --}}
             <div class="row g-2 mb-3">
               <div class="col">
-                <label for="quantity" class="form-label">{{ __('Quantity') }}</label>
+                <label for="quantity" class="form-label">{{ __('computer.quantity') }}</label>
                 <input
                   type="number"
                   id="quantity"
@@ -89,7 +89,7 @@
                 >
               </div>
               <div class="col">
-                <label for="type" class="form-label">{{ __('Type') }}</label>
+                <label for="type" class="form-label">{{ __('computer.type') }}</label>
                 <select
                   id="type"
                   name="type"
@@ -98,10 +98,10 @@
                 >
                   <option value="">{{ __('-- Select a type --') }}</option>
                   <option value="desktop" {{ old('type', $viewData['computer']->getType()) === 'desktop' ? 'selected' : '' }}>
-                    {{ __('Desktop') }}
+                    {{ __('computer.desktop') }}
                   </option>
                   <option value="laptop" {{ old('type', $viewData['computer']->getType()) === 'laptop' ? 'selected' : '' }}>
-                    {{ __('Laptop') }}
+                    {{ __('computer.laptop') }}
                   </option>
                 </select>
               </div>
@@ -109,7 +109,7 @@
 
             {{-- Description --}}
             <div class="mb-3">
-              <label for="description" class="form-label">{{ __('Description') }}</label>
+              <label for="description" class="form-label">{{ __('computer.description') }}</label>
               <textarea
                 id="description"
                 name="description"
@@ -121,7 +121,7 @@
 
             {{-- Price --}}
             <div class="mb-3">
-              <label for="price" class="form-label">{{ __('Price') }}</label>
+              <label for="price" class="form-label">{{ __('computer.price') }}</label>
               <input
                 type="number"
                 id="price"
@@ -137,7 +137,7 @@
             {{-- Current Image (non-editable) --}}
             @if($viewData['computer']->imagen_path)
               <div class="mb-4">
-                <label class="form-label">{{ __('Current Image') }}</label>
+                <label class="form-label">{{ __('computer.image') }}</label>
                 <div>
                   <img
                     src="{{ asset('storage/' . $viewData['computer']->imagen_path) }}"
@@ -152,7 +152,7 @@
             {{-- Submit --}}
             <div class="d-flex justify-content-end">
               <button type="submit" class="btn btn-success">
-                {{ __('Update') }}
+                {{ __('computer.update') }}
               </button>
             </div>
           </form>
