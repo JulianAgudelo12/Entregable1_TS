@@ -12,10 +12,10 @@ class UserCreator
     public static function create(array $data): User
     {
         return User::create([
-            'name'       => $data['name'],
-            'email'      => $data['email'],
-            'cellphone'  => $data['cellphone'],
-            'password'   => Hash::make($data['password']),
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'cellphone' => $data['cellphone'],
+            'password' => Hash::make($data['password']),
         ]);
     }
 }

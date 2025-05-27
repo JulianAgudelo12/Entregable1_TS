@@ -15,7 +15,7 @@ class ComponentDTO
             'brand' => $component->getBrand(),
             'quantity' => $component->getQuantity(),
             'type' => $component->getType(),
-            'speed' => $component->getSpeed(), 
+            'speed' => $component->getSpeed(),
             'capacity' => $component->getCapacity(),
             'generation' => $component->getGeneration(),
             'cores' => $component->getCores(),

@@ -27,7 +27,6 @@ class User extends Authenticatable
 {
     use HasApiTokens, Notifiable;
 
-
     protected $fillable = [
         'name',
         'email',
@@ -59,9 +58,11 @@ class User extends Authenticatable
         return $this->attributes['name'];
     }
 
-    public function setName(string $name): void
+    public function setName(?string $name): void
     {
-        $this->attributes['name'] = $name;
+        if ($name !== null) {
+            $this->attributes['name'] = $name;
+        }
     }
 
     public function getEmail(): string
@@ -76,7 +77,7 @@ class User extends Authenticatable
 
     public function getCellphone(): string
     {
-        return $this->attributes['cellphone'];
+        return $this->attributes['cellphone'] ?? '';
     }
 
     public function setCellphone(string $cellphone): void
@@ -94,20 +95,13 @@ class User extends Authenticatable
         $this->attributes['is_admin'] = $isAdmin;
     }
 
-    public function getCreatedAt()
+    public function getCreatedAt(): string
     {
-        return $this->attributes['created_at'];
+        return $this->attributes['created_at'] ?? '';
     }
 
-    public function getUpdatedAt()
+    public function getUpdatedAt(): string
     {
-        return $this->attributes['updated_at'];
+        return $this->attributes['updated_at'] ?? '';
     }
-
-    /*
-    public function order(): \Illuminate\Database\Eloquent\Relations\HasOne
-    {
-        return $this->hasOne(Order::class);
-    }
-    */
 }
