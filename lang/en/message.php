@@ -8,5 +8,6 @@ return [
     'computers' => 'See Computers',
     'components' => 'See Components',
     'explore' => 'Start exploring',
+    'recommend' => 'AI Recommendation',
 
 ];
