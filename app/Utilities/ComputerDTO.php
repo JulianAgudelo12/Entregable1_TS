@@ -4,22 +4,20 @@
 
 namespace App\Utilities;
 
-use App\Models\Computer;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-
-
-class ComputerHelper
+class ComputerDTO
 {
-    public static function fillComputerData(Computer $computer, Request $request): void
+    public static function getApiAttributes($computer): array
     {
-        $computer->setReference($request->input('reference'));
-        $computer->setName($request->input('name'));
-        $computer->setBrand($request->input('brand'));
-        $computer->setQuantity($request->input('quantity'));
-        $computer->setType($request->input('type'));
-        $computer->setDescription($request->input('description'));
-        $computer->setPrice($request->input('price'));
+        return [
+            'id' => $computer->getId(),
+            'reference' => $computer->getReference(),
+            'name' => $computer->getName(),
+            'brand' => $computer->getBrand(),
+            'quantity' => $computer->getQuantity(),
+            'type' => $computer->getType(),
+            'description' => $computer->getDescription(),
+            'price' => $computer->getPrice(),
+        ];
     }
 
     public static function getAttributes($computer): array
