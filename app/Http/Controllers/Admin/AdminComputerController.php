@@ -76,7 +76,8 @@ class AdminComputerController extends Controller
         $computer = Computer::findOrFail($id);
 
         $viewData = [];
-        $viewData['title'] = 'Edit Computer';
+        $viewData['title'] = __('admin.computer.edit_title');
+        $viewData['subtitle'] = __('admin.computer.edit_subtitle');
         $viewData['computer'] = $computer;
 
         return view('admin.computer.edit')->with('viewData', $viewData);
@@ -84,20 +85,10 @@ class AdminComputerController extends Controller
 
     public function update(Request $request, string $id): RedirectResponse
     {
-        ComputerValidator::validate($request);
+        ComputerValidator::validateUpdate($request);
 
         $computer = Computer::findOrFail($id);
         ComputerHelper::fillComputerData($computer, $request);
-
-        // Handle image update
-        if ($request->hasFile('image')) {
-            // Delete the old image if it exists
-            if ($computer->imagen_path) {
-                Storage::delete('public/'.$computer->imagen_path);
-            }
-            $imagePath = $request->file('image')->store('computers', 'public');
-            $computer->imagen_path = $imagePath;
-        }
 
         $computer->save();
 

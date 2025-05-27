@@ -1,62 +1,160 @@
+{{-- resources/views/admin/computer/edit.blade.php --}}
 @extends('layouts.admin')
-@section("title", $viewData["title"])
+
+@section('title', __('Edit Computer'))
+@section('header-actions')
+  <a href="{{ route('admin.computer.index') }}" class="btn btn-secondary">
+    {{ __('Back to list') }}
+  </a>
+@endsection
+
 @section('content')
-@if($errors->any())
-  <ul id="errors" class="alert alert-danger list-unstyled">
-    @foreach($errors->all() as $error)
-    <li>{{ $error }}</li>
-    @endforeach
-  </ul>
-@endif
-<div class="container">
+<div class="container py-4">
+  {{-- Errores de validación --}}
+  @if($errors->any())
+    <div class="alert alert-danger">
+      <ul class="mb-0 list-unstyled">
+        @foreach($errors->all() as $error)
+          <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+    </div>
+  @endif
+
   <div class="row justify-content-center">
     <div class="col-md-8">
-      <div class="card">
-        <div class="card-header">Edit Computer</div>
+      <div class="card shadow-sm">
+        <div class="card-header">
+          <h4 class="mb-0">{{ __('Edit Computer') }}</h4>
+        </div>
         <div class="card-body">
-          <form method="POST" action="{{ route('admin.computer.update', ['id' => $viewData['computer']->getId()]) }}" enctype="multipart/form-data">
+          <form
+            method="POST"
+            action="{{ route('admin.computer.update', $viewData['computer']->getId()) }}"
+          >
             @csrf
             @method('PUT')
-            <div class="form-group">
-              <label for="reference">Reference</label>
-              <input type="text" class="form-control" id="reference" name="reference" value="{{ old('reference', $viewData['computer']->getReference()) }}" required>
+
+            {{-- Reference --}}
+            <div class="mb-3">
+              <label for="reference" class="form-label">{{ __('Reference') }}</label>
+              <input
+                type="text"
+                id="reference"
+                name="reference"
+                class="form-control"
+                value="{{ old('reference', $viewData['computer']->getReference()) }}"
+                required
+              >
             </div>
-            <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $viewData['computer']->getName()) }}" required>
+
+            {{-- Name --}}
+            <div class="mb-3">
+              <label for="name" class="form-label">{{ __('Name') }}</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="form-control"
+                value="{{ old('name', $viewData['computer']->getName()) }}"
+                required
+              >
             </div>
-            <div class="form-group">
-              <label for="brand">Brand</label>
-              <input type="text" class="form-control" id="brand" name="brand" value="{{ old('brand', $viewData['computer']->getBrand()) }}" required>
+
+            {{-- Brand --}}
+            <div class="mb-3">
+              <label for="brand" class="form-label">{{ __('Brand') }}</label>
+              <input
+                type="text"
+                id="brand"
+                name="brand"
+                class="form-control"
+                value="{{ old('brand', $viewData['computer']->getBrand()) }}"
+                required
+              >
             </div>
-            <div class="form-group">
-              <label for="quantity">Quantity</label>
-              <input type="text" class="form-control" id="quantity" name="quantity" value="{{ old('quantity', $viewData['computer']->getQuantity()) }}" required>
+
+            {{-- Quantity & Type --}}
+            <div class="row g-2 mb-3">
+              <div class="col">
+                <label for="quantity" class="form-label">{{ __('Quantity') }}</label>
+                <input
+                  type="number"
+                  id="quantity"
+                  name="quantity"
+                  class="form-control"
+                  value="{{ old('quantity', $viewData['computer']->getQuantity()) }}"
+                  min="0"
+                  required
+                >
+              </div>
+              <div class="col">
+                <label for="type" class="form-label">{{ __('Type') }}</label>
+                <select
+                  id="type"
+                  name="type"
+                  class="form-select"
+                  required
+                >
+                  <option value="">{{ __('-- Select a type --') }}</option>
+                  <option value="desktop" {{ old('type', $viewData['computer']->getType()) === 'desktop' ? 'selected' : '' }}>
+                    {{ __('Desktop') }}
+                  </option>
+                  <option value="laptop" {{ old('type', $viewData['computer']->getType()) === 'laptop' ? 'selected' : '' }}>
+                    {{ __('Laptop') }}
+                  </option>
+                </select>
+              </div>
             </div>
-            <div class="form-group">
-              <label for="type">Type</label>
-              <select class="form-control" id="type" name="type">
-                <option value="" disabled>-- Select a type --</option>
-                <option value="desktop" {{ old('type', $viewData['computer']->getType()) == 'desktop' ? 'selected' : '' }}>Desktop</option>
-                <option value="laptop" {{ old('type', $viewData['computer']->getType()) == 'laptop' ? 'selected' : '' }}>Laptop</option>
-              </select>
+
+            {{-- Description --}}
+            <div class="mb-3">
+              <label for="description" class="form-label">{{ __('Description') }}</label>
+              <textarea
+                id="description"
+                name="description"
+                class="form-control"
+                rows="3"
+                required
+              >{{ old('description', $viewData['computer']->getDescription()) }}</textarea>
             </div>
-            <div class="form-group">
-              <label for="description">Description</label>
-              <input type="text" class="form-control" id="description" name="description" value="{{ old('description', $viewData['computer']->getDescription()) }}" required>
+
+            {{-- Price --}}
+            <div class="mb-3">
+              <label for="price" class="form-label">{{ __('Price') }}</label>
+              <input
+                type="number"
+                id="price"
+                name="price"
+                class="form-control"
+                value="{{ old('price', $viewData['computer']->getPrice()) }}"
+                step="0.01"
+                min="0"
+                required
+              >
             </div>
-            <div class="form-group">
-              <label for="price">Price</label>
-              <input type="text" class="form-control" id="price" name="price" value="{{ old('price', $viewData['computer']->getPrice()) }}" required>
+
+            {{-- Current Image (non-editable) --}}
+            @if($viewData['computer']->imagen_path)
+              <div class="mb-4">
+                <label class="form-label">{{ __('Current Image') }}</label>
+                <div>
+                  <img
+                    src="{{ asset('storage/' . $viewData['computer']->imagen_path) }}"
+                    alt="{{ $viewData['computer']->getName() }}"
+                    class="img-fluid rounded"
+                    style="max-height: 150px; object-fit: cover;"
+                  >
+                </div>
+              </div>
+            @endif
+
+            {{-- Submit --}}
+            <div class="d-flex justify-content-end">
+              <button type="submit" class="btn btn-success">
+                {{ __('Update') }}
+              </button>
             </div>
-            <div class="form-group">
-              <label for="image">Computer Image</label>
-              <input type="file" class="form-control-file" id="image" name="image">
-              @if($viewData['computer']->imagen_path)
-                <img src="{{ asset('storage/' . $viewData['computer']->imagen_path) }}" alt="{{ $viewData['computer']->getName() }}" style="max-width: 100px; margin-top: 5px;">
-              @endif
-            </div>
-            <button type="submit" class="btn btn-success">Update</button>
           </form>
         </div>
       </div>

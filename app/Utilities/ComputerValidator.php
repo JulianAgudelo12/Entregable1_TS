@@ -21,4 +21,17 @@ class ComputerValidator
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
     }
+
+    public static function validateUpdate(Request $request): void
+    {
+        $request->validate([
+            'reference' => 'required',
+            'name' => 'required',
+            'brand' => 'required',
+            'quantity' => 'required|numeric|gte:0',
+            'type' => 'required|in:desktop,laptop',
+            'description' => 'required',
+            'price' => 'required|numeric|gt:0',
+        ]);
+    }
 }
