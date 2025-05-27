@@ -56,7 +56,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ route('admin.pc_component.index') }}">
-              {{ __('layout.pc_components') }}
+              {{ __('layout.components') }}
             </a>
           </li>
           <li class="nav-item">

@@ -53,7 +53,7 @@
     <div class="col-md-3">
       <div class="card shadow-sm border-0 h-100">
         <div class="card-body text-center p-2">
-          <h5 class="card-title">{{ __('admin.dashboard.pc_components') }}</h5>
+          <h5 class="card-title">{{ __('layout.components') }}</h5>
           <p class="display-4 fw-bold mb-2">
             {{ $viewData['totalPC_Components'] ?? 0 }}
           </p>

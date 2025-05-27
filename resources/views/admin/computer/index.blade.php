@@ -36,7 +36,7 @@
           name="name"
           value="{{ request('name') }}"
           class="form-control"
-          placeholder="{{ __('Search by name') }}"
+          placeholder="{{ __('computer.search_byname') }}"
         >
       </div>
       <div class="col-md-3">
@@ -45,7 +45,7 @@
           name="brand"
           value="{{ request('brand') }}"
           class="form-control"
-          placeholder="{{ __('Brand') }}"
+          placeholder="{{ __('computer.search_bybrand')  }}"
         >
       </div>
       <div class="col-md-2">
@@ -54,7 +54,7 @@
           name="min_price"
           value="{{ request('min_price') }}"
           class="form-control"
-          placeholder="{{ __('Min price') }}"
+          placeholder="{{ __('computer.minprice')  }}"
           step="0.01"
         >
       </div>
@@ -64,13 +64,13 @@
           name="max_price"
           value="{{ request('max_price') }}"
           class="form-control"
-          placeholder="{{ __('Max price') }}"
+          placeholder="{{ __('computer.maxprice')  }}"
           step="0.01"
         >
       </div>
       <div class="col-md-2">
         <button type="submit" class="btn btn-primary w-100">
-          {{ __('Filter') }}
+          {{ __('computer.filter') }}
         </button>
       </div>
     </div>
@@ -78,7 +78,7 @@
 
   {{-- Crear --}}
   <a href="{{ route('admin.computer.create') }}" class="btn btn-primary mb-3">
-    {{ __('Create Computer') }}
+    {{ __('computer.create') }}
   </a>
 
   {{-- Tabla --}}
@@ -86,13 +86,13 @@
     <table class="table table-striped table-bordered mb-0">
       <thead class="table-dark">
         <tr>
-          <th>{{ __('Reference') }}</th>
-          <th>{{ __('Name') }}</th>
-          <th>{{ __('Brand') }}</th>
-          <th>{{ __('Quantity') }}</th>
-          <th>{{ __('Type') }}</th>
-          <th>{{ __('Price') }}</th>
-          <th>{{ __('Actions') }}</th>
+          <th>{{ __('computer.reference') }}</th>
+          <th>{{ __('computer.name') }}</th>
+          <th>{{ __('computer.brand') }}</th>
+          <th>{{ __('computer.quantity') }}</th>
+          <th>{{ __('computer.type') }}</th>
+          <th>{{ __('computer.price') }}</th>
+          <th>{{ __('computer.actions') }}</th>
         </tr>
       </thead>
       <tbody>
@@ -109,24 +109,24 @@
                 href="{{ route('admin.computer.show', $computer->getId()) }}"
                 class="btn btn-info btn-sm"
               >
-                {{ __('View') }}
+                {{ __('computer.view') }}
               </a>
               <a
                 href="{{ route('admin.computer.edit', $computer->getId()) }}"
                 class="btn btn-warning btn-sm"
               >
-                {{ __('Edit') }}
+                {{ __('computer.edit') }}
               </a>
               <form
                 action="{{ route('admin.computer.destroy', $computer->getId()) }}"
                 method="POST"
                 class="m-0 p-0"
-                onsubmit="return confirm('{{ __('Are you sure you want to delete this computer?') }}')"
+                onsubmit="return confirm('{{ __('computer.confirm_deletion') }}')"
               >
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger btn-sm">
-                  {{ __('Delete') }}
+                  {{ __('computer.delete') }}
                 </button>
               </form>
             </td>
