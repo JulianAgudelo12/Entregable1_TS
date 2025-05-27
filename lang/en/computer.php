@@ -15,6 +15,7 @@ return [
     'image' => 'Image',
     'no_image' => 'No image available',
     'type' => 'Type',
+    'description' => 'Description',
     'price' => 'Price',
 
     // Titles & Subtitles
@@ -24,6 +25,7 @@ return [
     'subtitle_create' => 'Add a new computer to the store',
     'subtitle_list' => 'List of computers',
     'detail_title' => 'Computer Details',
+    'compare_title' => 'Compare Computers',
 
     // Actions
     'create' => 'Create',
@@ -33,11 +35,16 @@ return [
     'delete' => 'Delete',
     'home' => 'Home',
     'back_to_list' => 'Back to list',
+    'compare' => 'Compare',
+    'compare_selected' => 'Compare Selected',
 
     // Success Messages
     'created' => 'Component created successfully!',
     'updated' => 'Component updated successfully!',
     'deleted' => 'Component deleted successfully!',
+
+    // Error Messages
+    'select_al_two' => 'Select at least two computers.',
 
     'add_to_order' => 'Add to Order',
     'back' => 'Back to list',
