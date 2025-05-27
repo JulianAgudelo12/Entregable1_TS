@@ -37,8 +37,7 @@ return [
 
     'deepseek' => [
         'base_uri' => env('DEEPSEEK_BASE_URI', 'https://api.deepseek.com'),
-        'key'      => env('DEEPSEEK_API_KEY'),
+        'key' => env('DEEPSEEK_API_KEY'),
     ],
-
 
 ];

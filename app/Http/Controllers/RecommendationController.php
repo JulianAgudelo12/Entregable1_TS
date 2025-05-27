@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Computer;
 use App\Services\DeepseekService;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 class RecommendationController extends Controller
@@ -29,23 +29,23 @@ class RecommendationController extends Controller
 
         $computers = Computer::all(['id', 'name', 'description']);
 
-        $list = $computers->map(function($pc) {
+        $list = $computers->map(function ($pc) {
             return "{$pc->id}. {$pc->name}: {$pc->description}";
         })->implode("\n");
 
         $system = "Tienes esta lista de PCs numeradas con ID y descripción:\n{$list}";
-        $user   = "Según esto y la pregunta “{$question}”, dame solo el número de ID de la PC que mejor responde.";
+        $user = "Según esto y la pregunta “{$question}”, dame solo el número de ID de la PC que mejor responde.";
 
         Log::info('Deepseek system prompt', ['system' => $system]);
-        Log::info('Deepseek user prompt',   ['user'   => $user]);
+        Log::info('Deepseek user prompt', ['user' => $user]);
 
-        $resp    = $this->deepseek->evaluate($system, $user);
+        $resp = $this->deepseek->evaluate($system, $user);
         $content = $resp['choices'][0]['message']['content'] ?? '';
 
         if (! preg_match('/\b(\d+)\b/', $content, $m)) {
             return redirect()
                 ->route('recommend.show')
-                ->withErrors(['question' => 'No pude entender el ID devuelto: ' . trim($content)]);
+                ->withErrors(['question' => 'No pude entender el ID devuelto: '.trim($content)]);
         }
 
         $id = (int) $m[1];
