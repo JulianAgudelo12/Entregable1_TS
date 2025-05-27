@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Api\ComputerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,10 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+$ComputerApiControllerPath = 'App\Http\Controllers\Api\ComputerApiController';
 
-Route::apiResource('computers', ComputerController::class);
-
-Route::post('/computers/{id}/image', [ComputerController::class, 'uploadImage'])->name('computers.image.upload');
+Route::get('/computers', "$ComputerApiControllerPath@index")->name('api.computer.index');
+Route::get('/computers/{id}', "$ComputerApiControllerPath@show")->name('api.computer.show');
