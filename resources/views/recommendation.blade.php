@@ -10,18 +10,18 @@
     @csrf
         <div class="mb-3">
             <label for="question" class="form-label">
-                ¿Para qué fines desea utilizar el computador?
+                {{ __('recommendation.question') }}
             </label>
             <textarea id="question" name="question" class="form-control" rows="3" required>
                 {{ old('question') }}
             </textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Get Recommendation</button>
+        <button type="submit" class="btn btn-primary">{{ __('recommendation.send') }}</button>
     </form>
 
     @isset($answer)
     <div class="mt-4">
-        <h4>Answer</h4>
+        <h4>{{ __('recommendation.answer') }}</h4>
         <p>{{ $answer }}</p>
     </div>
     @endisset
