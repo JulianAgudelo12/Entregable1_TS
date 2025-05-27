@@ -1,22 +1,31 @@
 name: Docker Image CI
-on:
- push:
- branches: [ master ]
- pull_request:
- branches: [ master ]
-jobs:
- build:
- runs-on: ubuntu-latest
- steps:
- - uses: actions/checkout@v2
- - name: docker login
- env:
- DOCKER_USER: ${{secrets.DOCKERHUB_USER}}
- DOCKER_PASS: ${{secrets.DOCKERHUB_PASS}}
- run: |
- docker login -u $DOCKER_USER -p $DOCKER_PASS
- - name: Build the Docker image
- run: docker build . --file Dockerfile --tag sadriicaa/assemblai:latest
 
- - name: Docker Push
- run: docker push sadriicaa/assemblai
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USER }}
+          password: ${{ secrets.DOCKERHUB_PASS }}
+
+      - name: Build Docker image
+        run: |
+          docker build -t sadriicaa/assemblai:latest .
+
+      - name: Push Docker image
+        run: |
+          docker push sadriicaa/assemblai:latest
