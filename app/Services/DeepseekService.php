@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Log;
 class DeepseekService
 {
     protected Client $client;
+
     protected string $key;
 
     public function __construct()
@@ -15,9 +16,9 @@ class DeepseekService
         $this->key = config('services.deepseek.key');
         $this->client = new Client([
             'base_uri' => config('services.deepseek.base_uri'),
-            'headers'  => [
+            'headers' => [
                 'Authorization' => 'Bearer '.$this->key,
-                'Content-Type'  => 'application/json',
+                'Content-Type' => 'application/json',
             ],
         ]);
     }
@@ -25,12 +26,12 @@ class DeepseekService
     public function evaluate(?string $description, ?string $question): array
     {
         $payload = [
-            'model'    => 'deepseek-reasoner',
+            'model' => 'deepseek-reasoner',
             'messages' => [
                 ['role' => 'system', 'content' => "Usa sólo esta descripción:\n".($description ?? '')],
                 ['role' => 'user',   'content' => $question ?? ''],
             ],
-            'stream'   => false,
+            'stream' => false,
         ];
 
         Log::debug('Deepseek payload', $payload);
