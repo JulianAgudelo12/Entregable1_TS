@@ -1,5 +1,7 @@
 <?php
 
+/* Developed by Valeria Corrales Hoyos */
+
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -56,9 +58,11 @@ class User extends Authenticatable
         return $this->attributes['name'];
     }
 
-    public function setName(string $name): void
+    public function setName(?string $name): void
     {
-        $this->attributes['name'] = $name;
+        if ($name !== null) {
+            $this->attributes['name'] = $name;
+        }
     }
 
     public function getEmail(): string
