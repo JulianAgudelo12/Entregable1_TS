@@ -16,6 +16,7 @@ class ComputerDTO
             'quantity' => $computer->getQuantity(),
             'type' => $computer->getType(),
             'description' => $computer->getDescription(),
+            'image' => $computer->getImage(),
             'price' => $computer->getPrice(),
         ];
     }

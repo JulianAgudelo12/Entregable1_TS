@@ -5,7 +5,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Computer;
-use App\Utilities\ComputerHelper;
+use App\Utilities\ComputerDTO;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -34,7 +34,7 @@ class ComputerController extends Controller
         $viewData['subtitle'] = __('computer.subtitle_show');
         $viewData['image'] = $computer->getImage();
         $viewData['name'] = $computer->getName();
-        $viewData['attributes'] = ComputerHelper::getAttributes($computer);
+        $viewData['attributes'] = ComputerDTO::getAttributes($computer);
 
         return view('computer.show')->with('viewData', $viewData);
     }
