@@ -17,6 +17,9 @@ return [
     'type' => 'Type',
     'description' => 'Description',
     'price' => 'Price',
+    'select_type' => 'Select Type',
+    'desktop' => 'Desktop',
+    'laptop' => 'Laptop',
 
     // Titles & Subtitles
     'create_title' => 'Create New Computer',
@@ -32,6 +35,7 @@ return [
     'create' => 'Create New',
     'save' => 'Save',
     'edit' => 'Edit',
+    'update' => 'Update',
     'view' => 'View',
     'delete' => 'Delete',
     'filter' => 'Filter',
@@ -42,9 +46,9 @@ return [
     'compare_selected' => 'Compare Selected',
 
     // Success Messages
-    'created' => 'Component created successfully!',
-    'updated' => 'Component updated successfully!',
-    'deleted' => 'Component deleted successfully!',
+    'created' => 'Computer created successfully!',
+    'updated' => 'Computer updated successfully!',
+    'deleted' => 'Computer deleted successfully!',
 
     // Error Messages
     'select_al_two' => 'Select at least two computers.',

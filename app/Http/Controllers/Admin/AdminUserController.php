@@ -17,8 +17,8 @@ class AdminUserController extends Controller
     public function index(): View
     {
         $viewData = [];
-        $viewData['title'] = __('admin.user.index_title');
-        $viewData['subtitle'] = __('admin.user.index_subtitle');
+        $viewData['title'] = __('user.admin_panel');
+        $viewData['subtitle'] = __('user.admin_panel');
 
         $viewData['users'] = User::all();
         $viewData['totalUsers'] = User::all()->count();
@@ -30,7 +30,7 @@ class AdminUserController extends Controller
     {
         User::destroy($id);
 
-        return redirect()->route('admin.user.index')->with('success', 'User deleted successfully!');
+        return redirect()->route('admin.user.index')->with('success', __('user.deleted'));
     }
 
     public function edit(string $id): View
@@ -38,7 +38,7 @@ class AdminUserController extends Controller
         $user = User::findOrFail($id);
 
         $viewData = [];
-        $viewData['title'] = 'Edit User';
+        $viewData['title'] = __('user.update_title');
         $viewData['user'] = $user;
 
         return view('admin.user.edit')->with('viewData', $viewData);
@@ -52,6 +52,6 @@ class AdminUserController extends Controller
         UserHelper::fillUserData($user, $request);
         $user->save();
 
-        return redirect()->route('admin.user.index')->with('success', 'User Updated successfully!');
+        return redirect()->route('admin.user.index')->with('success', __('user.updated'));
     }
 }

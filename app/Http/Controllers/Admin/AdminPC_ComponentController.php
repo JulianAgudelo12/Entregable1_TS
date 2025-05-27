@@ -17,8 +17,8 @@ class AdminPC_ComponentController extends Controller
     public function index(): View
     {
         $viewData = [];
-        $viewData['title'] = __('pc_component.title_index');
-        $viewData['subtitle'] = __('pc_component.subtitle_index');
+        $viewData['title'] = __('pc_component.title');
+        $viewData['subtitle'] = __('pc_component.subtitle');
         $viewData['components'] = PC_Component::all();
 
         return view('admin.pc_component.index')->with('viewData', $viewData);
@@ -29,7 +29,7 @@ class AdminPC_ComponentController extends Controller
         $viewData = [];
         $component = PC_Component::findOrFail($id);
         $viewData['title'] = $component->getName();
-        $viewData['subtitle'] = $component->getName().' - '.__('component.show_subtitle');
+        $viewData['subtitle'] = $component->getName().' - '.__('component.detail_title');
         $viewData['component'] = $component;
 
         return view('admin.pc_component.show')->with('viewData', $viewData);
@@ -39,7 +39,7 @@ class AdminPC_ComponentController extends Controller
     {
         $viewData = [];
         $viewData['title'] = __('component.title');
-        $viewData['subtitle'] = __('component.subtitle');
+        $viewData['subtitle'] = __('component.create_title');
 
         return view('admin.pc_component.create')->with('viewData', $viewData);
     }
@@ -59,7 +59,7 @@ class AdminPC_ComponentController extends Controller
         $component->setImage($path);
         $component->save();
 
-        return redirect()->route('admin.pc_component.index')->with('success', __('pc_component.success'));
+        return redirect()->route('admin.pc_component.index')->with('success', __('pc_component.created'));
     }
 
     public function edit(string $id): View
@@ -68,7 +68,7 @@ class AdminPC_ComponentController extends Controller
 
         $viewData = [];
         $viewData['title'] = __('pc_component.title');
-        $viewData['subtitle'] = __('component.subtitle');
+        $viewData['subtitle'] = __('component.update_title');
         $viewData['component'] = $component;
 
         return view('admin.pc_component.edit')->with('viewData', $viewData);
@@ -93,7 +93,7 @@ class AdminPC_ComponentController extends Controller
 
         $component->save();
 
-        return redirect()->route('admin.pc_component.index')->with('success', __('pc_component.success'));
+        return redirect()->route('admin.pc_component.index')->with('success', __('pc_component.updated'));
     }
 
     public function destroy(string $id): RedirectResponse

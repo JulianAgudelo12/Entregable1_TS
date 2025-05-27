@@ -34,7 +34,7 @@ class AdminComputerController extends Controller
         $viewData = [];
         $computer = Computer::findOrFail($id);
         $viewData['title'] = $computer->getName();
-        $viewData['subtitle'] = $computer->getName().' - General information';
+        $viewData['subtitle'] = $computer->getName();
         $viewData['computer'] = $computer;
 
         return view('admin.computer.show')->with('viewData', $viewData);
@@ -43,8 +43,8 @@ class AdminComputerController extends Controller
     public function create(): View
     {
         $viewData = [];
-        $viewData['title'] = __('admin.computer.create_title');
-        $viewData['subtitle'] = __('admin.computer.create_subtitle');
+        $viewData['title'] = __('computer.create_title');
+        $viewData['subtitle'] = __('computer.create_title');
 
         return view('admin.computer.create')->with('viewData', $viewData);
     }
@@ -67,7 +67,7 @@ class AdminComputerController extends Controller
 
         $computer->save();
 
-        return redirect()->route('admin.computer.index')->with('success', __('admin.computer.created'));
+        return redirect()->route('admin.computer.index')->with('success', __('computer.created'));
     }
 
     public function edit(string $id): View
@@ -75,8 +75,8 @@ class AdminComputerController extends Controller
         $computer = Computer::findOrFail($id);
 
         $viewData = [];
-        $viewData['title'] = __('admin.computer.edit_title');
-        $viewData['subtitle'] = __('admin.computer.edit_subtitle');
+        $viewData['title'] = __('computer.update_title');
+        $viewData['subtitle'] = __('computer.update_title');
         $viewData['computer'] = $computer;
 
         return view('admin.computer.edit')->with('viewData', $viewData);
@@ -91,7 +91,7 @@ class AdminComputerController extends Controller
 
         $computer->save();
 
-        return redirect()->route('admin.computer.index')->with('success', 'Computer Updated successfully!');
+        return redirect()->route('admin.computer.index')->with('success', __('computer_updated'));
     }
 
     public function destroy(string $id): RedirectResponse
@@ -104,6 +104,6 @@ class AdminComputerController extends Controller
 
         Computer::destroy($id);
 
-        return redirect()->route('admin.computer.index')->with('success', 'Computer deleted successfully!');
+        return redirect()->route('admin.computer.index')->with('success', __('computer_deleted'));
     }
 }

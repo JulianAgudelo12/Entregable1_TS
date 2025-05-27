@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-
 /**
  * COMPUTER ATTRIBUTES
  *
@@ -20,7 +19,6 @@ use Illuminate\Database\Eloquent\Model;
  * $this->ATTRIBUTES['created_at']   - timestamp  - Creation date and time
  * $this->ATTRIBUTES['updated_at']   - timestamp  - Last update date and time
  */
-
 class Computer extends Model
 {
     protected $fillable = [

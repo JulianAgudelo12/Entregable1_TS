@@ -232,7 +232,7 @@
                 href="{{ route('admin.pc_component.index') }}"
                 class="btn btn-secondary"
               >
-                {{ __('pc_component.back_to_list') }}
+                {{ __('pc_component.back') }}
               </a>
             </div>
           </form>

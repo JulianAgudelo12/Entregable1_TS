@@ -1,8 +1,8 @@
 {{-- resources/views/admin/pc_component/edit.blade.php --}}
 @extends('layouts.admin')
 
-@section('title', __('pc_component.edit_title'))
-@section('subtitle', __('pc_component.edit_subtitle'))
+@section('title', __('pc_component.update_title'))
+@section('subtitle', __('pc_component.update_title'))
 
 @section('content')
 <div class="container py-4">
@@ -177,7 +177,7 @@
 
             {{-- Current Image (no modificar) --}}
             <div class="mb-4">
-              <label class="form-label">{{ __('pc_component.current_image') }}</label>
+              <label class="form-label">{{ __('pc_component.image') }}</label>
               <div>
                 @if($viewData['component']->getImage())
                   <img
@@ -201,7 +201,7 @@
                 href="{{ route('admin.pc_component.index') }}"
                 class="btn btn-secondary"
               >
-                {{ __('pc_component.back_to_list') }}
+                {{ __('pc_component.back') }}
               </a>
             </div>
           </form>

@@ -7,10 +7,10 @@
   <div class="row text-center mb-4">
     <div class="col-12">
       <h2 class="fw-bold">
-        {{ __('admin.dashboard.welcome') }}
+        {{ __('dashboard.welcome') }}
       </h2>
       <p class="text-muted">
-        {{ __('admin.dashboard.manage') }}
+        {{ __('dashboard.manage') }}
       </p>
     </div>
   </div>
@@ -21,13 +21,13 @@
     <div class="col-md-3">
       <div class="card shadow-sm border-0 h-100">
         <div class="card-body text-center p-2">
-          <h5 class="card-title">{{ __('admin.dashboard.users') }}</h5>
+          <h5 class="card-title">{{ __('user.title') }}</h5>
           <p class="display-4 fw-bold mb-2">
             {{ $viewData['totalUsers'] ?? 0 }}
           </p>
           <a href="{{ route('admin.user.index') }}" class="btn btn-primary mt-2">
             <i class="bi bi-people"></i>
-            {{ __('admin.dashboard.manage_users') }}
+            {{ __('user.admin_panel') }}
           </a>
         </div>
       </div>
@@ -37,13 +37,13 @@
     <div class="col-md-3">
       <div class="card shadow-sm border-0 h-100">
         <div class="card-body text-center p-2">
-          <h5 class="card-title">{{ __('admin.dashboard.computers') }}</h5>
+          <h5 class="card-title">{{ __('computers.title') }}</h5>
           <p class="display-4 fw-bold mb-2">
             {{ $viewData['totalComputers'] ?? 0 }}
           </p>
           <a href="{{ route('admin.computer.index') }}" class="btn btn-secondary mt-2">
             <i class="bi bi-pc"></i>
-            {{ __('admin.dashboard.manage_computers') }}
+            {{ __('computer.admin_panel') }}
           </a>
         </div>
       </div>
@@ -59,26 +59,11 @@
           </p>
           <a href="{{ route('admin.pc_component.index') }}" class="btn btn-success mt-2">
             <i class="bi bi-motherboard"></i>
-            {{ __('admin.dashboard.manage_pc_components') }}
+            {{ __('dashboard.manage_components') }}
           </a>
         </div>
       </div>
     </div>
-
-    {{-- Órdenes --}}
-    <div class="col-md-3">
-      <div class="card shadow-sm border-0 h-100">
-        <div class="card-body text-center p-2">
-          <h5 class="card-title">{{ __('admin.dashboard.orders') }}</h5>
-          <p class="display-4 fw-bold mb-2">
-            {{ $viewData['totalOrders'] ?? 0 }}
-          </p>
-          {{-- <a href="{{ route('admin.order.index') }}" class="btn btn-warning mt-2"> --}}
-            <i class="bi bi-cart-check"></i>
-            {{ __('admin.dashboard.manage_orders') }}
-          </a>
-        </div>
-      </div>
     </div>
   </div>
 </div>

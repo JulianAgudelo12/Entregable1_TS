@@ -8,7 +8,7 @@
 <div class="container py-4">
   {{-- Encabezado con total (sin botón de creación) --}}
   <h3 class="mb-4">
-    {{ __('Users') }} ({{ $viewData['totalUsers'] }})
+    {{ __('user.title') }} ({{ $viewData['totalUsers'] }})
   </h3>
 
   {{-- Tabla responsive reutilizando estilos de Computer --}}
@@ -16,14 +16,14 @@
     <table class="table table-striped table-bordered mb-0">
       <thead class="table-dark">
         <tr>
-          <th>{{ __('ID') }}</th>
-          <th>{{ __('Name') }}</th>
-          <th>{{ __('Email') }}</th>
-          <th>{{ __('Cellphone') }}</th>
-          <th>{{ __('Created At') }}</th>
-          <th>{{ __('Updated At') }}</th>
-          <th>{{ __('Role') }}</th>
-          <th>{{ __('Actions') }}</th>
+          <th>{{ __('user.id') }}</th>
+          <th>{{ __('user.name') }}</th>
+          <th>{{ __('user.email') }}</th>
+          <th>{{ __('user.phone') }}</th>
+          <th>{{ __('user.created_at') }}</th>
+          <th>{{ __('user.updated_at') }}</th>
+          <th>{{ __('user.role') }}</th>
+          <th>{{ __('user.actions') }}</th>
         </tr>
       </thead>
       <tbody>
@@ -37,26 +37,26 @@
             <td>{{ $user->getUpdatedAt() }}</td>
             <td>
               {{ $user->getIsAdmin()
-                  ? __('Admin')
-                  : __('Client') }}
+                  ? __('user.admin')
+                  : __('user.client') }}
             </td>
             <td class="d-flex gap-2">
               <a
                 href="{{ route('admin.user.edit', $user->getId()) }}"
                 class="btn btn-warning btn-sm"
               >
-                {{ __('Edit') }}
+                {{ __('user.edit') }}
               </a>
               <form
                 action="{{ route('admin.user.destroy', $user->getId()) }}"
                 method="POST"
                 class="m-0"
-                onsubmit="return confirm('{{ __('Are you sure you want to delete this user?') }}')"
+                onsubmit="return confirm('{{ __('user.confirm_deletion') }}')"
               >
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger btn-sm">
-                  {{ __('Delete') }}
+                  {{ __('user.delete') }}
                 </button>
               </form>
             </td>

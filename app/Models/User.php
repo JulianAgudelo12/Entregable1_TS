@@ -22,7 +22,6 @@ use Laravel\Sanctum\HasApiTokens;
  * $this->attributes['created_at']         - timestamp - contains the user creation date
  * $this->attributes['updated_at']         - timestamp - contains the user update date
  */
-
 class User extends Authenticatable
 {
     use HasApiTokens, Notifiable;
