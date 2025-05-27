@@ -19,7 +19,7 @@ class ComputerController extends Controller
         $viewData['subtitle'] = __('computer.subtitle');
         $viewData['computers'] = Computer::all();
 
-        //$viewData['computers'] = ComputerFilter::apply($request)->get();
+        // $viewData['computers'] = ComputerFilter::apply($request)->get();
 
         return view('computer.index')->with('viewData', $viewData);
     }
@@ -27,9 +27,9 @@ class ComputerController extends Controller
     public function show(string $id): View
     {
         $computer = Computer::findOrFail($id);
-        
+
         $viewData = [];
-        
+
         $viewData['title'] = __('computer.title_show');
         $viewData['subtitle'] = __('computer.subtitle_show');
         $viewData['image'] = $computer->getImage();

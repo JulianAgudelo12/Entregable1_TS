@@ -5,8 +5,6 @@
 namespace App\Utilities;
 
 use App\Models\Computer;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class ComputerDataBuilder
 {

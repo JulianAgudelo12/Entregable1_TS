@@ -1,7 +1,5 @@
 <?php
 
-/* Developed by Valeria Corrales Hoyos */
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -25,7 +23,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Computer extends Model
 {
-
     protected $fillable = [
         'reference',
         'name',
@@ -36,101 +33,99 @@ class Computer extends Model
         'price',
         'image',
     ];
-    
-// Getters and Setters
 
-public function getId(): int
-{
-  return $this->attributes['id'];
-}
+    public function getId(): int
+    {
+        return $this->attributes['id'];
+    }
 
-public function getReference(): string
-{
-  return $this->attributes['reference'];
-}
+    public function getReference(): string
+    {
+        return $this->attributes['reference'];
+    }
 
-public function setReference(string $reference): void
-{
-  $this->attributes['reference'] = $reference;
-}
+    public function setReference(string $reference): void
+    {
+        $this->attributes['reference'] = $reference;
+    }
 
-public function getName(): string
-{
-  return $this->attributes['name'];
-}
+    public function getName(): string
+    {
+        return $this->attributes['name'];
+    }
 
-public function setName(string $name): void
-{
-  $this->attributes['name'] = $name;
-}
+    public function setName(string $name): void
+    {
+        $this->attributes['name'] = $name;
+    }
 
-public function getBrand(): string
-{
-  return $this->attributes['brand'];
-}
+    public function getBrand(): string
+    {
+        return $this->attributes['brand'];
+    }
 
-public function setBrand(string $brand): void
-{
-  $this->attributes['brand'] = $brand;
-}
+    public function setBrand(string $brand): void
+    {
+        $this->attributes['brand'] = $brand;
+    }
 
-public function getQuantity(): int
-{
-  return $this->attributes['quantity'];
-}
+    public function getQuantity(): int
+    {
+        return $this->attributes['quantity'];
+    }
 
-public function setQuantity(int $quantity): void
-{
-  $this->attributes['quantity'] = $quantity;
-}
+    public function setQuantity(int $quantity): void
+    {
+        $this->attributes['quantity'] = $quantity;
+    }
 
-public function getType(): string
-{
-  return $this->attributes['type'];
-}
+    public function getType(): string
+    {
+        return $this->attributes['type'];
+    }
 
-public function setType(string $type): void
-{
-  $this->attributes['type'] = $type;
-}
+    public function setType(string $type): void
+    {
+        $this->attributes['type'] = $type;
+    }
 
-public function getDescription(): string
-{
-  return $this->attributes['description'];
-}
+    public function getDescription(): string
+    {
+        return $this->attributes['description'];
+    }
 
-public function setDescription(string $description): void
-{
-  $this->attributes['description'] = $description;
-}
+    public function setDescription(string $description): void
+    {
+        $this->attributes['description'] = $description;
+    }
 
-public function getPrice(): float
-{
-  return $this->attributes['price'];
-}
+    public function getPrice(): float
+    {
+        return $this->attributes['price'];
+    }
 
-public function setPrice(float $price): void
-{
-  $this->attributes['price'] = $price;
-}
+    public function setPrice(float $price): void
+    {
+        $this->attributes['price'] = $price;
+    }
 
-public function getImage(): string
-{
-  return $this->attributes['image'];
-}
+    public function getImage(): string
+    {
+        return $this->attributes['image'] ?? '';
+    }
 
-public function setImage(string $image): void
-{
-  $this->attributes['image'] = $image;
-}
+    public function setImage(string $image): void
+    {
+        $this->attributes['image'] = $image;
+    }
 
-public function getCreatedAt(): timestamp
-{
-  return $this->attributes['created_at'];
-}
+    public function getCreatedAt(): string
+    {
+        return $this->attributes['created_at'] ?? '';
+    }
 
-public function getUpdatedAt(): timestamp
-{
-  return $this->attributes['updated_at'];
-}
+    public function getUpdatedAt(): string
+    {
+        return $this->attributes['updated_at'] ?? '';
+    }
 }

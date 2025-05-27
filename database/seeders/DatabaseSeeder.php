@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,11 +13,25 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // Create a test user if not already present
+        $email = 'test@example.com';
+        if (!DB::table('users')->where('email', $email)->exists()) {
+            DB::table('users')->insert([
+                'name'              => 'Test User',
+                'email'             => $email,
+                'email_verified_at' => now(),
+                'password'          => Hash::make('password'),
+                'is_admin'          => 0,
+                'remember_token'    => null,
+                'created_at'        => now(),
+                'updated_at'        => now(),
+            ]);
+            $this->command->info("Created user: {$email}");
+        } else {
+            $this->command->info("User already exists: {$email}, skipping.");
+        }
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // Seed data from JSON
+        $this->call(JsonDataSeeder::class);
     }
 }

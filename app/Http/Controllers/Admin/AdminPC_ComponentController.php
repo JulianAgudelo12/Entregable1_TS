@@ -9,8 +9,8 @@ use App\Utilities\PC_ComponentValidator;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\View\View; 
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 
 class AdminPC_ComponentController extends Controller
 {
@@ -47,21 +47,20 @@ class AdminPC_ComponentController extends Controller
     public function store(Request $request): RedirectResponse
     {
         PC_ComponentValidator::validatePC_Component($request);
-        
+
         $component = new PC_Component;
         PC_ComponentHelper::fillPC_ComponentData($component, $request);
 
         $image = $request->file('image');
         $filename = Str::slug(pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME))
-                  . '-' . time() . '.' . $image->extension();
+                  .'-'.time().'.'.$image->extension();
         $path = $image->storeAs('components', $filename, 'public');
 
         $component->setImage($path);
         $component->save();
 
-        return redirect() ->route('admin.pc_component.index') ->with('success', __('pc_component.success'));
+        return redirect()->route('admin.pc_component.index')->with('success', __('pc_component.success'));
     }
-    
 
     public function edit(string $id): View
     {
@@ -110,5 +109,4 @@ class AdminPC_ComponentController extends Controller
 
         return redirect()->route('admin.pc_component.index')->with('success', __('pc_component.deleted'));
     }
-        
 }

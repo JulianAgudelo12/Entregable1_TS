@@ -21,21 +21,21 @@ class PC_ComponentHelper
         $pcComponent->setType($request->input('type'));
         $pcComponent->setCores($request->input('cores'));
         $pcComponent->setPrice($request->input('price'));
-        $pcComponent->setDescription($request->input('description'));   
+        $pcComponent->setDescription($request->input('description'));
     }
 
     public static function getAttributes($pcComponent): array
     {
         return [
-        __('pc_component.reference') => $pcComponent->getReference(),
-        __('pc_component.brand') => $pcComponent->getBrand(),
-        __('pc_component.quantity') => $pcComponent->getQuantity(),
-        __('pc_component.speed') => $pcComponent->getSpeed(),
-        __('pc_component.capacity') => $pcComponent->getCapacity(),
-        __('pc_component.generation') => $pcComponent->getGeneration(),
-        __('pc_component.type') => $pcComponent->getType(),
-        __('pc_component.cores') => $pcComponent->getCores(),
-        __('pc_component.price') => $pcComponent->getPrice(),
+            __('pc_component.reference') => $pcComponent->getReference(),
+            __('pc_component.brand') => $pcComponent->getBrand(),
+            __('pc_component.quantity') => $pcComponent->getQuantity(),
+            __('pc_component.speed') => $pcComponent->getSpeed(),
+            __('pc_component.capacity') => $pcComponent->getCapacity(),
+            __('pc_component.generation') => $pcComponent->getGeneration(),
+            __('pc_component.type') => $pcComponent->getType(),
+            __('pc_component.cores') => $pcComponent->getCores(),
+            __('pc_component.price') => $pcComponent->getPrice(),
         ];
     }
 }

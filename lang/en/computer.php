@@ -44,4 +44,3 @@ return [
     'no_image' => 'No image available',
 
 ];
-

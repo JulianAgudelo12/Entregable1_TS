@@ -13,7 +13,7 @@ class ComputerApiController extends Controller
     {
         $computers = Computer::all();
 
-        $result = $computers->map(fn($computer) => ComputerDTO::getApiAttributes($computer));
+        $result = $computers->map(fn ($computer) => ComputerDTO::getApiAttributes($computer));
 
         return response()->json($result, 200);
     }

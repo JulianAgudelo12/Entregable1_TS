@@ -7,6 +7,6 @@ return [
     'welcome_message' => 'Welcome to the application',
     'computers' => 'See Computers',
     'components' => 'See Components',
-    'explore' => 'Start exploring'
+    'explore' => 'Start exploring',
 
 ];

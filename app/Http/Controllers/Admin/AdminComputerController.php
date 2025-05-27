@@ -12,8 +12,8 @@ use App\Utilities\ComputerValidator;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\View\View;
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 
 class AdminComputerController extends Controller
 {
@@ -59,17 +59,16 @@ class AdminComputerController extends Controller
         // Image
         $image = $request->file('image');
         $filename = Str::slug(
-                pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME)
-            ) . '-' . time() . '.' . $image->extension();
+            pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME)
+        ).'-'.time().'.'.$image->extension();
 
         $path = $image->storeAs('images', $filename, 'public');
         $computer->setImage($path);
 
         $computer->save();
 
-        return redirect() ->route('admin.computer.index') ->with('success', __('admin.computer.created'));
+        return redirect()->route('admin.computer.index')->with('success', __('admin.computer.created'));
     }
-
 
     public function edit(string $id): View
     {

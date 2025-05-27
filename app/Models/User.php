@@ -1,7 +1,5 @@
 <?php
 
-/* Developed by Valeria Corrales Hoyos */
-
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -26,7 +24,6 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, Notifiable;
-
 
     protected $fillable = [
         'name',
@@ -76,7 +73,7 @@ class User extends Authenticatable
 
     public function getCellphone(): string
     {
-        return $this->attributes['cellphone'];
+        return $this->attributes['cellphone'] ?? '';
     }
 
     public function setCellphone(string $cellphone): void
@@ -94,20 +91,13 @@ class User extends Authenticatable
         $this->attributes['is_admin'] = $isAdmin;
     }
 
-    public function getCreatedAt()
+    public function getCreatedAt(): string
     {
-        return $this->attributes['created_at'];
+        return $this->attributes['created_at'] ?? '';
     }
 
-    public function getUpdatedAt()
+    public function getUpdatedAt(): string
     {
-        return $this->attributes['updated_at'];
+        return $this->attributes['updated_at'] ?? '';
     }
-
-    /*
-    public function order(): \Illuminate\Database\Eloquent\Relations\HasOne
-    {
-        return $this->hasOne(Order::class);
-    }
-    */
 }

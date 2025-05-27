@@ -5,8 +5,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\PC_Component;
 use App\Models\Computer;
+use App\Models\PC_Component;
 use App\Models\User;
 use Illuminate\View\View;
 

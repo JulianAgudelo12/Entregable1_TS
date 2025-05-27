@@ -66,7 +66,6 @@ Route::middleware('admin')->group(function () {
     Route::get('/admin/computers/{id}/edit', "$AdminComputerControllerPath@edit")->name('admin.computer.edit');
     Route::put('/admin/computers/{id}', "$AdminComputerControllerPath@update")->name('admin.computer.update');
 
-
     // PC_Component Routes
     Route::get('/admin/pc_components', "$AdminPC_ComponentControllerPath@index")->name('admin.pc_component.index');
     Route::get('/admin/pc_components/create', "$AdminPC_ComponentControllerPath@create")->name('admin.pc_component.create');
