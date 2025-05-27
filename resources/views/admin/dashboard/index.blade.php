@@ -53,13 +53,13 @@
     <div class="col-md-3">
       <div class="card shadow-sm border-0 h-100">
         <div class="card-body text-center p-2">
-          <h5 class="card-title">{{ __('admin.dashboard.components') }}</h5>
+          <h5 class="card-title">{{ __('admin.dashboard.pc_components') }}</h5>
           <p class="display-4 fw-bold mb-2">
             {{ $viewData['totalPC_Components'] ?? 0 }}
           </p>
-          <a href="{{ route('admin.component.index') }}" class="btn btn-success mt-2">
+          <a href="{{ route('admin.pc_component.index') }}" class="btn btn-success mt-2">
             <i class="bi bi-motherboard"></i>
-            {{ __('admin.dashboard.manage_components') }}
+            {{ __('admin.dashboard.manage_pc_components') }}
           </a>
         </div>
       </div>

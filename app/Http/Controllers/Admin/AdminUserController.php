@@ -17,8 +17,8 @@ class AdminUserController extends Controller
     public function index(): View
     {
         $viewData = [];
-        $viewData['title'] = 'Admin - Manage Users';
-        $viewData['subtitle'] = 'Manage Users';
+        $viewData['title'] = __('admin.user.index_title');
+        $viewData['subtitle'] = __('admin.user.index_subtitle');
 
         $viewData['users'] = User::all();
         $viewData['totalUsers'] = User::all()->count();

@@ -34,28 +34,29 @@
 
       <div class="collapse navbar-collapse" id="adminNav">
         <ul class="navbar-nav ms-auto align-items-center gap-2">
+          {{-- User Mode link styled like other nav-links --}}
           <li class="nav-item">
             <a
-              class="nav-link btn btn-outline-light me-2"
+              class="nav-link"
               href="{{ route('home.index') }}"
             >
-              <i class="bi bi-person"></i>
+              <i class="bi bi-person me-1"></i>
               {{ __('layout.user_mode') }}
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ route('admin.computer.index') }}">
-              {{ __('Computers') }}
+              {{ __('layout.computers') }}
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ route('admin.user.index') }}">
-              {{ __('Users') }}
+              {{ __('layout.users') }}
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('admin.component.index') }}">
-              {{ __('Components') }}
+            <a class="nav-link" href="{{ route('admin.pc_component.index') }}">
+              {{ __('layout.pc_components') }}
             </a>
           </li>
           <li class="nav-item">
@@ -66,7 +67,7 @@
                 class="nav-link text-danger"
                 onclick="document.getElementById('logout').submit();"
               >
-                {{ __('Logout') }}
+                {{ __('layout.logout') }}
               </a>
             </form>
           </li>
@@ -78,7 +79,7 @@
   {{-- Header / Subtitle --}}
   <header class="page-header py-4 bg-light text-center shadow-sm">
     <div class="container">
-      <h2 class="mb-0">@yield('subtitle', __('Manage Dashboard'))</h2>
+      <h2 class="mb-0">@yield('subtitle', __('layout.subtitle'))</h2>
     </div>
   </header>
 
@@ -90,7 +91,7 @@
   {{-- Footer --}}
   <footer class="bg-dark text-light text-center py-3 mt-auto">
     <div class="container">
-      <small>© {{ date('Y') }} Admin Panel</small>
+      <small>© {{ date('Y') }} {{ __('Admin Panel') }}</small>
     </div>
   </footer>
 

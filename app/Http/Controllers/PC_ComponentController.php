@@ -5,7 +5,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PC_Component;
-use App\Utilities\PCComponentHelper;
+use App\Utilities\PC_ComponentHelper;
 use Illuminate\View\View;
 
 class PC_ComponentController extends Controller
@@ -31,7 +31,7 @@ class PC_ComponentController extends Controller
         $viewData['subtitle'] = __('pc_component.subtitle_show');
         $viewData['image'] = $pc_component->getImage();
         $viewData['name'] = $pc_component->getName();
-        $viewData['attributes'] = PCComponentHelper::getAttributes($pc_component);
+        $viewData['attributes'] = PC_ComponentHelper::getAttributes($pc_component);
 
         return view('pc_component.show', $viewData)->with('viewData', $viewData);
     }

@@ -7,9 +7,9 @@ namespace App\Utilities;
 use App\Models\PC_Component;
 use Illuminate\Http\Request;
 
-class PCComponentHelper
+class PC_ComponentHelper
 {
-    public static function fillComponentData(PC_Component $pcComponent, Request $request): void
+    public static function fillPC_ComponentData(PC_Component $pcComponent, Request $request): void
     {
         $pcComponent->setReference($request->input('reference'));
         $pcComponent->setName($request->input('name'));
@@ -21,6 +21,7 @@ class PCComponentHelper
         $pcComponent->setType($request->input('type'));
         $pcComponent->setCores($request->input('cores'));
         $pcComponent->setPrice($request->input('price'));
+        $pcComponent->setDescription($request->input('description'));   
     }
 
     public static function getAttributes($pcComponent): array

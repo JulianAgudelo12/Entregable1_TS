@@ -116,7 +116,7 @@ class PC_Component extends Model
         return $this->attributes['capacity'];
     }
 
-    public function setCapacity(string $capacity): void
+    public function setCapacity(?string $capacity): void
     {
         $this->attributes['capacity'] = $capacity;
     }
@@ -126,7 +126,7 @@ class PC_Component extends Model
         return $this->attributes['generation'];
     }
 
-    public function setGeneration(string $generation): void
+    public function setGeneration(?string $generation): void
     {
         $this->attributes['generation'] = $generation;
     }
@@ -136,7 +136,7 @@ class PC_Component extends Model
         return $this->attributes['cores'];
     }
 
-    public function setCores(int $cores): void
+    public function setCores(?int $cores): void
     {
         $this->attributes['cores'] = $cores;
     }

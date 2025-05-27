@@ -1,21 +1,72 @@
+{{-- resources/views/admin/user/edit.blade.php --}}
 @extends('layouts.admin')
-@section("title", $viewData["title"])
+
+@section('title',    __('Edit User'))
+@section('header-actions')
+  <a href="{{ route('admin.user.index') }}" class="btn btn-secondary">
+    {{ __('Back to list') }}
+  </a>
+@endsection
+
 @section('content')
-<div class="container">
+<div class="container py-4">
+  {{-- Validation Errors --}}
+  @if($errors->any())
+    <div class="alert alert-danger">
+      <ul class="mb-0 list-unstyled">
+        @foreach($errors->all() as $error)
+          <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+    </div>
+  @endif
+
   <div class="row justify-content-center">
-    <div class="col-md-8">
-      <div class="card">
-        <div class="card-header">Edit User</div>
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-header">
+          <h4 class="mb-0">{{ __('Edit User') }}</h4>
+        </div>
         <div class="card-body">
-          <form method="POST" action="{{ route('admin.user.update', ['id' => $viewData['user']->getId()]) }}">
+          <form
+            method="POST"
+            action="{{ route('admin.user.update', ['id' => $viewData['user']->getId()]) }}"
+          >
             @csrf
             @method('PUT')
-            <input type="text" class="form-control mb-2" placeholder="Enter name" name="name" value="{{ old('name', $viewData['user']->getName()) }}" required/>
-            <div class="form-check mb-2">
-              <input type="checkbox" class="form-check-input" name="is_admin" id="is_admin" {{ old('is_admin', $viewData['user']->getIsAdmin()) ? 'checked' : '' }}>
-              <label class="form-check-label" for="is_admin">Admin</label>
+
+            {{-- Name (read-only) --}}
+            <div class="mb-3">
+              <label for="name" class="form-label">{{ __('Name') }}</label>
+              <input
+                type="text"
+                id="name"
+                class="form-control"
+                value="{{ $viewData['user']->getName() }}"
+                disabled
+              >
             </div>
-            <input type="submit" class="btn btn-success" value="Update" />
+
+            {{-- Admin role toggle --}}
+            <div class="form-check mb-4">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="is_admin"
+                name="is_admin"
+                {{ old('is_admin', $viewData['user']->getIsAdmin()) ? 'checked' : '' }}
+              >
+              <label class="form-check-label" for="is_admin">
+                {{ __('Admin') }}
+              </label>
+            </div>
+
+            {{-- Submit --}}
+            <div class="d-flex justify-content-end">
+              <button type="submit" class="btn btn-primary">
+                {{ __('Update') }}
+              </button>
+            </div>
           </form>
         </div>
       </div>
