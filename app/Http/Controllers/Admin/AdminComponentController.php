@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Component;
-use App\Utilities\ComponentHelper;
+use App\Models\PC_Component;
+use App\Utilities\ComponentDataBuilder;
 use App\Utilities\ComponentValidator;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -18,7 +18,7 @@ class AdminComponentController extends Controller
         $viewData = [];
         $viewData['title'] = __('component.title_index');
         $viewData['subtitle'] = __('component.subtitle_index');
-        $viewData['components'] = Component::all();
+        $viewData['components'] = PC_Component::all();
 
         return view('admin.component.index')->with('viewData', $viewData);
     }
@@ -26,7 +26,7 @@ class AdminComponentController extends Controller
     public function show(string $id): View
     {
         $viewData = [];
-        $component = Component::findOrFail($id);
+        $component = PC_Component::findOrFail($id);
         $viewData['title'] = $component->getName();
         $viewData['subtitle'] = $component->getName().' - '.__('component.show_subtitle');
         $viewData['component'] = $component;
@@ -47,8 +47,8 @@ class AdminComponentController extends Controller
     {
         ComponentValidator::validateComponent($request);
 
-        $newComponent = new Component;
-        ComponentHelper::fillComponentData($newComponent, $request);
+        $newComponent = new PC_Component();
+        ComponentDataBuilder::fillComponentData($newComponent, $request);
 
         //  Handle image upload
         if ($request->hasFile('image')) {
@@ -63,7 +63,7 @@ class AdminComponentController extends Controller
 
     public function edit(string $id): View
     {
-        $component = Component::findOrFail($id);
+        $component = PC_Component::findOrFail($id);
 
         $viewData = [];
         $viewData['title'] = __('component.title');
@@ -77,8 +77,8 @@ class AdminComponentController extends Controller
     {
         ComponentValidator::validateComponent($request);
 
-        $component = Component::findOrFail($id);
-        ComponentHelper::fillComponentData($component, $request);
+        $component = PC_Component::findOrFail($id);
+        ComponentDataBuilder::fillComponentData($component, $request);
 
         //  Handle image update
         if ($request->hasFile('image')) {
@@ -97,7 +97,7 @@ class AdminComponentController extends Controller
 
     public function destroy(string $id): RedirectResponse
     {
-        $component = Component::findOrFail($id);
+        $component = PC_Component::findOrFail($id);
 
         //  Delete the image if it exists
         if ($component->image_path) {

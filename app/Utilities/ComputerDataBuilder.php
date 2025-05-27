@@ -8,7 +8,7 @@ use App\Models\Computer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-class ComputerHelper
+class ComputerDataBuilder
 {
     public static function fillComputerData(Computer $computer, $request): void
     {
@@ -18,6 +18,7 @@ class ComputerHelper
         $computer->setQuantity($request->input('quantity'));
         $computer->setType($request->input('type'));
         $computer->setDescription($request->input('description'));
+        $computer->setImage($request->input('image'));
         $computer->setPrice($request->input('price'));
     }
 }

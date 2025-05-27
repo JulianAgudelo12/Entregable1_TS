@@ -6,8 +6,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Computer;
+use App\Utilities\ComputerDataBuilder;
 use App\Utilities\ComputerFilter;
-use App\Utilities\ComputerHelper;
 use App\Utilities\ComputerValidator;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -54,7 +54,7 @@ class AdminComputerController extends Controller
         ComputerValidator::validate($request);
 
         $computer = new Computer;
-        ComputerHelper::fillComputerData($computer, $request);
+        ComputerDataBuilder::fillComputerData($computer, $request);
 
         // Image
         $image = $request->file('image');
@@ -87,7 +87,7 @@ class AdminComputerController extends Controller
         ComputerValidator::validate($request);
 
         $computer = Computer::findOrFail($id);
-        ComputerHelper::fillComputerData($computer, $request);
+        ComputerDataBuilder::fillComputerData($computer, $request);
 
         // Handle image update
         if ($request->hasFile('image')) {
