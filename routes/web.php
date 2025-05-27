@@ -9,6 +9,7 @@ $PC_ComponentControllerPath = 'App\Http\Controllers\PC_ComponentController';
 $ItemControllerPath = 'App\Http\Controllers\ItemController';
 $WishlistControllerPath = 'App\Http\Controllers\WishlistController';
 $OrderControllerPath = 'App\Http\Controllers\OrderController';
+$RecommendationControllerPath = 'App\Http\Controllers\RecommendationController';
 
 Auth::routes();
 
@@ -42,6 +43,9 @@ Route::post('/wishlist', "$WishlistControllerPath@store")->name('wishlist.store'
 Route::delete('/wishlist/{id}', "$WishlistControllerPath@remove")->name('wishlist.remove');
 
 Route::get('/orders', ["$OrderControllerPath@index"])->name('orders.index');
+
+Route::get('/recommend', "$RecommendationControllerPath@show")->name('recommend.show');
+Route::post('/recommend', "$RecommendationControllerPath@store")->name('recommend.store');
 
 Route::middleware('admin')->group(function () {
     $AdminDashboardControllerPath = 'App\Http\Controllers\Admin\AdminDashboardController';
